@@ -1,0 +1,54 @@
+body {
+  font-family: 'Arial', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#hero {
+  min-height: 100vh;
+  background: linear-gradient(to right, #f97794, #623aa2);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#hero h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+#hero p {
+  font-size: 1.2rem;
+}
+
+.timeline {
+  border-left: 3px solid #f97794;
+  padding-left: 20px;
+}
+
+.timeline-item {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.timeline-item:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 0;
+  width: 15px;
+  height: 15px;
+  background: #f97794;
+  border-radius: 50%;
+}
+
+footer {
+  font-size: 0.9rem;
+}

@@ -1,3 +1,4 @@
+/* ---------------- Base ---------------- */
 body {
   font-family: 'Arial', sans-serif;
   scroll-behavior: smooth;
@@ -9,6 +10,7 @@ body {
   margin-bottom: 20px;
 }
 
+/* ---------------- Hero ---------------- */
 #hero {
   min-height: 100vh;
   background: linear-gradient(to right, #f97794, #623aa2);
@@ -28,6 +30,7 @@ body {
   font-size: 1.2rem;
 }
 
+/* ---------------- Timeline ---------------- */
 .timeline {
   border-left: 3px solid #f97794;
   padding-left: 20px;
@@ -49,6 +52,234 @@ body {
   border-radius: 50%;
 }
 
+/* ---------------- Footer ---------------- */
 footer {
   font-size: 0.9rem;
 }
+
+/* =======================================================
+   Case Studies Section
+   ======================================================= */
+
+/* Case list container */
+.case-list {
+  display: none;
+  text-align: left;
+  margin-top: 20px;
+}
+.case-list.show {
+  display: block;
+  animation: fadeSlideIn 0.45s ease forwards;
+}
+
+/* Case preview card */
+.case-preview {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.case-preview h5 {
+  margin-bottom: 6px;
+  font-size: 1.25rem;
+}
+
+.case-preview p {
+  margin-bottom: 12px;
+  color: #555;
+}
+
+/* Case details wrapper */
+.case-details {
+  display: none;
+  margin-top: 15px;
+}
+.case-details.open {
+  display: block;
+  animation: fadeSlideIn 0.45s ease both;
+}
+
+/* Swiper carousel inside case details */
+.case-details .swiper {
+  padding: 15px 0;
+}
+
+.case-details .card {
+  background: #fdfdfd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Carousel card titles */
+.case-details .card h6 {
+  font-size: 1.2rem;   /* bigger than default */
+  font-weight: 700;    /* bold */
+  margin-bottom: 10px;
+  color: #333;         /* darker for emphasis */
+}
+
+
+/* Link: View Full Case Study */
+.view-full {
+  font-size: 0.9rem;
+  color: #007bff;
+  text-decoration: underline;
+  text-align: right;
+  display: block;
+  margin-top: 10px;
+}
+.view-full:hover {
+  color: #0056b3;
+}
+
+/* Full view formatting */
+.full-view {
+  display: none;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.full-view.active {
+  display: block;
+  animation: fadeSlideIn 0.45s ease both;
+}
+.full-view h5 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+.full-view p em {
+  color: #666;
+}
+.full-view ul {
+  margin-top: 15px;
+  padding-left: 20px;
+}
+.full-view li {
+  margin-bottom: 6px;
+}
+
+/* Collapse button in full view */
+.collapse-full {
+  margin-top: 15px;
+}
+
+/* Contact Me button inside carousel */
+.contact-btn {
+  margin-top: 12px;
+  background: #f97794;
+  color: #fff;
+  border: none;
+  transition: background 0.3s ease;
+}
+.contact-btn:hover {
+  background: #623aa2;
+  color: #fff;
+}
+
+/* Fade + slide animation */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================
+   Case Studies Carousel Arrows
+   ============================ */
+
+/* Arrows styled as circular buttons */
+.case-details .swiper-button-next,
+.case-details .swiper-button-prev {
+  color: #623aa2;              /* arrow color */
+  font-weight: bold;
+  top: 50%;                    /* vertically centered */
+  transform: translateY(-50%);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  z-index: 10;                 /* keep arrows above slides */
+}
+
+/* Keep arrows inside the card edges */
+.case-details .swiper-button-next {
+  right: 10px;
+}
+.case-details .swiper-button-prev {
+  left: 10px;
+}
+
+/* Add padding inside swiper so arrows don't overlap text */
+.case-details .swiper {
+  padding: 20px 60px; /* extra space for arrows inside the card */
+}
+
+/* ============================
+   Experience Page Styling
+   ============================ */
+
+/* Hero section on experience.html */
+#experience-hero {
+  background: linear-gradient(to right, #f97794, #623aa2);
+  color: #fff;
+  padding: 100px 20px;
+}
+#experience-hero h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+#experience-hero p.lead {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+/* Experience cards */
+#experience-list .card {
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#experience-list .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+#experience-list .card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+  color: #333;
+}
+#experience-list .text-muted {
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-bottom: 10px;
+  display: block;
+}
+#experience-list p {
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Contact section on experience.html */
+#experience-list + #contact {
+  margin-top: 40px;
+}
+
+/* Subtle different shade for Experience section */
+.bg-experience {
+  background-color: #f2f5f9; /* slightly darker than bg-light (#f8f9fa) */
+}
+
+

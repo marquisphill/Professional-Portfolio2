@@ -22,7 +22,7 @@
 <!-- ===== Header / Navbar ===== -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">YourName</a>
+    <a class="navbar-brand fw-bold" href="#">Phillip Da Silva-Marquis</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -57,47 +57,132 @@
 
 <!-- ===== Case Studies ===== -->
 <section id="cases" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="section-title text-center">Case Studies</h2>
-    <div class="swiper mySwiper mt-4">
-      <div class="swiper-wrapper">
-        <!-- Case Study Card -->
-        <div class="swiper-slide">
-          <div class="card h-100 shadow-sm">
-            <div class="card-body">
-              <h5 class="card-title">[Case Study Title]</h5>
-              <p class="card-text">[Description of the project, challenges, and results.]</p>
-              <ul>
-                <li><strong>Impact:</strong> [impact]</li>
-                <li><strong>Stack:</strong> [tools/tech]</li>
-                <li><strong>Artifacts:</strong> [links/screenshots]</li>
-              </ul>
+  <div class="container text-center">
+    <h2 class="section-title">Case Studies</h2>
+    <p class="lead">A few projects where I delivered measurable impact.</p>
+    <button id="toggleCaseList" class="btn btn-primary mt-3">View Case Studies</button>
+
+    <div id="caseList" class="case-list mt-4">
+
+      <!-- ================= Case Study 1 ================= -->
+      <div class="case-preview">
+        <h5>Faster Vendor Onboarding & Automated Invoicing</h5>
+        <p>BA/PM · Integration · EDI & APIs</p>
+        <button class="btn btn-outline-dark read-btn" data-target="case1">Read</button>
+
+        <div id="case1" class="case-details">
+          <!-- Carousel -->
+          <div class="swiper caseSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><div class="card p-3"><h6>The Challenge</h6><p>Onboarding and invoicing too slow across vendors.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>The Solution</h6><p>Led Logicbroker integration with FlexShopper systems, custom vendor flows.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Deliverables</h6><p>BRD, Visio architecture, Confluence SOPs.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Impact</h6><p>50% faster onboarding, doubled vendor capacity, reduced accounting touches.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Stack & Artifacts</h6><p>Logicbroker APIs, NetSuite, GCP, EDI. Artifacts: BRD, Visio, Confluence, Go-live checklist.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Next Steps</h6><button class="btn btn-primary d-block w-100 mb-2 contact-btn">Contact Me</button><a href="resume.pdf" target="_blank" class="btn btn-secondary d-block w-100">Download Resume</a></div></div>
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+
+          <!-- Full View -->
+          <div class="full-view">
+            <h5>Faster Vendor Onboarding & Automated Invoicing</h5>
+            <p><em>BA/PM · Integration · EDI & APIs</em></p>
+            <p>Led integration of Logicbroker with FlexShopper’s systems... (full description here)</p>
+            <ul>
+              <li><strong>Impact:</strong> Cut onboarding time by 50%...</li>
+              <li><strong>Stack:</strong> Logicbroker, NetSuite, GCP, EDI...</li>
+              <li><strong>Artifacts:</strong> BRD, Visio, Confluence SOPs...</li>
+              <li><strong>Complexity:</strong> Supported non-standard vendors...</li>
+            </ul>
+            <button class="btn btn-outline-dark collapse-full">Collapse to Cards</button>
           </div>
         </div>
-        <!-- Add more swiper-slide cards -->
       </div>
-      <!-- Pagination + Nav -->
-      <div class="swiper-pagination"></div>
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
+
+      <!-- ================= Case Study 2 ================= -->
+      <div class="case-preview">
+        <h5>Rebate Management App to Streamline Promotions</h5>
+        <p>BA · Product Design · Workshops & Requirements</p>
+        <button class="btn btn-outline-dark read-btn" data-target="case2">Read</button>
+
+        <div id="case2" class="case-details">
+          <!-- Carousel -->
+          <div class="swiper caseSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><div class="card p-3"><h6>The Challenge</h6><p>Merch team needed faster rebate setup.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>The Solution</h6><p>Custom rebate app UI; workshops with dev/design/merch; SKU validation, error logging.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Deliverables</h6><p>User stories, rebate criteria docs, functional specs.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Impact</h6><p>Reduced rebate setup time; streamlined workflows; fewer manual touchpoints.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Complexity</h6><p>Balanced merch UI needs vs system logic.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Next Steps</h6><button class="btn btn-primary d-block w-100 mb-2 contact-btn">Contact Me</button><a href="resume.pdf" target="_blank" class="btn btn-secondary d-block w-100">Download Resume</a></div></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+
+          <!-- Full View -->
+          <div class="full-view">
+            <h5>Rebate Management App to Streamline Promotions</h5>
+            <p><em>BA · Product Design · Workshops & Requirements</em></p>
+            <p>Led BA efforts to design a custom rebate management app... (full description here)</p>
+            <ul>
+              <li><strong>Impact:</strong> Reduced rebate setup time...</li>
+              <li><strong>Artifacts:</strong> User stories, rebate criteria, functional specs...</li>
+              <li><strong>Complexity:</strong> Balanced merch UI with back-end logic...</li>
+            </ul>
+            <button class="btn btn-outline-dark collapse-full">Collapse to Cards</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Case Study 3 ================= -->
+      <div class="case-preview">
+        <h5>New Revenue Channel via Catalog-as-a-Service</h5>
+        <p>BA/PM · Integration · Accounting & Partner Systems</p>
+        <button class="btn btn-outline-dark read-btn" data-target="case3">Read</button>
+
+        <div id="case3" class="case-details">
+          <!-- Carousel -->
+          <div class="swiper caseSwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><div class="card p-3"><h6>The Challenge</h6><p>Needed a new revenue channel with partners.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>The Solution</h6><p>CaaS integration: product catalogs streamed; lender integration.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Deliverables</h6><p>Visio diagram + Master Service Agreement draft.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Impact</h6><p>Opened recurring revenue channel; automated syndication.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Complexity</h6><p>Revenue share handled all return/payment/profitability scenarios.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
+              <div class="swiper-slide"><div class="card p-3"><h6>Next Steps</h6><button class="btn btn-primary d-block w-100 mb-2 contact-btn">Contact Me</button><a href="resume.pdf" target="_blank" class="btn btn-secondary d-block w-100">Download Resume</a></div></div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          </div>
+
+          <!-- Full View -->
+          <div class="full-view">
+            <h5>New Revenue Channel via Catalog-as-a-Service</h5>
+            <p><em>BA/PM · Integration · Accounting & Partner Systems</em></p>
+            <p>Led BA and PM efforts to enable CaaS revenue share... (full description here)</p>
+            <ul>
+              <li><strong>Impact:</strong> Opened recurring revenue channel...</li>
+              <li><strong>Complexity:</strong> Designed revenue share for all return/payment scenarios...</li>
+              <li><strong>Artifacts:</strong> Visio diagram, Master Service Agreement...</li>
+            </ul>
+            <button class="btn btn-outline-dark collapse-full">Collapse to Cards</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ===== Experience ===== -->
-<section id="experience" class="py-5">
-  <div class="container">
-    <h2 class="section-title text-center">Experience</h2>
-    <div class="timeline mt-4">
-      <!-- Timeline Item -->
-      <div class="timeline-item">
-        <h5>Business Systems Analyst <span class="text-muted">· Company</span></h5>
-        <p class="text-muted">Jan 2022 – Present</p>
-        <p>Description of role and key achievements.</p>
-      </div>
-      <!-- Add more timeline items -->
-    </div>
+<section id="experience" class="py-5 bg-experience">
+  <div class="container text-center">
+    <h2 class="section-title">Experience</h2>
+    <p class="lead">See my professional journey and accomplishments.</p>
+    <a href="experience.html" class="btn btn-primary mt-3">View Experience</a>
   </div>
 </section>
 
@@ -114,7 +199,6 @@
           </div>
         </div>
       </div>
-      <!-- Add more recommendation cards -->
     </div>
   </div>
 </section>

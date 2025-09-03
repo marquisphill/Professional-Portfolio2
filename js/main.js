@@ -4,13 +4,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const caseList = document.getElementById("caseList");
 
   if (toggleCaseBtn && caseList) {
-    toggleCaseBtn.addEventListener("click", () => {
+    toggleCaseBtn.addEventListener("click", e => {
+      e.preventDefault();
       caseList.classList.toggle("show");
-      toggleCaseBtn.textContent = caseList.classList.contains("show")
-        ? "Hide Case Studies"
-        : "View Case Studies";
+
+      const isOpen = caseList.classList.contains("show");
+      toggleCaseBtn.textContent = isOpen ? "Hide Case Studies" : "View Case Studies";
+      toggleCaseBtn.setAttribute("aria-expanded", String(isOpen));
+
+      if (isOpen) {
+        caseList.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     });
   }
+  }
+
+  
 
   // ===== Hero "See My Impact" button -> auto expand Case Studies =====
   const impactBtn = document.querySelector(".impact-btn");

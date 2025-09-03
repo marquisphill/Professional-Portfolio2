@@ -357,6 +357,7 @@ footer {
 /* Responsive: stack 1 → 2 → 3 on small screens */
 @media (max-width: 768px) {
   .hero-cta-grid {
+    display: grid;
     grid-template-columns: 1fr;
     gap: 12px;
     margin-top: 22px;

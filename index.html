@@ -69,7 +69,7 @@
 </section>
 
 
-<!-- ===== Case Studies ===== -->
+<!-- ===== Case Studies (Option 3) ===== -->
 <section id="cases" class="py-5 bg-light">
   <div class="container text-center">
     <h2 class="section-title">Case Studies</h2>
@@ -85,32 +85,39 @@
         <button class="btn btn-outline-dark read-btn" data-target="case1">Read</button>
 
         <div id="case1" class="case-details">
-          <!-- Carousel -->
-          <div class="swiper caseSwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><div class="card p-3"><h6>The Challenge</h6><p>Onboarding and invoicing too slow across vendors.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>The Solution</h6><p>Led Logicbroker integration with FlexShopper systems, custom vendor flows.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Deliverables</h6><p>BRD, Visio architecture, Confluence SOPs.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Impact</h6><p>50% faster onboarding, doubled vendor capacity, reduced accounting touches.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Stack & Artifacts</h6><p>Logicbroker APIs, NetSuite, GCP, EDI. Artifacts: BRD, Visio, Confluence, Go-live checklist.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Next Steps</h6><button class="btn btn-primary d-block w-100 mb-2 contact-btn">Contact Me</button><a href="resume.pdf" target="_blank" class="btn btn-secondary d-block w-100">Download Resume</a></div></div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+          <!-- Hide button -->
+          <div class="text-center mb-3">
+            <button class="btn btn-outline-dark hide-btn">Hide Case Study</button>
           </div>
 
-          <!-- Full View -->
-          <div class="full-view">
+          <!-- 3 Boxes + Arrows -->
+          <div class="case-flow">
+            <div class="flow-item"><div class="case-card"><h6>The Challenge</h6><p>Onboarding and invoicing too slow across vendors.</p></div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item"><div class="case-card"><h6>The Solution</h6><p>Integrated Logicbroker with FlexShopper systems, created custom vendor flows, and automated invoice handling logic.</p></div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item"><div class="case-card"><h6>The Impact</h6><p>Cut vendor onboarding time by 50%, doubled vendor capacity, and reduced accounting touches.</p></div></div>
+          </div>
+
+          <!-- Nicely formatted full case study -->
+          <div class="full-view mt-4">
             <h5>Faster Vendor Onboarding & Automated Invoicing</h5>
             <p><em>BA/PM · Integration · EDI & APIs</em></p>
-            <p>Led integration of Logicbroker with FlexShopper’s systems... (full description here)</p>
+            <p>
+              Led integration of Logicbroker with FlexShopper’s custom order/lease management systems and accounting databases (GCP & NetSuite).
+              Delivered multi-vendor onboarding flows, custom architecture for non-standard vendors, and special invoice handling requirements.
+            </p>
             <ul>
-              <li><strong>Impact:</strong> Cut onboarding time by 50%...</li>
-              <li><strong>Stack:</strong> Logicbroker, NetSuite, GCP, EDI...</li>
-              <li><strong>Artifacts:</strong> BRD, Visio, Confluence SOPs...</li>
-              <li><strong>Complexity:</strong> Supported non-standard vendors...</li>
+              <li><strong>Impact:</strong> Cut vendor onboarding time by 50%, doubling capacity; reduced manual touches in accounting reconciliation.</li>
+              <li><strong>Stack:</strong> Logicbroker (Azure APIs), NetSuite, GCP, EDI transactions, dashboards.</li>
+              <li><strong>Artifacts:</strong> BRD, Visio architecture diagram, Confluence SOPs, Go-live Checklist.</li>
+              <li><strong>Complexity:</strong> Supported vendors unable to onboard to Logicbroker; implemented custom invoice logic.</li>
             </ul>
-            <button class="btn btn-outline-dark collapse-full">Collapse to Cards</button>
+          </div>
+
+          <!-- Contact Me -->
+          <div class="text-center mt-4">
+            <a href="#contact" class="btn btn-primary contact-btn">Contact Me</a>
           </div>
         </div>
       </div>
@@ -122,31 +129,36 @@
         <button class="btn btn-outline-dark read-btn" data-target="case2">Read</button>
 
         <div id="case2" class="case-details">
-          <!-- Carousel -->
-          <div class="swiper caseSwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><div class="card p-3"><h6>The Challenge</h6><p>Merch team needed faster rebate setup.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>The Solution</h6><p>Custom rebate app UI; workshops with dev/design/merch; SKU validation, error logging.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Deliverables</h6><p>User stories, rebate criteria docs, functional specs.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Impact</h6><p>Reduced rebate setup time; streamlined workflows; fewer manual touchpoints.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Complexity</h6><p>Balanced merch UI needs vs system logic.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Next Steps</h6><button class="btn btn-primary d-block w-100 mb-2 contact-btn">Contact Me</button><a href="resume.pdf" target="_blank" class="btn btn-secondary d-block w-100">Download Resume</a></div></div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+          <div class="text-center mb-3">
+            <button class="btn btn-outline-dark hide-btn">Hide Case Study</button>
           </div>
 
-          <!-- Full View -->
-          <div class="full-view">
+          <div class="case-flow">
+            <div class="flow-item"><div class="case-card"><h6>The Challenge</h6><p>Rebate setup was slow and error-prone, requiring manual validation across teams.</p></div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item"><div class="case-card"><h6>The Solution</h6><p>Designed and delivered a custom rebate management UI with use cases, change control, and SKU validation.</p></div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item"><div class="case-card"><h6>The Impact</h6><p>Enabled faster promotion launches and fewer manual touchpoints by streamlining workflows and automating validation.</p></div></div>
+          </div>
+
+          <div class="full-view mt-4">
             <h5>Rebate Management App to Streamline Promotions</h5>
             <p><em>BA · Product Design · Workshops & Requirements</em></p>
-            <p>Led BA efforts to design a custom rebate management app... (full description here)</p>
+            <p>
+              Led BA efforts to design a custom rebate management application with a UI for the merchandising team.
+              Facilitated cross-functional workshops with developers, designers, and merch to define use cases and required functionality.
+              Addressed complex needs such as UI criteria setup for rebates, change control, SKU validation, and developer-facing error logging.
+              Delivered user stories for all possible UI actions and example rebate criteria for both UI and back-end logic.
+            </p>
             <ul>
-              <li><strong>Impact:</strong> Reduced rebate setup time...</li>
-              <li><strong>Artifacts:</strong> User stories, rebate criteria, functional specs...</li>
-              <li><strong>Complexity:</strong> Balanced merch UI with back-end logic...</li>
+              <li><strong>Impact:</strong> Reduced rebate setup time for merchandising staff by streamlining workflows and automating validation.</li>
+              <li><strong>Artifacts:</strong> User stories, rebate criteria documentation, functional specifications.</li>
+              <li><strong>Complexity:</strong> Balanced merch UI needs with system functionality beyond rebate generation.</li>
             </ul>
-            <button class="btn btn-outline-dark collapse-full">Collapse to Cards</button>
+          </div>
+
+          <div class="text-center mt-4">
+            <a href="#contact" class="btn btn-primary contact-btn">Contact Me</a>
           </div>
         </div>
       </div>
@@ -158,31 +170,35 @@
         <button class="btn btn-outline-dark read-btn" data-target="case3">Read</button>
 
         <div id="case3" class="case-details">
-          <!-- Carousel -->
-          <div class="swiper caseSwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><div class="card p-3"><h6>The Challenge</h6><p>Needed a new revenue channel with partners.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>The Solution</h6><p>CaaS integration: product catalogs streamed; lender integration.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Deliverables</h6><p>Visio diagram + Master Service Agreement draft.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Impact</h6><p>Opened recurring revenue channel; automated syndication.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Complexity</h6><p>Revenue share handled all return/payment/profitability scenarios.</p><a href="#" class="view-full">View Full Case Study</a></div></div>
-              <div class="swiper-slide"><div class="card p-3"><h6>Next Steps</h6><button class="btn btn-primary d-block w-100 mb-2 contact-btn">Contact Me</button><a href="resume.pdf" target="_blank" class="btn btn-secondary d-block w-100">Download Resume</a></div></div>
-            </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
+          <div class="text-center mb-3">
+            <button class="btn btn-outline-dark hide-btn">Hide Case Study</button>
           </div>
 
-          <!-- Full View -->
-          <div class="full-view">
+          <div class="case-flow">
+            <div class="flow-item"><div class="case-card"><h6>The Challenge</h6><p>FlexShopper needed new recurring revenue streams while ensuring accurate accounting and vendor policies.</p></div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item"><div class="case-card"><h6>The Solution</h6><p>Enabled catalog syndication to merchant partner sites with a new CaaS model and lender data integrations.</p></div></div>
+            <div class="flow-arrow"></div>
+            <div class="flow-item"><div class="case-card"><h6>The Impact</h6><p>Opened a new recurring revenue channel through automated product catalog syndication with revenue share.</p></div></div>
+          </div>
+
+          <div class="full-view mt-4">
             <h5>New Revenue Channel via Catalog-as-a-Service</h5>
             <p><em>BA/PM · Integration · Accounting & Partner Systems</em></p>
-            <p>Led BA and PM efforts to enable CaaS revenue share... (full description here)</p>
+            <p>
+              Led BA and PM efforts to enable FlexShopper to stream product catalogs to merchant partner websites via a new back-end revenue share model.
+              Gathered and defined requirements leveraging expertise in accounting workflows and custom CaaS applications.
+              Coordinated with third-party financial waterfall partners to integrate lender data for automated invoicing.
+            </p>
             <ul>
-              <li><strong>Impact:</strong> Opened recurring revenue channel...</li>
-              <li><strong>Complexity:</strong> Designed revenue share for all return/payment scenarios...</li>
-              <li><strong>Artifacts:</strong> Visio diagram, Master Service Agreement...</li>
+              <li><strong>Impact:</strong> Opened a new recurring revenue channel by enabling automated product catalog syndication to partner merchant sites under a revenue-share model.</li>
+              <li><strong>Complexity:</strong> Designed revenue share process to handle all return scenarios per vendor policy, payment method, and profitability tied to lease origination date.</li>
+              <li><strong>Artifacts:</strong> Detailed Visio diagram mapping every revenue share scenario, systems, and processes — served as the source of truth for the Master Service Agreement (co-authored with partner).</li>
             </ul>
-            <button class="btn btn-outline-dark collapse-full">Collapse to Cards</button>
+          </div>
+
+          <div class="text-center mt-4">
+            <a href="#contact" class="btn btn-primary contact-btn">Contact Me</a>
           </div>
         </div>
       </div>
@@ -190,6 +206,8 @@
     </div>
   </div>
 </section>
+
+
 
 <!-- ===== Experience ===== -->
 <section id="experience" class="py-5 bg-experience">
@@ -200,18 +218,72 @@
   </div>
 </section>
 
-<!-- ===== Recommendations ===== -->
+<!-- ===== Recommendations (Option 1) ===== -->
 <section id="recommendations" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="section-title text-center">Recommendations</h2>
-    <div class="row mt-4">
-      <div class="col-md-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <p>"Testimonial text from colleague or manager."</p>
-            <h6 class="mt-3">– Person Name, Role</h6>
-          </div>
-        </div>
+  <div class="container text-center">
+    <h2 class="section-title">Recommendations</h2>
+    <p class="lead">What colleagues and leaders have said about working with me.</p>
+    <button id="toggleRecommendations" class="btn btn-primary mt-3">View Recommendations</button>
+
+    <div id="recommendationsList" class="recommendations-list mt-4">
+      <!-- Navin Anand -->
+      <div class="recommendation-card">
+        <h5>Navin Anand</h5>
+        <p class="meta"><em>Chief Technology Officer (worked with Phillip on the same team) · FlexShopper Inc. · August 9, 2025</em></p>
+        <p>
+          Phil was part of our PMO team, where he consistently demonstrated adaptability, and strategic thinking.
+          Starting within the Development PMO, Phil quickly pivoted to the Business PMO without missing a beat—showing his
+          ability to bridge technical and business perspectives seamlessly.
+        </p>
+        <p>
+          Phil effectively managed a diverse set of stakeholders, including external partners, internal business SMEs,
+          and development teams. He excelled at facilitating discussions with all key parties to prioritize initiatives,
+          ensuring that our backlog was always aligned with ROI-driven decision-making. His command of Jira, Confluence,
+          Asana, and other PM tools made him a highly efficient and well-organized PM/BA/PO.
+        </p>
+        <p>
+          From day one, Phil took on large-scale programs with confidence and delivered results—Logicbroker being a standout
+          example. His ability to coordinate complex projects, align cross-functional teams, and keep everyone focused on shared
+          goals made him an indispensable part of our success.
+        </p>
+        <p><strong>I would recommend Phil for any program or project management role—his combination of adaptability, and results-oriented leadership is truly top-tier.</strong></p>
+        <p class="linkedin-link">[LinkedIn URL goes here]</p>
+      </div>
+
+      <!-- Joseph Zannucci -->
+      <div class="recommendation-card">
+        <h5>Joseph Zannucci</h5>
+        <p class="meta"><em>Project Manager IT/DEV & Scrum Master (managed Phillip directly) · FlexShopper Inc. · August 14, 2025</em></p>
+        <p>
+          I'm happy to recommend Phill, who reported directly to me at Flexshopper. I worked with him on several projects,
+          and he was consistently reliable, organized, and eager to grow.
+        </p>
+        <p>
+          He played a key role in managing off-cycle requests from our Merchandising team and was a huge help in supporting
+          payment process integrations. No matter the task, he approached it with a positive attitude and strong attention
+          to detail.
+        </p>
+        <p>
+          Phill was also a great team player—easy to work with and always willing to lend a hand.
+          I’m confident he’ll bring the same energy and dedication to any role he takes on.
+        </p>
+        <p class="linkedin-link">[LinkedIn URL goes here]</p>
+      </div>
+
+      <!-- Moe Sheikha -->
+      <div class="recommendation-card">
+        <h5>Moe Sheikha</h5>
+        <p class="meta"><em>Software Development Manager (worked with Phillip but on different teams) · FlexShopper Inc. · August 19, 2025</em></p>
+        <p>
+          I had the pleasure of working with Phil at FlexShopper, where he consistently impressed me with his thoroughness and ability
+          to keep projects on track. He has a great eye for detail, asks thoughtful questions, and ensures that nothing slips through
+          the cracks.
+        </p>
+        <p>
+          Beyond his strong work ethic, Phil is approachable and easy to work with, which makes collaboration smooth and effective.
+          I’d gladly work with him again on any project.
+        </p>
+        <p class="linkedin-link">[LinkedIn URL goes here]</p>
       </div>
     </div>
   </div>

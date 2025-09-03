@@ -138,18 +138,20 @@ footer {
   color: #0056b3;
 }
 
-/* Full view formatting */
-.full-view {
+.case-details .full-view {
   display: none;
   padding: 20px;
   background: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-top: 20px;
 }
-.full-view.active {
+
+.case-details.open .full-view {
   display: block;
   animation: fadeSlideIn 0.45s ease both;
 }
+
 .full-view h5 {
   font-size: 1.4rem;
   margin-bottom: 10px;
@@ -364,4 +366,134 @@ footer {
   .hero-cta-3 { grid-column: auto; }
   .hero-cta { min-height: 96px; }
 }
+
+/* ===== Case Studies Option 3 ===== */
+.case-flow {
+  display:flex;
+  align-items:stretch;
+  justify-content:center;
+  gap:18px;
+  margin-top:20px;
+}
+.flow-item { flex:1; display:flex; }
+.case-card {
+  flex:1;
+  background:#fff;
+  border:1px solid #ddd;
+  border-radius:8px;
+  box-shadow:0 4px 10px rgba(0,0,0,.08);
+  padding:20px;
+  text-align:left;
+  display:flex;
+  flex-direction:column;
+}
+.case-card h6 { font-size:1.1rem; font-weight:700; margin-bottom:8px; }
+.case-card p { margin:0; }
+
+/* Arrows */
+.flow-arrow {
+  position:relative;
+  align-self:center;
+  width:60px;
+  height:8px;
+  background:var(--purple, #623aa2);
+  border-radius:4px;
+}
+.flow-arrow::after {
+  content:"";
+  position:absolute;
+  top:50%;
+  right:-14px;
+  transform:translateY(-50%);
+  border-left:16px solid var(--purple, #623aa2);
+  border-top:10px solid transparent;
+  border-bottom:10px solid transparent;
+}
+
+/* Mobile stack with down arrows */
+@media (max-width:768px) {
+  .case-flow { flex-direction:column; }
+  .flow-arrow {
+    width:8px; height:50px; margin:0 auto;
+  }
+  .flow-arrow::after {
+    top:auto; right:auto;
+    left:50%; bottom:-14px;
+    transform:translateX(-50%);
+    border:none;
+    border-top:16px solid var(--purple, #623aa2);
+    border-left:10px solid transparent;
+    border-right:10px solid transparent;
+  }
+}
+
+.case-details { display:none; margin-top:20px; }
+.case-details.open { display:block; animation:fadeSlideIn .4s ease both; }
+
+.case-flow {
+  display:flex; align-items:stretch; justify-content:center; gap:18px; margin-top:20px;
+}
+.flow-item { flex:1; display:flex; }
+.case-card { flex:1; background:#fff; border:1px solid #ddd; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,.08); padding:20px; }
+.case-card h6 { font-size:1.1rem; font-weight:700; margin-bottom:8px; }
+
+.flow-arrow {
+  position:relative; align-self:center; width:60px; height:8px;
+  background:#623aa2; border-radius:4px;
+}
+.flow-arrow::after {
+  content:""; position:absolute; top:50%; right:-14px; transform:translateY(-50%);
+  border-left:16px solid #623aa2; border-top:10px solid transparent; border-bottom:10px solid transparent;
+}
+@media (max-width:768px){
+  .case-flow{ flex-direction:column; }
+  .flow-arrow{ width:8px; height:50px; margin:0 auto; }
+  .flow-arrow::after{
+    top:auto; left:50%; bottom:-14px; transform:translateX(-50%);
+    border:none; border-top:16px solid #623aa2; border-left:10px solid transparent; border-right:10px solid transparent;
+  }
+}
+
+/* ===== Recommendations Section ===== */
+.recommendations-list {
+  display: none;
+  text-align: left;
+}
+
+.recommendations-list.show {
+  display: block;
+  animation: fadeSlideIn 0.45s ease both;
+}
+
+.recommendation-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.recommendation-card h5 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.recommendation-card .meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.recommendation-card p {
+  margin-bottom: 12px;
+}
+
+.recommendation-card .linkedin-link {
+  font-style: italic;
+  color: #999;
+  margin-top: 10px;
+}
+
 

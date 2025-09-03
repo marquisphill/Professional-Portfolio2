@@ -1,15 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Experience · Phillip Da Silva-Marquis</title>
 
-  <!-- Bootstrap CSS -->
+  <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom CSS -->
+  <!-- Site CSS -->
   <link href="css/main.css" rel="stylesheet">
   <link href="css/responsive.css" rel="stylesheet">
+
+  <style>
+    /* ===== Symmetrical Timeline ===== */
+    .timeline{
+      position:relative;
+      margin:40px 0;
+      padding:0;
+    }
+    /* Center vertical line */
+    .timeline::before{
+      content:"";
+      position:absolute;
+      top:0; bottom:0;
+      left:50%;
+      width:2px;
+      background:#623aa2; /* theme purple */
+      transform:translateX(-50%);
+    }
+
+    /* Each item occupies half the width; we keep horizontal padding = connector length */
+    .timeline-item{
+      position:relative;
+      width:50%;
+      padding:20px 30px; /* 30px = connector length */
+    }
+    .timeline-item:nth-child(odd){ left:0; text-align:right; }
+    .timeline-item:nth-child(even){ left:50%; }
+
+    /* Card */
+    .timeline-content{
+      background:#fff;
+      border:1px solid #ddd;
+      border-radius:8px;
+      box-shadow:0 4px 10px rgba(0,0,0,.08);
+      padding:20px;
+      position:relative;
+      z-index:1;
+    }
+    .timeline-content h5{ font-weight:700; margin-bottom:5px; }
+    .timeline-date{ font-size:.9rem; color:#666; margin-bottom:10px; }
+
+    /* Connector line (from card edge to center line) */
+    .timeline-content::before{
+      content:"";
+      position:absolute;
+      top:36px;                 /* aligns roughly with title line */
+      height:2px;
+      width:30px;               /* must match .timeline-item horizontal padding */
+      background:#623aa2;
+    }
+    .timeline-item:nth-child(odd) .timeline-content::before{ /* left column */
+      right:-30px;             /* extend from card to center */
+    }
+    .timeline-item:nth-child(even) .timeline-content::before{ /* right column */
+      left:-30px;
+    }
+
+    /* Mobile: stack items; hide connectors for clarity */
+    @media (max-width: 768px){
+      .timeline::before{ left:8px; }
+      .timeline-item{
+        width:100%;
+        left:0 !important;
+        padding-left:40px;      /* keep space for left line */
+        padding-right:20px;
+        text-align:left !important;
+      }
+      .timeline-content::before{ display:none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -33,95 +103,118 @@
   </div>
 </nav>
 
-<!-- ===== Hero (Experience Page) ===== -->
-<section id="experience-hero" class="d-flex align-items-center text-center bg-light py-5" style="margin-top: 60px;">
+<!-- ===== Hero ===== -->
+<section id="experience-hero" class="d-flex align-items-center text-center bg-light py-5" style="margin-top:60px;">
   <div class="container">
     <h1 class="mb-3">My Professional Experience</h1>
     <p class="lead mb-4">Explore my career journey across project management, business analysis, and ecommerce growth.</p>
-    <a href="resume.pdf" class="btn btn-primary btn-lg me-2" target="_blank">Download Resume</a>
     <a href="resume.pdf" class="btn btn-dark btn-lg" download>Download Resume</a>
+     <a href="#career-goals" class="btn btn-primary btn-lg">View My Career Goals</a>
+
   </div>
 </section>
 
-<!-- ===== Experience Cards ===== -->
+<!-- ===== Experience Sections ===== -->
 <section id="experience-list" class="py-5">
   <div class="container">
-    <div class="row g-4">
 
-      <!-- Experience Item -->
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
+    <!-- FlexShopper -->
+    <h2 class="section-title mb-4">FlexShopper <span class="text-muted">Nov 2023 – Aug 2025</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h5>Project Manager, Merchandising</h5>
+          <p class="timeline-date">Mar 2025 – Aug 2025</p>
+          <p>Led projects and requirements across merchandising initiatives; launched category microsites with finance waterfall, streamlining merchant onboarding and driving new revenue activation.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h5>Business Systems Analyst / PMO Analyst</h5>
+          <p class="timeline-date">Nov 2023 – Mar 2025</p>
+          <p>Drove Agile delivery and authored BRDs/FSDs; integrated Logicbroker with NetSuite to automate remittance, onboard 35+ vendors, cut onboarding SLAs by 50%, and standardize the invoice process.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pet Supermarket -->
+    <h2 class="section-title mb-4">Pet Supermarket <span class="text-muted">Jul 2013 – Jul 2023</span></h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h5>Junior Business Analyst</h5>
+          <p class="timeline-date">Jan 2021 – Jul 2023</p>
+          <p>Acted as PIM product owner; onboarded 200+ vendors and scaled data ops for 14K+ SKUs while coordinating SFCC integrations and QA for reliable releases.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h5>Web Catalog Specialist</h5>
+          <p class="timeline-date">Aug 2018 – Jan 2021</p>
+          <p>Implemented the company’s first PIM and maintained 14K products; published 150+ new web items weekly and drove promo execution to support ecommerce growth.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h5>Digital Marketing Specialist</h5>
+          <p class="timeline-date">Oct 2015 – Aug 2018</p>
+          <p>Onboarded Oracle Responsys and managed a 1.5M list; warmed up the IP and lifted email open rate 30%, increasing site traffic by 17% through data-driven campaigns.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h5>Ecommerce Specialist</h5>
+          <p class="timeline-date">Jul 2015 – Aug 2015</p>
+          <p>Supported store migration and site redesign; managed Amazon Seller ops and introduced faceted search to improve product discovery.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <h5>Sales Associate</h5>
+          <p class="timeline-date">Jul 2013 – Apr 2015</p>
+          <p>Delivered high-touch customer service and achieved sales goals through product expertise and relationship building.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== Education ===== -->
+<section id="education" class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="section-title">Education</h2>
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-8">
+        <div class="card shadow-sm mb-3">
           <div class="card-body">
-            <h5 class="card-title">FlexShopper · Project Manager, Merchandising</h5>
-            <p class="text-muted">Mar 2025 – Aug 2025</p>
-            <p>Led projects and requirements across merchandising initiatives; launched category microsites with finance waterfall, streamlining merchant onboarding and driving new revenue activation.</p>
+            <h5 class="card-title">University of Florida</h5>
+            <p class="text-muted">M.A. Web Design &amp; Mass Communications</p>
+          </div>
+        </div>
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">University of Florida</h5>
+            <p class="text-muted">B.S. Family, Youth, and Community Sciences</p>
           </div>
         </div>
       </div>
-
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">FlexShopper · Business Systems Analyst / PMO Analyst</h5>
-            <p class="text-muted">Nov 2023 – Mar 2025</p>
-            <p>Drove Agile delivery and authored BRDs/FSDs; integrated Logicbroker with NetSuite to automate remittance, onboard 35+ vendors, cut onboarding SLAs by 50%, and standardize the invoice process.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">Pet Supermarket · Junior Business Analyst</h5>
-            <p class="text-muted">Jan 2021 – Jul 2023</p>
-            <p>Acted as PIM product owner; onboarded 200+ vendors and scaled data ops for 14K+ SKUs while coordinating SFCC integrations and QA for reliable releases.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">Pet Supermarket · Web Catalog Specialist</h5>
-            <p class="text-muted">Aug 2018 – Jan 2021</p>
-            <p>Implemented the company’s first PIM and maintained 14K products; published 150+ new web items weekly and drove promo execution to support ecommerce growth.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">Pet Supermarket · Digital Marketing Specialist</h5>
-            <p class="text-muted">Oct 2015 – Aug 2018</p>
-            <p>Onboarded Oracle Responsys and managed a 1.5M list; warmed up the IP and lifted email open rate 30%, increasing site traffic by 17% through data-driven campaigns.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">Pet Supermarket · Ecommerce Specialist</h5>
-            <p class="text-muted">Jul 2015 – Aug 2015</p>
-            <p>Supported store migration and site redesign; managed Amazon Seller ops and introduced faceted search to improve product discovery.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-6">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title">Pet Supermarket · Sales Associate</h5>
-            <p class="text-muted">Jul 2013 – Apr 2015</p>
-            <p>Delivered high-touch customer service and achieved sales goals through product expertise and relationship building.</p>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
+
+<!-- ===== Career Goals ===== -->
+<section id="career-goals" class="py-5">
+  <div class="container text-center">
+    <h2 class="section-title">Career Goals</h2>
+    <p class="lead mt-3">
+      I aspire to become a certified Scrum Master and am actively preparing for the PSM I exam. 
+      My focus is on building a strong foundation in Agile practices to lead teams more effectively, 
+      foster collaboration, and deliver value-driven results.
+    </p>
+  </div>
+</section>
+
 
 <!-- ===== Contact ===== -->
 <section id="contact" class="py-5 bg-light">
@@ -141,7 +234,7 @@
   <p>© 2025 Phillip Da Silva-Marquis · Business Systems Analyst</p>
 </footer>
 
-<!-- ===== Scripts ===== -->
+<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="./js/main.js"></script>
 </body>

@@ -1,4 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+  // Hero "See My Impact" button -> auto expand Case Studies
+const impactBtn = document.querySelector(".impact-btn");
+const caseList = document.getElementById("caseList");
+const toggleCaseBtn = document.getElementById("toggleCaseList");
+
+if (impactBtn && caseList && toggleCaseBtn) {
+  impactBtn.addEventListener("click", e => {
+    e.preventDefault();
+
+    // Expand case studies if not already open
+    if (!caseList.classList.contains("show")) {
+      caseList.classList.add("show");
+      toggleCaseBtn.textContent = "Hide Case Studies";
+    }
+
+    // Smooth scroll to the case studies section
+    document.getElementById("cases").scrollIntoView({ 
+      behavior: "smooth", 
+      block: "start" 
+    });
+  });
+}
+
+
   // Toggle Recommendations with smooth scroll
 const toggleRecBtn = document.getElementById("toggleRecommendations");
 const recList = document.getElementById("recommendationsList");

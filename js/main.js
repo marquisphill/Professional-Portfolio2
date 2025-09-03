@@ -31,32 +31,46 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== Open case study (State 2 -> 3) =====
-  document.querySelectorAll(".read-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const target = document.getElementById(btn.dataset.target);
-      if (!target) return;
+document.querySelectorAll(".read-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
 
-      // Close all case studies first
-      document.querySelectorAll(".case-details").forEach(d =>
-        d.classList.remove("open")
-      );
+    // Close all case studies first
+    document.querySelectorAll(".case-details").forEach(d =>
+      d.classList.remove("open")
+    );
 
-      // Open the selected one
-      target.classList.add("open");
-      target.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
+    // Open the selected one
+    target.classList.add("open");
+
+    // ✅ Scroll to preview card with offset for navbar
+    const previewCard = btn.closest(".case-preview");
+    if (previewCard) {
+      const yOffset = -80; // adjust to your navbar height
+      const y = previewCard.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
   });
+});
 
-  // ===== Hide case study (back to previews) =====
-  document.querySelectorAll(".hide-btn").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const caseDetails = btn.closest(".case-details");
-      if (caseDetails) {
-        caseDetails.classList.remove("open");
-        caseDetails.scrollIntoView({ behavior: "smooth", block: "start" });
+// ===== Hide case study (back to previews) =====
+document.querySelectorAll(".hide-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const caseDetails = btn.closest(".case-details");
+    if (caseDetails) {
+      caseDetails.classList.remove("open");
+
+      const previewCard = caseDetails.closest(".case-preview");
+      if (previewCard) {
+        const yOffset = -80; // same offset
+        const y = previewCard.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
-    });
+    }
   });
+});
+
 
   // ===== Contact Me buttons =====
   const contactSection = document.getElementById("contact");

@@ -22,15 +22,20 @@
 <!-- ===== Header / Navbar ===== -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">Phillip Da Silva-Marquis</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <a class="navbar-brand fw-bold" href="index.html">Phillip Da Silva-Marquis</a>
+
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#hero">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="#cases">Case Studies</a></li>
-        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="experience.html">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="experience.html#career-goals">Career Goals</a></li>
         <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
         <li class="nav-item"><a class="nav-link" href="#recommendations">Recommendations</a></li>
         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -38,6 +43,7 @@
     </div>
   </div>
 </nav>
+
 
 <!-- ===== Hero ===== -->
 <section id="hero" class="d-flex align-items-center text-center">
@@ -86,7 +92,7 @@
 
       <!-- ================= Case Study 1 ================= -->
       <div class="case-preview">
-        <h5>Faster Vendor Onboarding & Automated Invoicing</h5>
+        <h5>Faster Onboarding & Process Automation</h5>
         <p>BA/PM · Integration · EDI & APIs</p>
         <button class="btn btn-outline-dark read-btn" data-target="case1">Read</button>
 
@@ -98,28 +104,28 @@
 
           <!-- 3 Boxes + Arrows -->
           <div class="case-flow">
-            <div class="flow-item"><div class="case-card"><h6>The Challenge</h6><p>Onboarding and invoicing too slow across vendors.</p></div></div>
+            <div class="flow-item"><div class="case-card"><h6>The Business Challenge</h6><p>Onboarding vendors to the marketplace took 6 weeks and invoicing was manual. Adding new vendors was not scalable.</p></div></div>
             <div class="flow-arrow"></div>
-            <div class="flow-item"><div class="case-card"><h6>The Solution</h6><p>Integrated Logicbroker with FlexShopper systems, created custom vendor flows, and automated invoice handling logic.</p></div></div>
+            <div class="flow-item"><div class="case-card"><h6>The Solution</h6><p>I integrated API-based software (Logicbroker) with FlexShoppers custom applications, standardizing operations, merchandising, and accounting processes (order processing, invoicing, product data management).</p></div></div>
             <div class="flow-arrow"></div>
-            <div class="flow-item"><div class="case-card"><h6>The Impact</h6><p>Cut vendor onboarding time by 50%, doubled vendor capacity, and reduced accounting touches.</p></div></div>
+            <div class="flow-item"><div class="case-card"><h6>The Impact</h6><p>Cut vendor onboarding time by 50%, accelerated contract signings and marketplace growth.</p></div></div>
           </div>
 
-          <!-- Nicely formatted full case study -->
-          <div class="full-view mt-4">
-            <h5>Faster Vendor Onboarding & Automated Invoicing</h5>
-            <p><em>BA/PM · Integration · EDI & APIs</em></p>
-            <p>
-              Led integration of Logicbroker with FlexShopper’s custom order/lease management systems and accounting databases (GCP & NetSuite).
-              Delivered multi-vendor onboarding flows, custom architecture for non-standard vendors, and special invoice handling requirements.
-            </p>
-            <ul>
-              <li><strong>Impact:</strong> Cut vendor onboarding time by 50%, doubling capacity; reduced manual touches in accounting reconciliation.</li>
-              <li><strong>Stack:</strong> Logicbroker (Azure APIs), NetSuite, GCP, EDI transactions, dashboards.</li>
-              <li><strong>Artifacts:</strong> BRD, Visio architecture diagram, Confluence SOPs, Go-live Checklist.</li>
-              <li><strong>Complexity:</strong> Supported vendors unable to onboard to Logicbroker; implemented custom invoice logic.</li>
-            </ul>
-          </div>
+      <!-- Enhanced Case Study 1 (per screenshot) -->
+<div class="full-view mt-4">
+  <h5><span class="highlight">Logicbroker Marketplace Integration</span></h5>
+  <p><em>Business Systems Analyst · Integration · Vendor Onboarding & Process Design</em></p>
+  <p>
+    Onboarding wholesalers and retailers to the digital marketplace was slow and inefficient. The merchandising team relied on manual processes that took hours, and getting products online could take weeks due to limited development capacity.
+    <span class="highlight">Logicbroker</span> was selected as the integration solution to connect with FlexShopper’s <span class="highlight">custom applications</span>, marking the company’s largest integration project at the time.
+  </p>
+  <ul>
+    <li><strong>My Role:</strong> <span class="highlight">Elicited requirements</span> from operations, accounting, and marketing teams; facilitated cross-departmental workshops; and proposed solutions for gaps that Logicbroker could not address.</li>
+    <li><strong>Challenges:</strong> Created detailed <span class="highlight">process documentation</span> and an architectural diagram to demonstrate how Logicbroker would integrate. Designed <span class="highlight">custom integrations</span> for major retailers unable to use standard onboarding flows.</li>
+    <li><strong>Results:</strong> <span class="highlight">Reduced onboarding time</span> from several weeks to 2 weeks (contract signed to products live). Standardized invoices, enabling NetSuite to automate wholesaler and retailer payments. Streamlined product data enrichment and minimized merchandising tasks.</li>
+    <li><strong>Reflection:</strong> Strengthened ability to manage conflicting stakeholder priorities while delivering solutions aligned with business goals. Enhanced <span class="highlight">process modeling</span> and cross-team collaboration skills.</li>
+  </ul>
+</div>
 
           <!-- Contact Me -->
           <div class="text-center mt-4">
@@ -328,5 +334,17 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="js/main.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    fetch("header.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("site-header").innerHTML = html;
+      });
+  });
+</script>
+
+
 </body>
 </html>

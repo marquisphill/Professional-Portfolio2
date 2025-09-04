@@ -501,6 +501,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Highlighted keywords for enhanced case studies */
+.highlight {
+  color: #007bff; /* Bootstrap primary blue */
+  font-weight: bold;
+}
+
+
 
 
 

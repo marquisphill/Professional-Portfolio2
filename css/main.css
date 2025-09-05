@@ -507,7 +507,38 @@ html {
   font-weight: bold;
 }
 
+/* Separator line between main and deprioritized links */
+.nav-separator {
+  width: 1px;
+  background: #ddd;
+  margin: 0 12px;
+  list-style: none;
+}
 
+/* Keep consistent spacing on collapsed menus (mobile) */
+@media (max-width: 991px) {
+  .nav-separator {
+    display: none; /* hide line in mobile dropdown */
+  }
+}
+
+/* Career Goals button (reverse gradient of sticky home button) */
+.career-goals-btn {
+  background: linear-gradient(135deg, #ff4b4b, #007bff, #ff4b4b);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.career-goals-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  color: #fff;
+}
 
 
 

@@ -128,14 +128,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===== Contact form handler (demo only) =====
-  const contactForm = document.getElementById("contactForm");
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("Thanks for reaching out! This form is not wired to a backend yet.");
-    });
-  }
+
   // ===== Auto-close navbar on link click (mobile + desktop) =====
 document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
   link.addEventListener("click", () => {

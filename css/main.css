@@ -540,5 +540,9 @@ html {
   color: #fff;
 }
 
+/* Prevent Career Goals header from being hidden by Fun Facts */
+#career-goals {
+  scroll-margin-top: 120px; /* adjust based on height of Fun Facts overlay */
+}
 
 

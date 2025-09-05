@@ -546,3 +546,13 @@ html {
 }
 
 
+/* Prevent Career Goals header from being hidden by Fun Facts */
+#career-goals {
+  scroll-margin-top: 120px; /* desktop/tablet offset */
+}
+
+@media (max-width: 768px) {
+  #career-goals {
+    scroll-margin-top: 200px; /* larger offset for mobile */
+  }
+}

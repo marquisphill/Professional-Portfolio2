@@ -51,50 +51,98 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ===== Open case study (accordion style, slower smooth scroll) =====
-  document.querySelectorAll(".read-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const target = document.getElementById(btn.dataset.target);
-      if (!target) return;
+  // ===== Open case study (accordion style, slower smooth scroll + button → label) =====
+function bindReadButton(btn, index) {
+  btn.addEventListener("click", () => {
+    const target = document.getElementById(btn.dataset.target);
+    if (!target) return;
 
-      const previewCard = btn.closest(".case-preview");
+    const previewCard = btn.closest(".case-preview");
 
-      // Ensure State 2 if user is in State 1
-      if (caseListEl && !caseListEl.classList.contains("show")) {
-        caseListEl.classList.add("show");
-        if (toggleCaseBtn) {
-          toggleCaseBtn.textContent = "Hide Case Studies";
-          toggleCaseBtn.setAttribute("aria-expanded", "true");
+    // Ensure State 2 if user is in State 1
+    if (caseListEl && !caseListEl.classList.contains("show")) {
+      caseListEl.classList.add("show");
+      if (toggleCaseBtn) {
+        toggleCaseBtn.textContent = "Hide Case Studies";
+        toggleCaseBtn.setAttribute("aria-expanded", "true");
+      }
+    }
+
+    // Close all case studies first
+    document.querySelectorAll(".case-details.open").forEach((openDetail) => {
+      if (openDetail !== target) {
+        openDetail.classList.remove("open");
+        // Reset that preview’s button if it was converted to a label
+        const otherPreview = openDetail.closest(".case-preview");
+        const labelEl = otherPreview.querySelector(".case-label");
+        if (labelEl) {
+          const newBtn = document.createElement("button");
+          newBtn.className = "btn btn-outline-dark read-btn";
+          newBtn.textContent = "Read";
+          newBtn.dataset.target = openDetail.id;
+          labelEl.replaceWith(newBtn);
+          // Re-bind properly
+          const caseIndex = [...document.querySelectorAll(".case-preview")].indexOf(otherPreview);
+          bindReadButton(newBtn, caseIndex);
         }
       }
-
-      // Close all case studies first
-      document.querySelectorAll(".case-details.open").forEach((openDetail) => {
-        if (openDetail !== target) openDetail.classList.remove("open");
-      });
-
-      // Toggle the clicked case study
-      const willOpen = !target.classList.contains("open");
-      target.classList.toggle("open", willOpen);
-
-      // Delay scroll until after accordion animation is applied
-      setTimeout(() => {
-        smoothScrollTo(previewCard, -80, 1000); // slower duration
-      }, 350); // matches CSS transition duration
     });
-  });
 
-  // ===== Hide case study (back to previews, smooth scroll) =====
-  document.querySelectorAll(".hide-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const caseDetails = btn.closest(".case-details");
-      const previewCard = btn.closest(".case-preview");
-      if (caseDetails) caseDetails.classList.remove("open");
-      setTimeout(() => {
-        smoothScrollTo(previewCard, -80, 800);
-      }, 300);
-    });
+    // Toggle the clicked case study
+    const willOpen = !target.classList.contains("open");
+    target.classList.toggle("open", willOpen);
+
+    // If opening, turn "Read" button into label
+    if (willOpen) {
+      const label = document.createElement("span");
+      label.className = "case-label";
+      label.textContent = `Case Study ${index + 1}`;
+      btn.replaceWith(label);
+    }
+
+    // Delay scroll until after accordion animation is applied
+    setTimeout(() => {
+      smoothScrollTo(previewCard, -80, 1000);
+    }, 350);
   });
+}
+
+// Attach to all initial read buttons
+document.querySelectorAll(".read-btn").forEach((btn, index) => {
+  bindReadButton(btn, index);
+});
+
+
+  // ===== Hide case study (back to previews, smooth scroll + restore button) =====
+document.querySelectorAll(".hide-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const caseDetails = btn.closest(".case-details");
+    const previewCard = btn.closest(".case-preview");
+    if (caseDetails) {
+      caseDetails.classList.remove("open");
+
+      // Restore "Read" button if label exists
+      const oldLabel = previewCard.querySelector(".case-label");
+      if (oldLabel) {
+        const newBtn = document.createElement("button");
+        newBtn.className = "btn btn-outline-dark read-btn";
+        newBtn.textContent = "Read";
+        newBtn.dataset.target = caseDetails.id;
+
+        // replace the label with button
+        oldLabel.replaceWith(newBtn);
+
+        // get case index
+        const caseIndex = [...document.querySelectorAll(".case-preview")].indexOf(previewCard);
+        bindReadButton(newBtn, caseIndex); // rebind proper logic
+      }
+    }
+
+    setTimeout(() => {
+      smoothScrollTo(previewCard, -80, 800);
+    }, 300);
+  });
+});
 
   // ===== Contact Me buttons =====
   document.querySelectorAll(".contact-btn").forEach((btn) => {

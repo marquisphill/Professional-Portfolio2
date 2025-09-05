@@ -557,3 +557,12 @@ html {
   }
 }
 
+.case-label {
+  color: #007bff; /* Bootstrap blue, matches brand */
+  font-weight: 700;
+  border: none;
+  background: none;
+  cursor: default;
+}
+
+

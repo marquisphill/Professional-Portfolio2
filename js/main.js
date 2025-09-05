@@ -163,5 +163,22 @@ document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
     });
   });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const careerGoalsLink = document.querySelector('a[href="experience.html#career-goals"]');
+  
+  if (careerGoalsLink) {
+    careerGoalsLink.addEventListener("click", (e) => {
+      // Let the browser navigate to the page
+      setTimeout(() => {
+        const careerGoalsSection = document.getElementById("career-goals");
+        if (careerGoalsSection) {
+          const y = careerGoalsSection.getBoundingClientRect().top + window.pageYOffset - 120;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      }, 300); // wait for navigation
+    });
+  }
+});
+
 
 });

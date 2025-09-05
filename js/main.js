@@ -128,6 +128,29 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+// ===== Auto-open Recommendations if URL includes "?open=recommendations" =====
+const urlParams = new URLSearchParams(window.location.hash.split("?")[1]);
+if (urlParams.get("open") === "recommendations") {
+  const recList = document.getElementById("recommendationsList");
+  const toggleRecBtn = document.getElementById("toggleRecommendations");
+
+  if (recList && toggleRecBtn) {
+    // Open recommendations
+    recList.classList.add("show");
+    toggleRecBtn.textContent = "Hide Recommendations";
+    toggleRecBtn.setAttribute("aria-expanded", "true");
+
+    // Scroll to first recommendation card (not just section header)
+    const firstCard = recList.querySelector(".recommendation-card");
+    if (firstCard) {
+      const yOffset = -80; // adjust for fixed navbar height
+      const y = firstCard.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
+    }
+  }
+}
+
+
 
   // ===== Auto-close navbar on link click (mobile + desktop) =====
 document.querySelectorAll(".navbar-nav .nav-link").forEach((link) => {
@@ -179,6 +202,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
 
 
 });

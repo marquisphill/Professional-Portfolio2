@@ -67,7 +67,6 @@
       left:-30px;
     }
 
-    
     /* Mobile: stack items; hide connectors for clarity */
     @media (max-width: 768px){
       .timeline::before{ left:8px; }
@@ -82,35 +81,52 @@
     }
 
     /* Separator line between groups */
-.nav-separator {
-  width: 1px;
-  background: #ddd;
-  margin: 0 12px;
-  list-style: none;
-}
+    .nav-separator {
+      width: 1px;
+      background: #ddd;
+      margin: 0 12px;
+      list-style: none;
+    }
 
-/* Sticky Home Button */
-.sticky-home-btn {
-  position: fixed;
-  top: 65px;           /* keeps it below the navbar */
-  left: 20px;          /* sticks to the left side */
-  z-index: 1050;       /* stays above most elements */
-  background: linear-gradient(135deg, #007bff, #ff4b4b, #007bff);
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 8px;  /* rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  transition: filter 0.2s ease, transform 0.2s ease;
-}
+    /* Gradient Home button (matches requested color style) */
+    .home-btn {
+      background: linear-gradient(to right, #623aa2, #f97794);
+      color: #fff !important;
+      font-weight: 600;
+      padding: 6px 16px;
+      border-radius: 6px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      transition: transform 0.2s ease, filter 0.2s ease;
+      border: none; /* ensure no border */
+      margin-right: 8px; /* breathing room near hamburger */
+    }
+    .home-btn:hover { filter: brightness(1.1); transform: translateY(-1px); }
 
-.sticky-home-btn:hover {
+    /* Remove border/black line from hamburger */
+    .navbar-toggler { border: none !important; box-shadow: none !important; }
+
+    /* ===== Sticky CTA (fixed) ===== */
+    :root {
+      --nav-h: 60px;      /* updated dynamically in JS */
+      --sticky-gap: 12px; /* breathing room below the navbar */
+    }
+
+ /* Gradient red (left) → blue (right) button */
+.praise-btn {
+  background: linear-gradient(to right, #623aa2, #f97794); /* reversed */
+  color: #fff !important;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.praise-btn:hover {
   filter: brightness(1.1);
   transform: translateY(-2px);
 }
 
-
+    
   </style>
 </head>
 <body>
@@ -118,56 +134,64 @@
 <!-- ===== Navbar ===== -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
   <div class="container">
+    <!-- Brand -->
     <a class="navbar-brand fw-bold" href="index.html">Phillip Da Silva-Marquis</a>
 
-    <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false"
-            aria-label="Toggle navigation">
+    <!-- Home button between brand and hamburger -->
+    <a href="index.html#hero" class="btn home-btn d-lg-none ms-auto me-2">Home</a>
+
+    <!-- Hamburger -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- Nav links -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <!-- Standard -->
-        <li class="nav-item"><a class="nav-link" href="index.html#hero">Home</a></li>
-
-        <!-- Prominent (bold + blue) -->
-        <li class="nav-item">
-          <a class="nav-link fw-bold text-primary active" aria-current="page" href="index.html#cases">
-            See My Impact
-          </a>
-        </li>
-
-        <!-- Standard -->
-        <li class="nav-item"><a class="nav-link" href="experience.html#experience-hero">Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="experience.html#career-goals">Career Goals</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#recommendations">Recommendations</a></li>
-
-        <!-- Separator -->
-        <li class="nav-separator"></li>
-
-        <!-- Deprioritized -->
+        <li class="nav-item"><a class="nav-link active" href="experience.html">Experience</a></li>
+        <li class="nav-item"><a class="nav-link fw-bold text-primary" href="index.html#cases">Case Studies</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#about">About Me</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#contact">Get In Touch</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#recommendations">Recommendations</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
       </ul>
     </div>
   </div>
 </nav>
-
-
 
 <!-- ===== Hero ===== -->
 <section id="experience-hero" class="d-flex align-items-center text-center bg-light py-5" style="margin-top:60px;">
   <div class="container">
     <h1 class="mb-3">My Professional Experience</h1>
     <p class="lead mb-4">Explore my career journey across project management, business analysis, and ecommerce growth.</p>
-    <a href="Phillip_Marquis_Resume_2025_Website.pdf" class="btn btn-dark btn-lg" download>Download Resume</a>
-    <p></p>
-     <a href="#career-goals" class="btn btn-primary btn-lg">View My Career Goals</a>
+    
+    <!-- Button group -->
+    <div class="row justify-content-center g-3">
+      <!-- Resume + Career Goals (side by side on desktop) -->
+      <div class="col-12 col-md-auto">
+        <a href="Phillip_Marquis_Resume_2025_Website.pdf" class="btn btn-dark btn-lg w-100" download>
+          Download Resume
+        </a>
+      </div>
+      <div class="col-12 col-md-auto">
+        <a href="#career-goals" class="btn btn-primary btn-lg w-100">
+          View My Career Goals
+        </a>
+      </div>
+    </div>
 
+    <!-- See Colleague Praise (always below) -->
+    <div class="row justify-content-center mt-3">
+      <div class="col-12 col-md-6">
+        <a href="index.html#recommendations" class="btn btn-lg w-100 praise-btn">
+          See Colleague Praise
+        </a>
+      </div>
+    </div>
   </div>
 </section>
+
+
 
 <!-- ===== Experience Sections ===== -->
 <section id="experience-list" class="py-5">
@@ -253,8 +277,6 @@
   </div>
 </section>
 
-
-
 <!-- ===== Career Goals ===== -->
 <section id="career-goals" class="py-5">
   <div class="container">
@@ -270,8 +292,6 @@
   </div>
 </section>
 
-
-
 <!-- ===== Contact ===== -->
 <section id="contact" class="py-5 bg-light">
   <div class="container text-center">
@@ -282,27 +302,9 @@
       class="mt-3"
       id="contactForm"
     >
-      <input 
-        type="text" 
-        name="name" 
-        class="form-control mb-2" 
-        placeholder="Your Name" 
-        required
-      >
-      <input 
-        type="email" 
-        name="email" 
-        class="form-control mb-2" 
-        placeholder="Your Email" 
-        required
-      >
-      <textarea 
-        name="message" 
-        class="form-control mb-2" 
-        rows="4" 
-        placeholder="Message" 
-        required
-      ></textarea>
+      <input type="text" name="name" class="form-control mb-2" placeholder="Your Name" required>
+      <input type="email" name="email" class="form-control mb-2" placeholder="Your Email" required>
+      <textarea name="message" class="form-control mb-2" rows="4" placeholder="Message" required></textarea>
       <button type="submit" class="btn btn-primary">Send Message</button>
     </form>
   </div>
@@ -319,17 +321,16 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    // If you still use a shared header.html elsewhere
     fetch("header.html")
       .then(res => res.text())
       .then(html => {
-        document.getElementById("site-header").innerHTML = html;
+        const headerHost = document.getElementById("site-header");
+        if (headerHost) headerHost.innerHTML = html;
       });
-  });
+
+    
 </script>
-
-<!-- Sticky Home Button -->
-<a href="index.html#hero" class="sticky-home-btn">Home</a>
-
 
 </body>
 </html>

@@ -620,7 +620,7 @@ html {
 
 /* Ensure anchored sections are not hidden behind navbar or banner */
 #experience-list {
-  scroll-margin-top: 170px; /* adjust to height of navbar + banner */
+  scroll-margin-top: 180px; /* adjust to height of navbar + banner */
 }
 
 .floating-contact-btn {

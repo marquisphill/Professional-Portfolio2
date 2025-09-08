@@ -571,12 +571,12 @@ html {
 
 /* Prevent Career Goals header from being hidden by Fun Facts */
 #career-goals {
-  scroll-margin-top: 80px; /* desktop/tablet offset */
+  scroll-margin-top: 100px; /* desktop/tablet offset */
 }
 
 @media (max-width: 768px) {
   #career-goals {
-    scroll-margin-top: 160px; /* larger offset for mobile */
+    scroll-margin-top: 180px; /* larger offset for mobile */
   }
 }
 
@@ -654,5 +654,65 @@ html {
 /* Ensure hero is relative so button anchors correctly */
 #hero {
   position: relative;
+}
+
+/* Resume preview (shared) */
+.resume-preview-accordion {
+  position: fixed;
+  bottom: 100px;              /* above sticky/floating UI */
+  right: 20px;
+  width: 90%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  padding: 20px;
+  display: none;
+  z-index: 1100;
+}
+.resume-preview-accordion.show {
+  display: block;
+  animation: fadeSlideIn 0.3s ease both;
+}
+
+/* Make the hero “Preview Resume” button slightly transparent */
+.hero-preview-btn #resumePreviewBtnIndex {
+  opacity: 0.85;
+  transition: opacity .2s ease, transform .2s ease, filter .2s ease;
+}
+.hero-preview-btn #resumePreviewBtnIndex:hover {
+  opacity: 1;
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+/* Mobile: widen the preview + keep clear of bottom UI */
+@media (max-width: 576px) {
+  .resume-preview-accordion {
+    right: 10px;
+    left: 10px;               /* center on small screens */
+    width: auto;
+    bottom: 90px;
+  }
+}
+
+.resume-content h2 {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.resume-content .lead {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.preview-section {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #623aa2;
+  border-left: 4px solid #f97794;
+  padding-left: 8px;
 }
 

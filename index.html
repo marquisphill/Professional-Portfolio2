@@ -113,32 +113,18 @@
 
 <!-- Bottom-right Preview Resume button -->
 <div class="hero-preview-btn">
-  <a href="#resumePreview" class="btn career-goals-btn" data-bs-toggle="collapse">
+  <button id="resumePreviewBtnIndex" type="button" class="btn career-goals-btn">
     Preview Resume
-  </a>
+  </button>
 </div>
+
 
 
   </div>
 </section>
 
-<!-- Resume Preview Accordion -->
-<div id="resumePreview" class="collapse resume-preview mt-4">
-  <div class="container bg-white p-4 rounded shadow-sm text-start">
-    <h3 class="mb-3">Resume Highlights</h3>
-    <ul>
-      <li>8+ years delivering enterprise-scale integrations & e-commerce solutions</li>
-      <li>Cut vendor onboarding from 6 → 2 weeks at FlexShopper</li>
-      <li>Reduced rebate setup time from 1 week → 1 day</li>
-      <li>Scaled 14K+ SKUs at Pet Supermarket with PIM ownership</li>
-      <li>PSPO I certified · Preparing for PSM I</li>
-    </ul>
-    <a href="Phillip_Marquis_2025_Resume_.pdf" download class="btn btn-career mt-3">
-      Download Full Resume
-    </a>
-    <p class="mt-3"><a href="#resumePreview" data-bs-toggle="collapse" style="font-size:0.85rem; color:#999;">Close Preview</a></p>
-  </div>
-</div>
+
+
 
 
 <!-- ===== Case Studies ===== -->
@@ -528,11 +514,72 @@
   });
 </script>
 
+
+
 <!-- Floating Contact Button (mobile only) -->
 <a href="#contact" class="floating-contact-btn d-lg-none" aria-label="Contact Me">
   <i class="fas fa-envelope"></i>
 </a>
 
+<!-- Resume Preview Accordion (Index) -->
+<div id="resumePreviewAccordionIndex" class="resume-preview-accordion">
+  <div class="resume-content">
+    <h2 class="mb-2">Phillip Da Silva-Marquis</h2>
+    <p class="lead mb-3 text-muted">Business Systems Analyst · Integration & Process Automation</p>
+
+    <!-- Impact Section -->
+    <h4 class="preview-section">Key Impact</h4>
+    <ul class="mb-3">
+      <li><strong>50% faster</strong> vendor onboarding (6 → 2 weeks) at FlexShopper</li>
+      <li><strong>Rebate setup reduced</strong> from 1 week → 1 day</li>
+      <li><strong>Scaled 14K+ SKUs</strong> with PIM ownership at Pet Supermarket</li>
+    </ul>
+
+    <!-- Skills Section -->
+    <h4 class="preview-section">Core Skills</h4>
+    <p class="mb-3">
+      Integrations (Logicbroker, NetSuite, Syndigo), Agile delivery, Requirements (BRDs/FSDs), UAT, Workflow automation
+    </p>
+
+    <!-- Certifications Section -->
+    <h4 class="preview-section">Certifications</h4>
+    <p class="mb-4">PSPO I (Udemy) · Preparing for PSM I (scrum.org)</p>
+
+    <!-- Download Button -->
+    <a href="Phillip_Marquis_2025_Resume_.pdf" download class="btn btn-career w-100">
+      Download Full Resume
+    </a>
+
+    <!-- Close Link -->
+    <p class="mt-3 text-center">
+      <a href="#" id="closeResumePreviewIndex" style="font-size:0.85rem; color:#999;">Close Preview</a>
+    </p>
+  </div>
+</div>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const previewBtn   = document.getElementById("resumePreviewBtnIndex");
+  const accordion    = document.getElementById("resumePreviewAccordionIndex");
+  const closeLink    = document.getElementById("closeResumePreviewIndex");
+
+  if (previewBtn && accordion && closeLink) {
+    previewBtn.addEventListener("click", () => {
+      accordion.classList.add("show");
+      // hide the button while preview is open
+      previewBtn.style.visibility = "hidden";
+    });
+
+    closeLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      accordion.classList.remove("show");
+      previewBtn.style.visibility = "visible";
+    });
+  }
+});
+</script>
 
 
 </body>

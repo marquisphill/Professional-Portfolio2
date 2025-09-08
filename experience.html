@@ -80,7 +80,7 @@
 .sticky-preview-btn {
   position: fixed;
   bottom: 20px;        /* 20px from bottom */
-  right: 100px;        /* offset from right so it doesn’t overlap Contact button */
+  right: 100px;        /* desktop offset so it doesn’t overlap Contact button */
   background: linear-gradient(to right, #f94144, #277da1);
   color: #fff;
   font-weight: 600;
@@ -98,6 +98,15 @@
   opacity: 1;                 /* fully visible on hover */
   filter: brightness(1.1);
   transform: translateY(-2px);
+}
+
+/* 🔹 Mobile override: keep button visible and avoid overlap */
+@media (max-width: 768px) {
+  .sticky-preview-btn {
+    right: auto;       /* reset desktop offset */
+    left: 20px;        /* stick to left side */
+    bottom: 80px;      /* raise it above contact button */
+  }
 }
 
 /* Resume preview accordion */
@@ -138,6 +147,7 @@
   border-left: 4px solid #f97794;
   padding-left: 8px;
 }
+
 
     
   </style>
@@ -455,7 +465,7 @@ if (previewBtn && previewAccordion && closePreviewBtn) {
 
     <!-- Certifications Section -->
     <h4 class="preview-section">Certifications</h4>
-    <p class="mb-4">PSPO I certified · Preparing for PSM I</p>
+    <p class="mb-4">PSPO I (Udemy) · Preparing for PSM I (scrum.org)</p>
 
     <!-- Download Button -->
     <a href="Phillip_Marquis_2025_Resume_.pdf" download class="btn btn-career w-100">

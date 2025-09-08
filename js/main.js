@@ -251,6 +251,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+// ===== Smooth scroll when Preview Resume opens =====
+const resumePreviewBtn = document.querySelector('.hero-preview-btn a');
+const resumePreviewSection = document.getElementById('resumePreview');
+
+if (resumePreviewBtn && resumePreviewSection) {
+  resumePreviewBtn.addEventListener('click', () => {
+    // wait for Bootstrap collapse animation (~350ms)
+    setTimeout(() => {
+      const yOffset = -80; // offset for navbar
+      const y = resumePreviewSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }, 400);
+  });
+}
+
 
 
 

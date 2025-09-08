@@ -30,6 +30,19 @@ body {
   font-size: 1.2rem;
 }
 
+/* Hero subtitle (tagline under main title) */
+#hero .subtitle {
+  max-width: 650px;       /* tighten width */
+  margin: 0 auto 20px;    /* center and add spacing below */
+  font-style: italic;     /* softer tagline feel */
+  font-weight: 300;       /* lighter than main header */
+  font-size: 1.05rem;     /* slightly smaller than default */
+  line-height: 1.4;       /* improve readability */
+  color: rgba(255, 255, 255, 0.9); /* softer white */
+}
+
+
+
 /* ---------------- Timeline ---------------- */
 .timeline {
   border-left: 3px solid #f97794;
@@ -76,7 +89,7 @@ footer {
 .case-preview {
   margin-bottom: 20px;
   padding: 20px;
-  background: #fff;
+  background: linear-gradient(to right, #ffffff 70%, #faf5fb); /* subtle brand wash */
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
@@ -195,6 +208,16 @@ footer {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.takeaway-gradient {
+  background: linear-gradient(to right, #f97794, #623aa2); /* same as your brand */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 8px; /* spacing before Case Study label */
+  display: inline-block; /* ensures gradient applies cleanly */
 }
 
 /* ============================
@@ -548,12 +571,12 @@ html {
 
 /* Prevent Career Goals header from being hidden by Fun Facts */
 #career-goals {
-  scroll-margin-top: 120px; /* desktop/tablet offset */
+  scroll-margin-top: 80px; /* desktop/tablet offset */
 }
 
 @media (max-width: 768px) {
   #career-goals {
-    scroll-margin-top: 200px; /* larger offset for mobile */
+    scroll-margin-top: 160px; /* larger offset for mobile */
   }
 }
 
@@ -565,4 +588,71 @@ html {
   cursor: default;
 }
 
+/* Gradient LinkedIn link */
+.linkedin-gradient {
+  background: linear-gradient(to right, #f97794, #623aa2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+.linkedin-gradient:hover {
+  opacity: 0.8;
+}
+
+/* Gradient Career Goals Button */
+.btn-career {
+  background: linear-gradient(to right, #f94144, #277da1); /* red → blue */
+  border: none;
+  color: #fff !important;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.btn-career:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* Ensure anchored sections are not hidden behind navbar or banner */
+#experience-list {
+  scroll-margin-top: 140px; /* adjust to height of navbar + banner */
+}
+
+.floating-contact-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(to right, #f97794, #623aa2); /* brand gradient */
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 14px 16px;
+  border-radius: 50%;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  z-index: 1050;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.floating-contact-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/* Bottom-right hero button */
+.hero-preview-btn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+/* Ensure hero is relative so button anchors correctly */
+#hero {
+  position: relative;
+}
 

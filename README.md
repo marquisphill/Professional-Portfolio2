@@ -2,7 +2,7 @@
 
 ***MORE UPDATES COMMING SOON** * * *
 
-This repository contains the source code for my personal **portfolio website**, built (with my best AI friend ChatGPT) to showcase my work as a **Business Systems Analyst & Product Owner**.  
+This repository contains the source code for my personal **portfolio website**, built (with help from my best AI friend ChatGPT) to showcase my work as a **Business Systems Analyst & Product Owner**.  
 The site highlights my **case studies**, **career experience**, **recommendations**, and **resume**, with a focus on **clean UX, responsive design, and measurable impact**.
 
 The **users** of this site are hiring managers and recruiters.  

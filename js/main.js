@@ -266,6 +266,26 @@ if (resumePreviewBtn && resumePreviewSection) {
   });
 }
 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const previewBtn = document.getElementById("resumePreviewBtnIndex");
+  const accordion  = document.getElementById("resumePreviewAccordionIndex");
+  const closeLink  = document.getElementById("closeResumePreviewIndex");
+
+  if (previewBtn && accordion && closeLink) {
+    previewBtn.addEventListener("click", () => {
+      accordion.classList.add("show");       // show overlay
+      previewBtn.style.display = "none";     // hide button while open
+    });
+
+    closeLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      accordion.classList.remove("show");    // hide overlay
+      previewBtn.style.display = "inline-block"; // restore button
+    });
+  }
+});
+</script>
 
 
 

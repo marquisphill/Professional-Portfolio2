@@ -148,6 +148,34 @@
   padding-left: 8px;
 }
 
+/* === Index: Resume Preview overlay === */
+.resume-preview-accordion {
+  position: fixed;
+  bottom: 100px;           /* sits above the bottom buttons */
+  right: 20px;
+  width: 90%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+  padding: 20px;
+  display: none;           /* hidden by default */
+  z-index: 1100;           /* above navbar/hero and contact button */
+}
+.resume-preview-accordion.show {
+  display: block;          /* <- this is the missing piece */
+  animation: fadeSlideIn 0.3s ease both;
+}
+
+/* Mobile: center and raise a bit more to avoid overlap */
+@media (max-width: 768px) {
+  .resume-preview-accordion {
+    left: 16px;
+    right: 16px;
+    bottom: 88px;
+    width: auto;           /* use left/right for width */
+  }
+}
 
     
   </style>

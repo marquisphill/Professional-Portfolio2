@@ -1,4 +1,4 @@
-# 📂 Professional Portfolio Website
+# 📂 Professional Portfolio Website (Template for you to use)
 
 ***MORE UPDATES COMMING SOON** * * *
 
@@ -6,6 +6,8 @@ This repository contains the source code for my personal **portfolio website**, 
 The site highlights my **case studies**, **career experience**, **recommendations**, and **resume**, with a focus on **clean UX, responsive design, and measurable impact**.
 
 The **users** of this site are hiring managers and recruiters.  
+
+My hopes are that you (the reader) can use this website template and build your very own professional portfolio website. I certainly have learned a lot about website building, product owenership, and the importance of thinking of your users. 
 
 🌐 **Live Site:** [marquisphill.github.io/Professional-Portfolio2](https://marquisphill.github.io/Professional-Portfolio2/)
 

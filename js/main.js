@@ -300,15 +300,37 @@ document.addEventListener("click", (e) => {
     section: section,
   });
 
-  // 🔹 Special case: Resume download
-  if (href && href.toLowerCase().endsWith(".pdf")) {
-    gtag("event", "resume_download", {
-      button_text: label,
-      section: section,
-    });
-  }
-});
+    // Debug logging
+  console.log("DEBUG button clicked:", {
+    label,
+    id,
+    href,
+    section
+  });
 
+  if (href && href.toLowerCase().endsWith(".pdf")) {
+    console.log("DEBUG resume download detected:", href);
+  }
+
+
+// 🔹 Special case: Resume download
+if (href && href.toLowerCase().endsWith(".pdf")) {
+  console.log("DEBUG resume download detected:", href);
+
+  // Pause default navigation so GA has time to fire
+  e.preventDefault();
+
+  gtag("event", "resume_download", {
+    button_text: label,
+    section: section,
+  });
+
+  // Continue with the PDF download after short delay
+  setTimeout(() => {
+    window.location.href = href;
+  }, 500);
+}
+});
 
 // ===== GA4: Time spent on the Experience page (visible time only) =====
 (function () {

@@ -329,7 +329,7 @@ if (href && href.toLowerCase().endsWith(".pdf")) {
   setTimeout(() => {
     const link = document.createElement("a");
     link.href = href;
-    link.download = ""; // this forces a download
+    link.download = "Phillip_Marquis_2025_Resume.pdf"; // this forces a download
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

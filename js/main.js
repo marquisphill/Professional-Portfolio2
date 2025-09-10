@@ -292,13 +292,23 @@ document.addEventListener("click", (e) => {
   const href = clickable.getAttribute("href") || "";
   const section = clickable.closest("section")?.id || "";
 
+  // General button click tracking
   gtag("event", "button_click", {
     button_id: id,
     button_text: label,
     link_url: href,
     section: section,
   });
+
+  // 🔹 Special case: Resume download
+  if (href && href.toLowerCase().endsWith(".pdf")) {
+    gtag("event", "resume_download", {
+      button_text: label,
+      section: section,
+    });
+  }
 });
+
 
 // ===== GA4: Time spent on the Experience page (visible time only) =====
 (function () {

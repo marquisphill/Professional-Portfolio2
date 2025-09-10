@@ -325,11 +325,17 @@ if (href && href.toLowerCase().endsWith(".pdf")) {
     section: section,
   });
 
-  // Continue with the PDF download after short delay
+  // Force the PDF to download after short delay
   setTimeout(() => {
-    window.location.href = href;
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = ""; // this forces a download
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }, 500);
 }
+
 });
 
 // ===== GA4: Time spent on the Experience page (visible time only) =====

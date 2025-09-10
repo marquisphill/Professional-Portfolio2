@@ -273,4 +273,75 @@ document.addEventListener("DOMContentLoaded", () => {
       if (casesSection) smoothScrollTo(casesSection, -80, 700);
     });
   });
+
+/* ===============================
+   GA4: Track ALL button clicks
+=============================== */
+document.addEventListener("click", (e) => {
+  const clickable = e.target.closest(
+    'button, a.btn, .hero-cta, .career-goals-btn, .praise-btn, .floating-contact-btn'
+  );
+  if (!clickable) return;
+
+  // Label: prefer aria-label, fallback to text content
+  const label =
+    clickable.getAttribute("aria-label") ||
+    (clickable.innerText || "").trim().slice(0, 100);
+
+  const id = clickable.id || "";
+  const href = clickable.getAttribute("href") || "";
+  const section = clickable.closest("section")?.id || "";
+
+  gtag("event", "button_click", {
+    button_id: id,
+    button_text: label,
+    link_url: href,
+    section: section,
+  });
+});
+
+// ===== GA4: Time spent on the Experience page (visible time only) =====
+(function () {
+  // Adjust this test if your filename/path differs
+  const isExperience = location.pathname.toLowerCase().includes('experience');
+
+  if (!isExperience) return;
+
+  let lastVisibleTs = document.visibilityState === 'visible' ? Date.now() : 0;
+  let totalVisibleMs = 0;
+  let sent = false;
+
+  function onVisibilityChange() {
+    const now = Date.now();
+    if (document.visibilityState === 'visible') {
+      lastVisibleTs = now;
+    } else {
+      if (lastVisibleTs) {
+        totalVisibleMs += now - lastVisibleTs;
+        lastVisibleTs = 0;
+      }
+    }
+  }
+
+  function sendTimeSpent() {
+    if (sent) return;
+    const now = Date.now();
+    if (document.visibilityState === 'visible' && lastVisibleTs) {
+      totalVisibleMs += now - lastVisibleTs;
+      lastVisibleTs = 0;
+    }
+    const seconds = Math.round(totalVisibleMs / 1000);
+    if (seconds > 0) {
+      gtag('event', 'experience_time_spent', {
+        duration_seconds: seconds
+      });
+    }
+    sent = true;
+  }
+
+  document.addEventListener('visibilitychange', onVisibilityChange);
+  window.addEventListener('pagehide', sendTimeSpent);
+})();
+
+
 });

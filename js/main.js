@@ -397,5 +397,41 @@ if (href && href.toLowerCase().endsWith(".pdf")) {
   }
 });
 
+// ===============================
+// GA4: Track specific key buttons
+// ===============================
+const trackedButtons = [
+  // Index Hero
+  { sel: '.hero-cta-1', event: 'track_my_path_click' },
+  { sel: '.hero-cta-2', event: 'resume_download_click' }, // resume hero
+  { sel: '.hero-cta-3', event: 'see_my_impact_click' },
+
+  // Index Page
+  { sel: '#toggleCaseList', event: 'view_case_studies_click' },
+  { sel: 'a[href="experience.html"].btn', event: 'view_experience_click' },
+  { sel: '#toggleRecommendations', event: 'view_recommendations_click' },
+  { sel: 'a[href="experience.html#career-goals"].career-goals-btn', event: 'see_career_goals_click' },
+
+  // Experience Page
+  { sel: 'a.btn.btn-dark[download]', event: 'experience_resume_download_click' },
+  { sel: 'a[href="#career-goals"].btn.btn-primary', event: 'experience_view_career_goals_click' },
+  { sel: '.praise-btn', event: 'see_colleague_praise_click' },
+  { sel: 'a[href="experience.html#experience-list"].career-goals-btn', event: 'see_my_experience_click' }
+];
+
+trackedButtons.forEach(({ sel, event }) => {
+  document.querySelectorAll(sel).forEach((btn) => {
+    btn.addEventListener('click', () => {
+      gtag('event', event, {
+        button_text: btn.innerText.trim(),
+        button_selector: sel,
+        page: window.location.pathname
+      });
+      console.log(`DEBUG tracked: ${event}`);
+    });
+  });
+});
+
+
 
 });

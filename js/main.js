@@ -69,80 +69,101 @@ document.addEventListener("DOMContentLoaded", () => {
     syncCaseBtn();
   }
 
-  /* ----- Case study accordion: "Read" / "Hide Case Study" ----- */
-  const getCaseIndex = (previewEl) => {
-    const all = qsa(".case-preview");
-    return Math.max(0, all.indexOf(previewEl));
-  };
+  // ----- Case study accordion: "Read" / "Hide Case Study" -----
+const getCaseIndex = (previewEl) => {
+  const all = qsa(".case-preview");
+  return Math.max(0, all.indexOf(previewEl));
+};
 
-  document.addEventListener("click", (e) => {
-    // "Read" button (open)
-    if (e.target && e.target.classList.contains("read-btn")) {
-      const btn = e.target;
-      const targetId = btn.dataset.target;
-      const target = qs(`#${CSS.escape(targetId)}`);
-      if (!target) return;
+document.addEventListener("click", (e) => {
+  // "Read" button (open)
+  if (e.target && e.target.classList.contains("read-btn")) {
+    const btn = e.target;
+    const targetId = btn.dataset.target;
+    const target = qs(`#${CSS.escape(targetId)}`);
+    if (!target) return;
 
-      const previewCard = btn.closest(".case-preview");
-      // ensure State 2 is open
-      if (caseListEl && !caseListEl.classList.contains("show")) {
-        caseListEl.classList.add("show");
-        syncCaseBtn();
-      }
-      // close others
-      qsa(".case-details.open").forEach((openD) => {
-        if (openD !== target) {
-          openD.classList.remove("open");
-          const otherPreview = openD.closest(".case-preview");
-          if (otherPreview) {
-            const labelEl = otherPreview.querySelector(".case-label");
-            if (labelEl) {
-              const newBtn = document.createElement("button");
-              newBtn.className = "btn btn-outline-dark read-btn";
-              newBtn.textContent = "Read";
-              newBtn.dataset.target = openD.id;
-              labelEl.replaceWith(newBtn);
-            }
+    const previewCard = btn.closest(".case-preview");
+
+    // Ensure Case Studies section is open
+    if (caseListEl && !caseListEl.classList.contains("show")) {
+      caseListEl.classList.add("show");
+      syncCaseBtn();
+    }
+
+    // Close any other open case studies
+    qsa(".case-details.open").forEach((openD) => {
+      if (openD !== target) {
+        openD.classList.remove("open");
+        const otherPreview = openD.closest(".case-preview");
+        if (otherPreview) {
+          const labelEl = otherPreview.querySelector(".case-label");
+          if (labelEl) {
+            const newBtn = document.createElement("button");
+            newBtn.className = "btn btn-outline-dark read-btn";
+            newBtn.textContent = "Read";
+            newBtn.dataset.target = openD.id;
+            labelEl.replaceWith(newBtn);
           }
         }
+      }
+    });
+
+    // Toggle target case study open/close
+    const willOpen = !target.classList.contains("open");
+    target.classList.toggle("open", willOpen);
+
+    // Replace button with label when opening
+    if (willOpen && previewCard) {
+      const label = document.createElement("span");
+      label.className = "case-label";
+      label.textContent = `Case Study ${getCaseIndex(previewCard) + 1}`;
+      btn.replaceWith(label);
+
+      // 🔹 GA4 tracking for Read
+      gtag("event", "case_study_read_click", {
+        case_id: targetId,
+        case_number: getCaseIndex(previewCard) + 1,
+        page: window.location.pathname,
       });
-      // open target
-      const willOpen = !target.classList.contains("open");
-      target.classList.toggle("open", willOpen);
-
-      // turn clicked "Read" into label
-      if (willOpen && previewCard) {
-        const label = document.createElement("span");
-        label.className = "case-label";
-        label.textContent = `Case Study ${getCaseIndex(previewCard) + 1}`;
-        btn.replaceWith(label);
-      }
-
-      // scroll to the preview card after animation
-      setTimeout(() => smoothScrollTo(previewCard, -80, 800), 350);
+      console.log("DEBUG tracked case study read:", targetId);
     }
 
-    // "Hide Case Study" button (close)
-    if (e.target && e.target.classList.contains("hide-btn")) {
-      const caseDetails = e.target.closest(".case-details");
-      const previewCard = e.target.closest(".case-preview");
-      if (!caseDetails || !previewCard) return;
+    // Smooth scroll to the opened case
+    setTimeout(() => smoothScrollTo(previewCard, -80, 800), 350);
+  }
 
-      caseDetails.classList.remove("open");
+  // "Hide Case Study" button (close)
+  if (e.target && e.target.classList.contains("hide-btn")) {
+    const caseDetails = e.target.closest(".case-details");
+    const previewCard = e.target.closest(".case-preview");
+    if (!caseDetails || !previewCard) return;
 
-      // restore Read button if we replaced with label
-      const oldLabel = previewCard.querySelector(".case-label");
-      if (oldLabel) {
-        const newBtn = document.createElement("button");
-        newBtn.className = "btn btn-outline-dark read-btn";
-        newBtn.textContent = "Read";
-        newBtn.dataset.target = caseDetails.id;
-        oldLabel.replaceWith(newBtn);
-      }
+    caseDetails.classList.remove("open");
 
-      setTimeout(() => smoothScrollTo(previewCard, -80, 700), 300);
+    // Restore "Read" button if label exists
+    const oldLabel = previewCard.querySelector(".case-label");
+    if (oldLabel) {
+      const newBtn = document.createElement("button");
+      newBtn.className = "btn btn-outline-dark read-btn";
+      newBtn.textContent = "Read";
+      newBtn.dataset.target = caseDetails.id;
+      oldLabel.replaceWith(newBtn);
     }
-  });
+
+    // 🔹 GA4 tracking for Hide
+    gtag("event", "case_study_hide_click", {
+      case_id: caseDetails.id,
+      case_number: getCaseIndex(previewCard) + 1,
+      page: window.location.pathname,
+    });
+    console.log("DEBUG tracked case study hide:", caseDetails.id);
+
+    // Smooth scroll back to preview
+    setTimeout(() => smoothScrollTo(previewCard, -80, 700), 300);
+  }
+});
+
 
   /* ===============================
      "Contact Me" buttons
@@ -432,20 +453,6 @@ trackedButtons.forEach(({ sel, event }) => {
   });
 });
 
-// ===============================
-// GA4: Track Case Study "Read" buttons
-// ===============================
-document.querySelectorAll('.read-btn').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    const caseId = btn.dataset.target || "unknown_case";
-    gtag('event', 'case_study_read_click', {
-      case_id: caseId,
-      button_text: btn.innerText.trim(),
-      page: window.location.pathname
-    });
-    console.log(`DEBUG tracked: case_study_read_click for ${caseId}`);
-  });
-});
 
 
 });

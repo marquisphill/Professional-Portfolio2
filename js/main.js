@@ -381,5 +381,21 @@ if (href && href.toLowerCase().endsWith(".pdf")) {
   window.addEventListener('pagehide', sendTimeSpent);
 })();
 
+// ===============================
+// GA4: Track Preview Resume buttons
+// ===============================
+["resumePreviewBtnIndex", "resumePreviewBtn"].forEach((id) => {
+  const btn = document.getElementById(id);
+  if (btn) {
+    btn.addEventListener("click", () => {
+      gtag("event", "resume_preview_open", {
+        button_id: id,
+        page: window.location.pathname,
+      });
+      console.log("DEBUG resume preview tracked:", id);
+    });
+  }
+});
+
 
 });

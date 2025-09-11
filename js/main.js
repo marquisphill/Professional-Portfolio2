@@ -432,6 +432,20 @@ trackedButtons.forEach(({ sel, event }) => {
   });
 });
 
+// ===============================
+// GA4: Track Case Study "Read" buttons
+// ===============================
+document.querySelectorAll('.read-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const caseId = btn.dataset.target || "unknown_case";
+    gtag('event', 'case_study_read_click', {
+      case_id: caseId,
+      button_text: btn.innerText.trim(),
+      page: window.location.pathname
+    });
+    console.log(`DEBUG tracked: case_study_read_click for ${caseId}`);
+  });
+});
 
 
 });

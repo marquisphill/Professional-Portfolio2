@@ -143,4 +143,39 @@
     <section id="the-results" class="py-16">
       <h2 class="text-3xl font-bold mb-6 text-purple-700">The Results</h2>
       <p class="text-lg leading-relaxed">When the results were announced, our team was named the winner of Best Use of AI. It felt incredible. We were gifted $11k worth of courses to share amongst the team, which was a tangible prize — but honestly, it wasn’t the most important one.
-      <br><br><strong>The Real Prize:</strong> What we really gained was perspective: new ideas on how the same problem can be solved in completely different ways, new friendships, fresh mindsets for future projects, and the confidence that comes from showing up and delivering under pressure. The experience reminded me that sometimes the biggest prize isn’t what you walk away with in your hands, but
+      <br><br><strong>The Real Prize:</strong> What we really gained was perspective: new ideas on how the same problem can be solved in completely different ways, new friendships, fresh mindsets for future projects, and the confidence that comes from showing up and delivering under pressure. The experience reminded me that sometimes the biggest prize isn’t what you walk away with in your hands, but what you carry forward in your head and heart.</p>
+      <div class="mt-10"><img src="images/hackathon-award.jpg" alt="Team holding award certificate" class="rounded-2xl shadow-lg max-w-3xl w-full h-auto"></div>
+    </section>
+  </div>
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-gradient-to-r from-purple-700 to-pink-500 text-white text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Want to Learn More?</h2>
+    <p class="text-lg max-w-2xl mx-auto mb-8">Explore my work, see other case studies, and discover how I bridge business needs with technical solutions.</p>
+    <a href="Phillip_Marquis_2025_Resume_.pdf" class="inline-block px-8 py-4 bg-white text-purple-700 font-semibold rounded-xl shadow hover:bg-gray-100 transition">Download Resume</a>
+  </section>
+
+  <!-- Fade Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const options = { threshold: 0.5 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const btn = document.querySelector(`.nav-btn[data-target="${entry.target.id}"]`);
+          const img = document.querySelector(`.nav-img[data-img="${entry.target.id}"]`);
+          if (!btn || !img) return;
+          if (entry.isIntersecting) {
+            btn.classList.add("opacity-0"); btn.classList.remove("opacity-100");
+            img.classList.remove("opacity-0"); img.classList.add("opacity-100");
+          } else {
+            btn.classList.remove("opacity-0"); btn.classList.add("opacity-100");
+            img.classList.add("opacity-0"); img.classList.remove("opacity-100");
+          }
+        });
+      }, options);
+      document.querySelectorAll("section[id]").forEach(sec => observer.observe(sec));
+    });
+  </script>
+
+</body>
+</html>

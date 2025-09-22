@@ -89,7 +89,7 @@ footer {
 /* Case studies background */
 .bg-brand-gradient {
   background: linear-gradient(to right, #623aa2, #f97794 );
-  color: #fff; /* ensure text is readable */
+  color: #212529; /* ensure text is readable */
 }
 
 /* Case preview card */
@@ -128,6 +128,7 @@ footer {
 
 .case-details .card {
   background: #fdfdfd;
+  
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.08);
   min-height: 200px;
@@ -162,6 +163,7 @@ footer {
   display: none;
   padding: 20px;
   background: #f9f9f9;
+  color: #212529;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   margin-top: 20px;

@@ -716,3 +716,27 @@ html {
   padding-left: 8px;
 }
 
+/* Headshot wrapper for About Me */
+.headshot-wrapper {
+  width: 260px;            /* base size */
+  height: 260px;
+  border-radius: 50%;      /* circle crop */
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  margin: 0 auto;
+}
+
+.headshot-wrapper img {
+  width: 110%;             /* zoom into face */
+  height: 140%;
+  object-fit: cover;        /* fill the circle */
+  object-position: center;  /* keep face centered */
+}
+
+/* Scale up a bit on larger screens */
+@media (min-width: 992px) {
+  .headshot-wrapper {
+    width: 300px;
+    height: 300px;
+  }
+}

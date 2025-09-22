@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackathon Experience | Phillip Da Silva-Marquis</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+  <!-- ===== Header / Navbar ===== -->
+<nav class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      
+      <!-- Brand -->
+      <a href="index.html" class="font-bold text-gray-800 text-lg">
+        Phillip Da Silva-Marquis
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex space-x-6 items-center">
+        <!-- Standard -->
+        <a href="index.html#hero" class="text-gray-700 hover:text-purple-700">Home</a>
+
+        <!-- Prominent -->
+        <a href="index.html#cases" 
+           class="font-bold text-purple-700 border-b-2 border-purple-700">
+          See My Impact
+        </a>
+
+        <!-- Standard -->
+        <a href="experience.html" class="text-gray-700 hover:text-purple-700">Experience</a>
+        <a href="experience.html#career-goals" class="text-gray-700 hover:text-purple-700">Career Goals</a>
+        <a href="index.html#recommendations" class="text-gray-700 hover:text-purple-700">Recommendations</a>
+
+        <!-- Separator -->
+        <span class="h-6 w-px bg-gray-300"></span>
+
+        <!-- Deprioritized -->
+        <a href="index.html#about" class="text-gray-500 hover:text-purple-700">About Me</a>
+        <a href="index.html#contact" class="text-gray-500 hover:text-purple-700">Get In Touch</a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden">
+        <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+          ☰
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white shadow-inner">
+    <div class="px-4 pt-4 pb-6 space-y-3">
+      <a href="index.html#hero" class="block text-gray-700 hover:text-purple-700">Home</a>
+      <a href="index.html#cases" class="block font-bold text-purple-700">See My Impact</a>
+      <a href="experience.html" class="block text-gray-700 hover:text-purple-700">Experience</a>
+      <a href="experience.html#career-goals" class="block text-gray-700 hover:text-purple-700">Career Goals</a>
+      <a href="index.html#recommendations" class="block text-gray-700 hover:text-purple-700">Recommendations</a>
+      <hr class="border-gray-200">
+      <a href="index.html#about" class="block text-gray-500 hover:text-purple-700">About Me</a>
+      <a href="index.html#contact" class="block text-gray-500 hover:text-purple-700">Get In Touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile menu toggle script -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("mobile-menu-button");
+    const menu = document.getElementById("mobile-menu");
+    btn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
+  });
+</script>
+
+  
+
+  <!-- Hero Section -->
+  <section class="relative bg-gray-900 text-white">
+    <img src="images/team-presenting.jpg" alt="Hackathon presentation" class="w-full h-96 object-cover opacity-60" style="object-position: 50% 42%;">
+    <div class="absolute inset-0 flex items-center justify-center">
+      <div class="text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">South Florida Tech Hub Hackathon</h1>
+        <p class="text-lg md:text-xl max-w-2xl mx-auto">See how I collaborated under pressure to build an award-winning AI app in just 48 hours.</p>
+        <a href="resume.pdf" class="inline-block mt-6 px-6 py-3 bg-pink-500 text-white rounded-xl shadow hover:bg-pink-600 transition">Download Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Floating Navigation Buttons -->
+  <div id="floating-nav" class="fixed top-1/3 right-3 md:right-6 z-50 flex flex-col space-y-3 md:space-y-4">
+    <!-- Each nav item -->
+    <div class="relative w-28 md:w-40">
+      <a href="#experience" data-target="experience"
+         class="nav-btn block w-28 md:w-40 px-3 md:px-5 py-2 md:py-3 rounded-xl font-semibold text-white shadow-lg
+                bg-gradient-to-r from-blue-600 to-red-500 transition-opacity duration-500 opacity-100 text-sm md:text-base text-center">
+        The Hackathon Experience
+      </a>
+      <img src="images/chipmunck-button.png" data-img="experience" alt="Experience preview"
+           class="nav-img absolute inset-0 w-28 md:w-40 h-full rounded-xl object-cover transition-opacity duration-500 opacity-0 pointer-events-none" />
+    </div>
+    <div class="relative w-28 md:w-40">
+      <a href="#team" data-target="team"
+         class="nav-btn block w-28 md:w-40 px-3 md:px-5 py-2 md:py-3 rounded-xl font-semibold text-white shadow-lg
+                bg-gradient-to-r from-blue-600 to-red-500 transition-opacity duration-500 opacity-100 text-sm md:text-base text-center">
+        Our Team
+      </a>
+      <img src="images/chipmunck-button.png" data-img="team" alt="Team preview"
+           class="nav-img absolute inset-0 w-28 md:w-40 h-full rounded-xl object-cover transition-opacity duration-500 opacity-0 pointer-events-none" />
+    </div>
+    <div class="relative w-28 md:w-40">
+      <a href="#idea" data-target="idea"
+         class="nav-btn block w-28 md:w-40 px-3 md:px-5 py-2 md:py-3 rounded-xl font-semibold text-white shadow-lg
+                bg-gradient-to-r from-blue-600 to-red-500 transition-opacity duration-500 opacity-100 text-sm md:text-base text-center">
+        The Ideas
+      </a>
+      <img src="images/chipmunck-button.png" data-img="idea" alt="Idea preview"
+           class="nav-img absolute inset-0 w-28 md:w-40 h-full rounded-xl object-cover transition-opacity duration-500 opacity-0 pointer-events-none" />
+    </div>
+    <div class="relative w-28 md:w-40">
+      <a href="#tech-stack" data-target="tech-stack"
+         class="nav-btn block w-28 md:w-40 px-3 md:px-5 py-2 md:py-3 rounded-xl font-semibold text-white shadow-lg
+                bg-gradient-to-r from-blue-600 to-red-500 transition-opacity duration-500 opacity-100 text-sm md:text-base text-center">
+        Tech
+      </a>
+      <img src="images/chipmunck-button.png" data-img="tech-stack" alt="Tech preview"
+           class="nav-img absolute inset-0 w-28 md:w-40 h-full rounded-xl object-cover transition-opacity duration-500 opacity-0 pointer-events-none" />
+    </div>
+    <div class="relative w-28 md:w-40">
+      <a href="#waiting" data-target="waiting"
+         class="nav-btn block w-28 md:w-40 px-3 md:px-5 py-2 md:py-3 rounded-xl font-semibold text-white shadow-lg
+                bg-gradient-to-r from-blue-600 to-red-500 transition-opacity duration-500 opacity-100 text-sm md:text-base text-center">
+        Reflections
+      </a>
+      <img src="images/chipmunck-button.png" data-img="waiting" alt="Waiting preview"
+           class="nav-img absolute inset-0 w-28 md:w-40 h-full rounded-xl object-cover transition-opacity duration-500 opacity-0 pointer-events-none" />
+    </div>
+    <div class="relative w-28 md:w-40">
+      <a href="#the-results" data-target="the-results"
+         class="nav-btn block w-28 md:w-40 px-3 md:px-5 py-2 md:py-3 rounded-xl font-semibold text-white shadow-lg
+                bg-gradient-to-r from-blue-600 to-red-500 transition-opacity duration-500 opacity-100 text-sm md:text-base text-center">
+        The  Prize
+      </a>
+      <img src="images/chipmunck-button.png" data-img="the-results" alt="Results preview"
+           class="nav-img absolute inset-0 w-28 md:w-40 h-full rounded-xl object-cover transition-opacity duration-500 opacity-0 pointer-events-none" />
+    </div>
+  </div>
+
+  <!-- Content Wrapper -->
+  <div class="pr-24 md:pr-0">
+
+    <!-- Experience Section -->
+<section id="experience" class="py-16 px-6 md:px-20 text-left">
+  <div class="max-w-4xl">
+    <h2 class="text-3xl font-bold mb-6 text-purple-700">The Hackathon Experience</h2>
+  
+    <p class="text-lg leading-relaxed">Over one intense weekend, our team brainstormed, built, and pitched an AI-powered application designed to help South Floridians find the perfect place to live. With only 48 hours, we combined creativity, technical skill, and teamwork to deliver a working product and a compelling story.
+<br><br>
+  <h3 class="text-3xl  mb-6 text-purple-700">Biggest take Away: Adaptability in Project Management</h3>
+My biggest takeaway from this experience was seeing firsthand just how crucial it is for a team to have a project manager — but also realizing how important it is to adapt the project management style to fit both the team and the project. Since we had so little time and were constantly tweaking the product goal and design as we went, it was key to keep everyone on task with flexible due-times while still giving them space to work through the issues without feeling constrained by a rigid project plan. I kept a running record of the latest goals, and whenever the team felt stuck or needed direction, I could reference that evolving plan and adapt it on the spot. That balance between structure and flexibility kept us moving forward without losing momentum.</p>
+  </div>
+  <div class="mt-10 flex justify-start">
+    <img src="images/hacking.jpg" alt="Team presenting at hackathon" class="rounded-2xl shadow-lg max-w-3xl">
+  </div>
+</section>
+
+<!-- Team Identity Section -->
+<section id="team" class="py-16 bg-gray-100 px-6 md:px-20 text-left">
+  <div class="max-w-4xl">
+    <h2 class="text-3xl font-bold mb-6 text-purple-700">Meet the Team</h2>
+    <p class="text-lg leading-relaxed">We called ourselves <strong>Alvin & The Chipmunks</strong>, a name that captured the energy and humor we brought to every stage of the hackathon.
+
+Alvin dove into creating a heat map for the first time and literally did not sleep until it worked the way it needed to. He guided the overall architecture and kept us focused on the right technical approach. Shelly and Catherine threw themselves into exploring all the datasets we pulled in — they worked their magic to wrangle the chaos into something that would actually support our frontend needs. Nat kept the product goal strong as we iterated, and she designed the UI that tied it all together.
+<br><br>
+ <h3 class="text-3xl  mb-6 text-purple-700">My Role</h3>
+My role was to keep the team aligned to both the product goal and the hackathon theme of solving a South Florida issue. Whenever a new feature idea came up, I pushed us to ask: Does this contribute to our main product goal? Does it fit the hackathon’s theme? I also coached Natalie through the presentation, running as many mock sessions as possible to build confidence and clarity. I studied the hackathon judging rubric and made sure we had at least two strong talking points ready for any theoretical questions from each judge. We also rehearsed potential Q&A scenarios as a team so that when questions came, we were ready with thoughtful answers and the right mindset. That preparation turned into one of our biggest strengths during the pitch.</p>
+  </div>
+  <div class="mt-10 flex justify-start">
+    <img src="images/hackathon-team-pic.jpg" alt="Cartoon team chipmunk avatars" class="rounded-2xl shadow-lg max-w-2xl">
+  </div>
+</section>
+
+<!-- The Idea -->
+<section id="idea" class="py-16 px-6 md:px-20 text-left">
+  <div class="max-w-4xl">
+    <h2 class="text-3xl font-bold mb-6 text-purple-700">The Idea</h2>
+    <p class="text-lg leading-relaxed">A week before the hackathon, we were tossing ideas around to see what might stick. I came up with a list of the top five South Florida issues and got the team talking about which ones we could realistically tackle. Interestingly, instead of locking onto one of the big issues on my list, the team gravitated toward more personal experiences — the day-to-day challenges of living in South Florida. The hackathon encouraged that kind of free thinking, and it really opened up the brainstorming process.
+<br><br>
+A few days before kickoff, we had three ideas locked in, but by the first day of the event, we narrowed it down to one: an app that would help people decide where to move in South Florida by surfacing and simplifying the most important data points. It was a decision that kept us focused and gave us a clear north star for the rest of the weekend.
+  </div>
+  <div class="mt-10 flex justify-start">
+    <img src="images/app-specs-widest.jpg" alt="Hackathon app specifications" class="rounded-2xl shadow-lg max-w-3xl">
+  </div>
+</section>
+
+<!-- Tech Stack -->
+<section id="tech-stack" class="py-16 px-6 md:px-20 text-left">
+  <div class="max-w-4xl">
+    <h2 class="text-3xl font-bold mb-6 text-purple-700">Tech Stack</h2>
+    <p class="text-lg leading-relaxed">To bring the idea to life, we pieced together a stack that balanced frontend speed with backend reliability. The frontend was built in React, giving us the flexibility to move fast and deliver interactive components. Styling was handled with Tailwind, which kept the design lightweight and easy to iterate. On the backend, we structured data flows through APIs and pulled in external datasets, supplementing with Python scripts for data cleaning and transformation. It wasn’t the most polished or enterprise-level build, but it was scrappy, efficient, and got the job done in under 48 hours — exactly what the hackathon demanded.
+  </div>
+  <div class="mt-10 flex justify-start">
+    <img src="images/tech-stack.png" alt="Hackathon tech stack diagram" class="rounded-2xl shadow-lg max-w-3xl">
+  </div>
+</section>
+
+<!-- Waiting for The Results -->
+<section id="waiting" class="py-16 px-6 md:px-20 text-left">
+  <div class="max-w-4xl">
+    <h2 class="text-3xl font-bold mb-6 text-purple-700">Waiting for the Results</h2>
+    <p class="text-lg leading-relaxed">When the pitches started, the nerves kicked in. We were the fifth team out of about fifteen to present, and as we sat there watching, the presentations just got better and better. I couldn’t help comparing our work to what others were showing, but at the same time, I was genuinely admiring the creativity, execution, and delivery of the other teams.
+<br><br>
+By that point, we were exhausted. We talked about grabbing drinks afterward, but decided we’d only do it if we actually won something.  We needed to sleep. But sitting there, watching one great presentation after another, it really felt like a show — everyone was tuned in, and the energy in the room was electric.
+  </div>
+  <div class="mt-10 flex justify-start">
+    <img src="images/waiting-for-the-announcement.jpg" alt="Hackathon results announcement" class="rounded-2xl shadow-lg max-w-3xl">
+  </div>
+</section>
+
+<!-- The Results -->
+<section id="the-results" class="py-16 px-6 md:px-20 text-left">
+  <div class="max-w-4xl">
+    <h2 class="text-3xl font-bold mb-6 text-purple-700">The Results</h2>
+    <p class="text-lg leading-relaxed">When the results were announced, our team was named the winner of Best Use of AI. It felt incredible. We were gifted $11k worth of courses to share amongst the team, which was a tangible prize — but honestly, it wasn’t the most important one.
+<br><br>
+ <h3 class="text-3xl  mb-6 text-purple-700">The Real Prize</h3>
+What we really gained was perspective: new ideas on how the same problem can be solved in completely different ways, new friendships, fresh mindsets for future projects, and the confidence that comes from showing up and delivering under pressure. The experience reminded me that sometimes the biggest prize isn’t what you walk away with in your hands, but what you carry forward in your head and heart.
+  </div>
+  <div class="mt-10 flex justify-start">
+    <img src="images/hackathon-award.jpg" alt="Team holding award certificate" class="rounded-2xl shadow-lg max-w-3xl">
+  </div>
+</section>
+
+  </div><!-- end content wrapper -->
+
+  <!-- Call to Action -->
+  <section class="py-20 bg-gradient-to-r from-purple-700 to-pink-500 text-white text-center">
+    <h2 class="text-3xl md:text-4xl font-bold mb-6">Want to Learn More?</h2>
+    <p class="text-lg max-w-2xl mx-auto mb-8">Explore my work, see other case studies, and discover how I bridge business needs with technical solutions.</p>
+    <a href="Phillip_Marquis_2025_Resume_.pdf" class="inline-block px-8 py-4 bg-white text-purple-700 font-semibold rounded-xl shadow hover:bg-gray-100 transition">Download Resume</a>
+  </section>
+
+  <!-- Fade Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const options = { threshold: 0.5 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const btn = document.querySelector(`.nav-btn[data-target="${entry.target.id}"]`);
+          const img = document.querySelector(`.nav-img[data-img="${entry.target.id}"]`);
+          if (!btn || !img) return;
+
+          if (entry.isIntersecting) {
+            btn.classList.add("opacity-0");
+            btn.classList.remove("opacity-100");
+            img.classList.remove("opacity-0");
+            img.classList.add("opacity-100");
+          } else {
+            btn.classList.remove("opacity-0");
+            btn.classList.add("opacity-100");
+            img.classList.add("opacity-0");
+            img.classList.remove("opacity-100");
+          }
+        });
+      }, options);
+
+      document.querySelectorAll("section[id]").forEach(sec => observer.observe(sec));
+    });
+  </script>
+
+</body>
+</html>

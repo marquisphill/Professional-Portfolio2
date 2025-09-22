@@ -85,6 +85,13 @@ footer {
   animation: fadeSlideIn 0.45s ease forwards;
 }
 
+
+/* Case studies background */
+.bg-brand-gradient {
+  background: linear-gradient(to right, #623aa2, #f97794 );
+  color: #fff; /* ensure text is readable */
+}
+
 /* Case preview card */
 .case-preview {
   margin-bottom: 20px;
@@ -491,6 +498,7 @@ footer {
 
 .recommendation-card {
   background: #fff;
+  color: #212529;
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -740,3 +748,4 @@ html {
     height: 300px;
   }
 }
+

@@ -92,6 +92,46 @@ footer {
   color: #212529; /* ensure text is readable */
 }
 
+/* ===== Tree background spanning the 5 story sections =====
+   One image sliced into 5 bands (leaves/branches at top, trunk through
+   the middle, base at the bottom) so it reads as a single tree behind
+   Case Studies -> Experience -> Hackathon -> Recommendations -> About. */
+.tree-bg-1,
+.tree-bg-2,
+.tree-bg-3,
+.tree-bg-4,
+.tree-bg-5 {
+  background-size: cover, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  color: #fff;
+}
+
+.tree-bg-1 {
+  background-image: linear-gradient(rgba(20, 10, 30, 0.55), rgba(20, 10, 30, 0.55)), url('../images/tree-bg/tree-bg-1.jpg');
+  background-color: #623aa2;
+}
+
+.tree-bg-2 {
+  background-image: linear-gradient(rgba(20, 10, 30, 0.55), rgba(20, 10, 30, 0.55)), url('../images/tree-bg/tree-bg-2.jpg');
+  background-color: #f97794;
+}
+
+.tree-bg-3 {
+  background-image: linear-gradient(rgba(20, 10, 30, 0.55), rgba(20, 10, 30, 0.55)), url('../images/tree-bg/tree-bg-3.jpg');
+  background-color: #623aa2;
+}
+
+.tree-bg-4 {
+  background-image: linear-gradient(rgba(20, 10, 30, 0.55), rgba(20, 10, 30, 0.55)), url('../images/tree-bg/tree-bg-4.jpg');
+  background-color: #f97794;
+}
+
+.tree-bg-5 {
+  background-image: linear-gradient(rgba(20, 10, 30, 0.55), rgba(20, 10, 30, 0.55)), url('../images/tree-bg/tree-bg-5.jpg');
+  background-color: #623aa2;
+}
+
 /* Case preview card */
 .case-preview {
   margin-bottom: 20px;

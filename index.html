@@ -309,6 +309,9 @@ em,i{font-style:normal;}
 .resume-picker__chip.is-selected{border-bottom:2px solid var(--orange);}
 .resume-picker__confirm{font-size:var(--t-micro);color:var(--ink-muted);margin-top:var(--s2);min-height:1.4em;transition:color var(--d-fast) var(--e-inout);}
 .resume-picker__confirm.is-flash{color:var(--yellow);}
+/* What that variant leads with - the bank's own one-line descriptor per row,
+   same register as the ghost's own impact bullets just above. */
+.resume-picker__descriptor{font-size:var(--t-meta);color:var(--ink-muted);margin-top:4px;max-width:52ch;}
 .resume-picker__close{margin-top:var(--s2);}
 /* Widen to fit the chip row, desktop only - mobile keeps the ghost's existing
    full-width strip behavior (§10) and must not fight that override. */
@@ -843,6 +846,7 @@ em,i{font-style:normal;}
       <div class="resume-picker__panel" id="resumePickerPanel">
         <div class="resume-picker__chips" data-resume-chips></div>
         <p class="resume-picker__confirm" data-resume-confirm></p>
+        <p class="resume-picker__descriptor" data-resume-descriptor hidden></p>
         <button class="btn resume-picker__close" type="button" data-resume-picker-close>Done</button>
       </div>
     </div>
@@ -1076,12 +1080,14 @@ var ghostPeeked=false;
    row here (and to the bank) to add a job type - nothing else in the build
    needs to change. Delivery Lead is intentionally omitted: flagged not-ready
    in the bank, not shippable yet (see Enhancement 02 §4). */
-var RESUME_DEFAULT={key:'DEFAULT',label:'General résumé',file:'2026_Resume_Phillip_Da_Silva_Marquis.pdf'};
+/* descriptor text is verbatim from the bank's "One-line descriptor" column -
+   not written for this UI, so it isn't touched when compressing/rewording. */
+var RESUME_DEFAULT={key:'DEFAULT',label:'General résumé',file:'2026_Resume_Phillip_Da_Silva_Marquis.pdf',descriptor:''};
 var RESUME_VARIANTS=[
-  {key:'PO',label:'Product Owner',file:'resumes/phillip-dasilvamarquis-resume-product-owner.pdf'},
-  {key:'SBA',label:'Senior Business Analyst',file:'resumes/phillip-dasilvamarquis-resume-senior-business-analyst.pdf'},
-  {key:'PM',label:'Digital Product Manager',file:'resumes/phillip-dasilvamarquis-resume-digital-product-manager.pdf'},
-  {key:'ECOMMERCE',label:'Ecommerce & Digital Transformation',file:'resumes/phillip-dasilvamarquis-resume-ecommerce-digital-transformation.pdf'}
+  {key:'PO',label:'Product Owner',file:'resumes/phillip-dasilvamarquis-resume-product-owner.pdf',descriptor:'Backlog ownership, prioritization, and Agile delivery, from the product side of the table.'},
+  {key:'SBA',label:'Senior Business Analyst',file:'resumes/phillip-dasilvamarquis-resume-senior-business-analyst.pdf',descriptor:'Requirements, systems integration, and enterprise modernization work, led end to end.'},
+  {key:'PM',label:'Digital Product Manager',file:'resumes/phillip-dasilvamarquis-resume-digital-product-manager.pdf',descriptor:'Platform ownership and cross-functional delivery, from discovery through go-live.'},
+  {key:'ECOMMERCE',label:'Ecommerce & Digital Transformation',file:'resumes/phillip-dasilvamarquis-resume-ecommerce-digital-transformation.pdf',descriptor:'Ecommerce operations and legacy-to-modern platform transformation, with AI worked in as a practical tool.'}
 ];
 var RESUME_ALL=[RESUME_DEFAULT].concat(RESUME_VARIANTS);
 var RESUME_STORAGE_KEY='resumeVariant';
@@ -1124,10 +1130,20 @@ function applyResumeSelection(key,announceIt){
       confirmEl.classList.add('is-flash');
       setTimeout(function(){ confirmEl.classList.remove('is-flash'); },900);
       /* reuse the existing path-change live region (§11 item 5) rather than
-         adding a second one */
-      announce.textContent=text;
+         adding a second one - descriptor folded in so a screen-reader user
+         gets the same "what's different about this one" a sighted user sees */
+      announce.textContent=r.descriptor?text+'. '+r.descriptor:text;
       ga('resume_variant_select',{variant:r.key});
     }
+  }
+
+  /* What's actually different about this variant - the content bank's own
+     one-line descriptor per row (§10), not written for this UI. Empty for
+     the general résumé, which has no single angle to state. */
+  var descEl=D.querySelector('[data-resume-descriptor]');
+  if(descEl){
+    descEl.textContent=r.descriptor||'';
+    descEl.hidden=!r.descriptor;
   }
 }
 

@@ -117,10 +117,19 @@ em,i{font-style:normal;}
 @keyframes capflash{50%{transform:scale(2.4);}}
 
 /* ---------- wordmark ---------- */
-.wordmark{position:fixed;left:var(--gutter);top:var(--s3);z-index:60;font-size:var(--t-meta);color:var(--ink-muted);letter-spacing:.01em;opacity:0;pointer-events:none;transition:opacity var(--d-mid) var(--e-out);}
+.wordmark{position:fixed;left:var(--gutter);top:var(--s3);z-index:60;font-size:var(--t-meta);color:var(--ink-muted);letter-spacing:.01em;opacity:0;pointer-events:none;transition:opacity var(--d-fast) var(--e-out);}
 .wordmark.is-on{opacity:1;pointer-events:auto;}
-.wordmark a{border-bottom:1px solid transparent;}
-.wordmark a:hover,.wordmark a:focus-visible{border-bottom-color:var(--orange);color:var(--ink);}
+/* Enhancement 01 item 6: a real control home, reusing the quiet-button language
+   from 7.2 and the tick-and-label wayfinding grammar from 7.3 / 8.8. */
+.wordmark a{
+  display:inline-flex;align-items:center;gap:6px;
+  min-height:44px;padding:4px 0;
+  border-bottom:1px solid transparent;color:var(--ink-muted);
+  transition:color var(--d-fast) var(--e-inout),border-color var(--d-fast) var(--e-inout),border-width var(--d-fast) var(--e-inout);
+}
+.wordmark__chev{font-size:12px;line-height:1;color:var(--orange-dim);transition:color var(--d-fast) var(--e-inout);}
+.wordmark a:hover,.wordmark a:focus-visible{color:var(--ink);border-bottom-width:2px;border-bottom-color:var(--orange);}
+.wordmark a:hover .wordmark__chev,.wordmark a:focus-visible .wordmark__chev{color:var(--orange);}
 
 /* ---------- SCREEN 0 ---------- */
 .choice{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-block:var(--s5) var(--s4);}
@@ -138,8 +147,7 @@ em,i{font-style:normal;}
 .band__wipe{position:absolute;inset:0;background:var(--orange);opacity:0;transform:scaleX(0);transform-origin:left;transition:transform var(--d-fast) var(--e-inout),opacity var(--d-fast) var(--e-inout);pointer-events:none;}
 .band:hover .band__wipe,.band:focus-visible .band__wipe{opacity:.08;transform:scaleX(1);}
 .band__dur{position:relative;font-family:var(--font-mono);font-variant-numeric:tabular-nums;color:var(--ink-faint);line-height:.9;transition:color var(--d-fast) var(--e-inout);}
-.band__dur b{display:block;font-weight:500;font-size:clamp(2.4rem,6vw,4rem);}
-.band__dur span{display:block;font-size:var(--t-micro);text-transform:uppercase;letter-spacing:.14em;margin-top:4px;}
+.band__dur b{display:block;font-weight:500;font-size:clamp(1.8rem,4.2vw,2.9rem);}
 .band:hover .band__dur,.band:focus-visible .band__dur{color:var(--orange);}
 .band__body{position:relative;}
 .band__name{display:block;font-family:var(--font-display);font-weight:700;font-size:var(--t-lead);letter-spacing:.02em;}
@@ -150,6 +158,15 @@ em,i{font-style:normal;}
 .thread{padding-left:0;}
 .beat{min-height:82vh;display:flex;flex-direction:column;justify-content:center;padding-block:var(--s5);}
 .beat__eyebrow{font-size:var(--t-micro);text-transform:uppercase;letter-spacing:.14em;color:var(--ink-muted);margin-bottom:var(--s3);}
+/* Enhancement 01 item 4: marks the seam between back-to-back case studies.
+   In-column row, no full-bleed rule, no background band - the scoped exception
+   to the no-separators rule, not a reopening of it. */
+.case-eyebrow{
+  display:flex;align-items:center;gap:var(--s1);
+  font-size:var(--t-micro);text-transform:uppercase;letter-spacing:.14em;
+  color:var(--ink-muted);margin-bottom:var(--s3);
+}
+.case-eyebrow__tick{width:16px;height:2px;background:var(--orange-dim);flex:none;}
 .beat__line{font-size:var(--t-beat);max-width:20ch;}
 .beat__line--sm{font-size:clamp(1.5rem,3.6vw,2.4rem);max-width:28ch;}
 .beat__sub{font-size:var(--t-lead);color:var(--ink-muted);margin-top:var(--s3);max-width:52ch;}
@@ -157,24 +174,29 @@ em,i{font-style:normal;}
 .beat__hook{font-size:var(--t-lead);color:var(--ink-muted);margin-top:var(--s4);max-width:46ch;}
 
 /* peel: at rest the line sits dim; reveal resolves it */
-.js .beat__line{opacity:.4;transition:opacity var(--d-mid) var(--e-out);}
-.js .beat__eyebrow,.js .beat__sub,.js .beat__payload,.js .beat__hook{opacity:0;transform:translateY(24px);transition:opacity var(--d-mid) var(--e-out),transform var(--d-mid) var(--e-out);}
-.js .beat.is-in .beat__line{opacity:1;}
-.js .beat.is-in .beat__eyebrow,.js .beat.is-in .beat__sub,.js .beat.is-in .beat__payload,.js .beat.is-in .beat__hook{opacity:1;transform:none;}
-.js .beat.is-in .beat__sub{transition-delay:60ms;}
-.js .beat.is-in .beat__payload{transition-delay:120ms;}
-.js .beat.is-in .beat__hook{transition-delay:180ms;}
+/* Enhancement 01 item 2: reveal is a pure function of scroll position (--rv),
+   so scrolling back up reverses it with no separate un-reveal logic. Stagger is
+   an offset inside each child's own window, not a timed delay. */
+.js .beat{--rv:1;}
+.js .beat__line{opacity:calc(.4 + .6*clamp(0,var(--rv),1));}
+.js .beat__eyebrow,.js .case-eyebrow{--p:clamp(0,var(--rv),1);opacity:var(--p);transform:translateY(calc(24px*(1 - var(--p))));}
+.js .beat__sub{--p:clamp(0,calc((var(--rv) - .10)/.90),1);opacity:var(--p);transform:translateY(calc(24px*(1 - var(--p))));}
+.js .beat__payload{--p:clamp(0,calc((var(--rv) - .20)/.80),1);opacity:var(--p);transform:translateY(calc(24px*(1 - var(--p))));}
+.js .beat__hook{--p:clamp(0,calc((var(--rv) - .30)/.70),1);opacity:var(--p);transform:translateY(calc(24px*(1 - var(--p))));}
 
 /* ---------- redaction ---------- */
-.redact{position:relative;display:inline-block;color:var(--ink);transition:color 600ms var(--e-out);}
+/* Enhancement 01 item 2: driven by the beat's own --rv, not a one-shot trigger. */
+.redact{position:relative;display:inline-block;color:var(--ink);}
+.js .redact{--rp:0;opacity:calc(.08 + .92*var(--rp));}
 .redact::after{
   content:"";position:absolute;left:-2px;right:-2px;top:.08em;bottom:.12em;
   background:var(--ink-faint);
-  transition:width 260ms var(--e-out),filter 260ms var(--e-out),opacity 260ms var(--e-out);
 }
-.redact.is-open{color:var(--yellow);}
-.redact.is-open::after{right:auto;width:0;filter:blur(6px);opacity:0;}
-.redact.is-settled{color:var(--ink);}
+.js .redact::after{
+  right:auto;width:calc((100% + 4px)*(1 - var(--rp)));
+  filter:blur(calc(6px*(1 - var(--rp))));
+}
+.js .redact.is-hot{color:var(--yellow);}
 
 /* ---------- stat cells ---------- */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s5) var(--s4);}
@@ -203,6 +225,16 @@ em,i{font-style:normal;}
 .dwell.is-open{border-bottom-color:var(--orange);}
 .dwell__detail{display:none;margin-top:var(--s2);padding-left:var(--s2);border-left:1px solid var(--line);}
 .dwell.is-open .dwell__detail{display:block;animation:fade var(--d-fast) var(--e-out) both;}
+/* Enhancement 01 item 3: visible countdown while the dwell arms. */
+.dwell__arm{
+  display:flex;align-items:center;gap:var(--s2);margin-top:var(--s1);
+  opacity:0;transition:opacity var(--d-fast) var(--e-inout);pointer-events:none;
+}
+.dwell__arm.is-armed{opacity:1;}
+.dwell__prompt{font-size:var(--t-micro);text-transform:uppercase;letter-spacing:.14em;color:var(--ink-muted);}
+.dwell__bar{position:relative;width:64px;height:2px;background:var(--bg-inset);flex:none;}
+.dwell__fill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--orange);}
+.dwell__arm.is-done .dwell__fill{background:var(--yellow);}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 .dwell__detail li{font-size:var(--t-meta);color:var(--ink-muted);margin-bottom:8px;max-width:62ch;}
 .dwell__detail li b{color:var(--ink);font-weight:500;}
@@ -243,7 +275,7 @@ em,i{font-style:normal;}
 .ghost{position:fixed;right:var(--s3);bottom:var(--s3);z-index:70;}
 .ghost__btn{
   display:block;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-pill);
-  padding:10px 20px;font:inherit;font-size:var(--t-meta);color:var(--ink-faint);cursor:pointer;
+  padding:10px 20px;font:inherit;font-size:var(--t-meta);color:var(--ink-muted);cursor:pointer;
   transition:color var(--d-fast) var(--e-inout),border-color var(--d-fast) var(--e-inout);
 }
 .ghost.is-open .ghost__btn,.ghost__btn:hover,.ghost__btn:focus-visible{color:var(--ink);border-color:var(--line-strong);}
@@ -302,10 +334,10 @@ em,i{font-style:normal;}
   .rail__fill{height:3px;width:0;top:0;}
   .rail__cap{left:auto;right:-1px;bottom:auto;top:0;width:3px;height:6px;}
   .rail__num{left:auto;right:8px;top:8px;}
-  .wordmark{top:14px;}
+  .wordmark{top:12px;}
   .beat{min-height:76vh;}
   .band{grid-template-columns:1fr;gap:var(--s1);min-height:120px;}
-  .band__dur b{font-size:2.2rem;}
+  .band__dur b{font-size:2.1rem;}
   .choice{padding-block:var(--s4) 56px;}
   .choice__mark{margin-bottom:var(--s3);}
   .choice__id{font-size:clamp(1.5rem,5.4vw,1.9rem);margin-bottom:var(--s2);}
@@ -322,11 +354,12 @@ em,i{font-style:normal;}
 
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
-  .js .beat__line{opacity:1;}
-  .js .beat__eyebrow,.js .beat__sub,.js .beat__payload,.js .beat__hook{opacity:0;transform:none;transition:opacity 120ms linear;}
-  .js .beat.is-in .beat__eyebrow,.js .beat.is-in .beat__sub,.js .beat.is-in .beat__payload,.js .beat.is-in .beat__hook{opacity:1;transition-delay:0ms;}
-  .redact::after{display:none;}
-  .redact,.redact.is-open{color:var(--ink);}
+  /* reduced motion means no scrubbing at all, not slower scrubbing */
+  .js .beat__line,.js .beat__eyebrow,.js .case-eyebrow,.js .beat__sub,.js .beat__payload,.js .beat__hook{opacity:1;transform:none;}
+  .redact::after,.js .redact::after{display:none;}
+  .js .redact{opacity:1;}
+  .redact,.js .redact.is-hot{color:var(--ink);}
+  .dwell__arm{display:none !important;}
   .card{transform:none;transition:opacity 120ms linear;}
   .band__wipe,.door__label,.ghost__peek{transition-duration:120ms;}
   .rail__cap.is-done{animation:none;}
@@ -344,7 +377,7 @@ em,i{font-style:normal;}
   <div class="rail__fill" id="railFill"><div class="rail__cap" id="railCap"></div><div class="rail__num" id="railNum">0:00</div></div>
 </div>
 
-<div class="wordmark" id="wordmark"><a href="#" data-escape>Phillip Da Silva-Marquis</a></div>
+<div class="wordmark" id="wordmark"><a href="#" data-escape aria-label="Return to path choice"><span class="wordmark__chev" aria-hidden="true">‹</span>Phillip Da Silva-Marquis</a></div>
 <p class="sr-only" aria-live="polite" id="announce"></p>
 
 <!-- ============ SCREEN 0 — THE CHOICE ============ -->
@@ -356,7 +389,7 @@ em,i{font-style:normal;}
   <div class="bands">
     <button class="band" data-path="A" type="button">
       <span class="band__wipe"></span>
-      <span class="band__dur"><b>60</b><span>Seconds</span></span>
+      <span class="band__dur"><b data-dur>0:35</b></span>
       <span class="band__body">
         <span class="band__name">THE BRIEF</span>
         <span class="band__promise">Enough to pitch me in a meeting.</span>
@@ -364,7 +397,7 @@ em,i{font-style:normal;}
     </button>
     <button class="band" data-path="B" type="button">
       <span class="band__wipe"></span>
-      <span class="band__dur"><b>3</b><span>Minutes</span></span>
+      <span class="band__dur"><b data-dur>1:40</b></span>
       <span class="band__body">
         <span class="band__name">THE CASE</span>
         <span class="band__promise">The numbers, and where they came from.</span>
@@ -372,7 +405,7 @@ em,i{font-style:normal;}
     </button>
     <button class="band" data-path="C" type="button">
       <span class="band__wipe"></span>
-      <span class="band__dur"><b>5</b><span>Minutes</span></span>
+      <span class="band__dur"><b data-dur>11:00</b></span>
       <span class="band__body">
         <span class="band__name">THE OPERATOR</span>
         <span class="band__promise">How I think. The whole record.</span>
@@ -414,7 +447,7 @@ em,i{font-style:normal;}
   </section>
 
   <section class="close wrap" data-beat="5" data-close>
-    <h2 class="close__line">That was sixty seconds. Here is the résumé.</h2>
+    <h2 class="close__line">That took 35 seconds. Here is the résumé.</h2>
     <div class="card" data-card></div>
   </section>
 </div>
@@ -446,7 +479,7 @@ em,i{font-style:normal;}
     </div>
   </section>
 
-  <section class="beat wrap" data-beat="2" data-hook="clause">
+  <section class="beat wrap" data-beat="2" data-hook="clause" data-case="PROCESS">
     <h2 class="beat__line">Over 1,000 legacy reports. No record of which ones anyone still used.</h2>
     <p class="beat__hook">I met with every owner and got it to 200. The last stretch does not scale by hand-</p>
   </section>
@@ -461,12 +494,12 @@ em,i{font-style:normal;}
     </div>
   </section>
 
-  <section class="beat wrap" data-beat="4">
+  <section class="beat wrap" data-beat="4" data-case="PLATFORM">
     <h2 class="beat__line">FlexShopper's order system was homegrown and out of road.</h2>
     <p class="beat__sub">I owned the thing that replaced it. CRM, ERP, storefront, catalog, every vendor.</p>
   </section>
 
-  <section class="beat wrap" data-beat="5" data-hook="clause">
+  <section class="beat wrap" data-beat="5" data-hook="clause" data-case="TOOLING">
     <h2 class="beat__line beat__line--sm">Then I built a tool that answered requirements questions for the whole team.</h2>
     <div class="beat__payload">
       <button class="door" type="button" data-door="C" data-door-beat="7">
@@ -515,7 +548,7 @@ em,i{font-style:normal;}
   </section>
 
   <section class="close wrap" data-beat="8" data-close>
-    <h2 class="close__line">Three minutes. You have the numbers and where they came from.</h2>
+    <h2 class="close__line">That took 1 minute 40 seconds. You have the numbers and where they came from.</h2>
     <div class="card" data-card></div>
   </section>
 </div>
@@ -549,7 +582,7 @@ em,i{font-style:normal;}
     <p class="beat__hook">Four principles is easy to say. Here is all four on one project-</p>
   </section>
 
-  <section class="beat wrap" data-beat="5">
+  <section class="beat wrap" data-beat="5" data-case="PROCESS">
     <h2 class="beat__line beat__line--sm">over 1,000 reports, and no record of why most of them existed.</h2>
     <div class="beat__payload">
       <div class="panel">
@@ -572,7 +605,7 @@ em,i{font-style:normal;}
     </div>
   </section>
 
-  <section class="beat wrap" data-beat="6">
+  <section class="beat wrap" data-beat="6" data-case="PLATFORM">
     <h2 class="beat__line beat__line--sm">The one before it was bigger, and I owned all of it.</h2>
     <div class="beat__payload">
       <div class="panel">
@@ -595,7 +628,7 @@ em,i{font-style:normal;}
     </div>
   </section>
 
-  <section class="beat wrap" data-beat="7">
+  <section class="beat wrap" data-beat="7" data-case="TOOLING">
     <h2 class="beat__line beat__line--sm">The smallest thing I built there got used the most.</h2>
     <div class="beat__payload">
       <div class="panel">
@@ -618,7 +651,7 @@ em,i{font-style:normal;}
     </div>
   </section>
 
-  <section class="beat wrap" data-beat="8" data-hook="clause">
+  <section class="beat wrap" data-beat="8" data-hook="clause" data-case="CONTRACT">
     <h2 class="beat__line beat__line--sm">And one that was not in my scope at all.</h2>
     <div class="beat__payload">
       <div class="panel">
@@ -758,7 +791,7 @@ em,i{font-style:normal;}
   </section>
 
   <section class="close wrap" data-beat="12" data-close>
-    <h2 class="close__line">Five minutes. That is the whole record.</h2>
+    <h2 class="close__line">That took 11 minutes. That is the whole record.</h2>
     <div class="card" data-card></div>
   </section>
 </div>
@@ -815,7 +848,10 @@ em,i{font-style:normal;}
 "use strict";
 var D=document, root=D.documentElement;
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-var BUDGET={A:60,B:180,C:300};
+/* Enhancement 01 item 1: one source for path length. Screen 0's numeral and the
+   rail's remaining-time both derive from this - never hardcode a time twice. */
+var PATH_BUDGET_SECONDS={A:35,B:100,C:660};
+var BUDGET=PATH_BUDGET_SECONDS;
 var choice=D.getElementById('choice'), rail=D.getElementById('rail'),
     fill=D.getElementById('railFill'), cap=D.getElementById('railCap'), num=D.getElementById('railNum'),
     wordmark=D.getElementById('wordmark'), announce=D.getElementById('announce'),
@@ -845,25 +881,59 @@ function ga(name,params){ if(window.gtag) gtag('event',name,params||{}); }
   }
 });
 
-/* ---------- reveal ---------- */
-var revealIO=new IntersectionObserver(function(es){
-  es.forEach(function(e){
-    if(!e.isIntersecting) return;
-    e.target.classList.add('is-in');
-    revealIO.unobserve(e.target);
-    resolveRedactBefore(e.target);
-    runCounters(e.target);
-  });
-},{threshold:.35,rootMargin:'0px 0px -12% 0px'});
+/* ---------- reveal (Enhancement 01 item 2) ----------
+   Continuous and reversible: every beat's visual state is f(scroll position),
+   so scrolling back up un-reveals it for free. One rAF tick recomputes every
+   visible beat rather than one listener per beat.
+   Note: implemented as the throttled-scroll path from the spec for all engines
+   rather than dual-pathing with animation-timeline: view(), so the curve lives
+   in exactly one place and cannot drift between implementations. */
+var TOP_START=.85, TOP_END=.40;
 
-/* redaction in the PREVIOUS beat resolves when this beat enters */
-function resolveRedactBefore(beat){
-  var prev=beat.previousElementSibling;
-  if(!prev) return;
-  var r=prev.querySelector('[data-redact]');
-  if(!r||r.classList.contains('is-open')) return;
-  r.classList.add('is-open');
-  setTimeout(function(){ r.classList.add('is-settled'); },600);
+/* innerHeight can read 0 in a backgrounded/offscreen view; fall back to the
+   layout viewport so progress never divides by a bogus height */
+function vh(){ return window.innerHeight||root.clientHeight||0; }
+
+function revealProgress(el){
+  var h=vh()||1;
+  var top=el.getBoundingClientRect().top;
+  var p=(TOP_START*h - top)/((TOP_START-TOP_END)*h);
+  return p<0?0:(p>1?1:p);
+}
+
+function paintReveals(){
+  if(!active) return;
+  var beats=threads[active].querySelectorAll('.beat,[data-close]');
+  [].forEach.call(beats,function(b){
+    var p=reduce?1:revealProgress(b);
+    b.style.setProperty('--rv',p);
+    var r=b.querySelector('[data-redact]');
+    if(r){
+      r.style.setProperty('--rp',p);
+      r.classList.toggle('is-hot',!reduce&&p>.9&&p<1);
+    }
+    /* counters stay forward-only by deliberate exception - a number ticking
+       back down on scroll-up reads as the figure un-counting itself */
+    if(p>.35) runCounters(b);
+  });
+  paintBeatTwoState();
+}
+
+/* Enhancement 01 items 5 and 6 both key off "has the user reached beat 2 yet".
+   Computed here from geometry rather than by IntersectionObserver: this already
+   runs on every scroll frame, it reverses for free, and it has no callback lag. */
+function paintBeatTwoState(){
+  var b2=threads[active]&&threads[active].querySelector('.beat[data-beat="2"]');
+  if(!b2){ wordmark.classList.add('is-on'); return; }
+  /* half a viewport in, so it doesn't fire while beat 2 is merely peeking up
+     from under beat 1 - beats are ~76vh, so the next one is always peeking */
+  var arrived=b2.getBoundingClientRect().top < vh()*.5;
+  wordmark.classList.toggle('is-on',arrived);
+  if(arrived&&!ghostPeeked&&!reduce){
+    ghostPeeked=true;
+    ghostOpen();
+    setTimeout(function(){ if(!ghost.matches(':hover')) ghostClose(); },1600);
+  }
 }
 
 function runCounters(scope){
@@ -882,6 +952,12 @@ function runCounters(scope){
 
 /* ---------- rail ---------- */
 function fmt(s){ var m=Math.floor(s/60), r=Math.max(0,Math.round(s%60)); return m+':'+(r<10?'0':'')+r; }
+
+/* Screen 0 numerals come from PATH_BUDGET_SECONDS, same as the rail. */
+[].forEach.call(D.querySelectorAll('.band'),function(b){
+  var el=b.querySelector('[data-dur]');
+  if(el) el.textContent=fmt(PATH_BUDGET_SECONDS[b.dataset.path]);
+});
 
 function updateRail(){
   if(!active) return;
@@ -923,21 +999,42 @@ function start(path,scrollTo){
   t.hidden=false; t.classList.add('is-active');
   choice.classList.add('is-gone');
   rail.classList.add('is-on');
-  wordmark.classList.add('is-on');
+  wordmark.classList.remove('is-on');
 
-  [].forEach.call(t.querySelectorAll('.beat'),function(b,i){
-    if(i===0){ b.classList.add('is-in'); runCounters(b); }
-    else revealIO.observe(b);
-  });
+  buildCaseEyebrows(t);
+  runCounters(t.querySelector('.beat'));
   var closeEl=t.querySelector('[data-close]');
   if(closeEl) closeIO.observe(closeEl);
 
   window.scrollTo(0, scrollTo||0);
   updateRail();
+  paintReveals();
   var n=t.querySelectorAll('.beat,[data-close]').length;
-  announce.textContent='Now on the '+(path==='A'?'60 second':path==='B'?'3 minute':'5 minute')+' path, '+n+' sections.';
+  announce.textContent='Now on the '+(path==='A'?'35 second':path==='B'?'1 minute 40 second':'11 minute')+' path, '+n+' sections.';
   if(location.hash!==hashFor(path)) history.pushState({path:path},'',hashFor(path));
 }
+
+/* Enhancement 01 item 4: counter is derived from how many cases THIS path
+   shows, never hardcoded - Path B shows 3, Path C shows 4. */
+function buildCaseEyebrows(thread){
+  var cases=thread.querySelectorAll('.beat[data-case]');
+  var total=cases.length;
+  [].forEach.call(cases,function(beat,i){
+    if(beat.querySelector('.case-eyebrow')) return;
+    var row=D.createElement('p');
+    row.className='case-eyebrow';
+    var tick=D.createElement('span');
+    tick.className='case-eyebrow__tick';
+    row.appendChild(tick);
+    row.appendChild(D.createTextNode('CASE '+(i+1)+' OF '+total+' \u00b7 '+beat.dataset.case));
+    beat.insertBefore(row,beat.firstElementChild);
+  });
+}
+
+/* Enhancement 01 item 5: one-time "here's what this is" peek, the first time any
+   path crosses beat 1 into beat 2. Once per session - not on a side door, not on
+   re-picking a path, never on a loop. Fired from paintBeatTwoState(). */
+var ghostPeeked=false;
 
 function hashFor(p){ return p==='A'?'#p1':p==='B'?'#p3':'#p5'; }
 function pathFor(h){ return h==='#p1'?'A':h==='#p3'?'B':h==='#p5'?'C':null; }
@@ -978,11 +1075,11 @@ function toChoice(){
       var carried=minRemaining;
       start(to,0);
       /* frame the target beat identically, without a scroll-to-top flash */
-      [].forEach.call(threads[to].querySelectorAll('.beat'),function(b){ b.classList.add('is-in'); });
       var y=target.getBoundingClientRect().top+window.pageYOffset-keepOffset;
       window.scrollTo(0,Math.max(0,y));
       minRemaining=Infinity;
       updateRail();
+      paintReveals();
       tweenNumeral(carried);
     },reduce?0:300);
   });
@@ -1008,21 +1105,103 @@ function tweenNumeral(fromVal){
   });
 });
 
-/* ---------- dwell ---------- */
+/* ---------- dwell (Enhancement 01 item 3) ----------
+   A visible countdown while the dwell arms, so the interaction is discoverable
+   instead of something you find by accident. Keyboard is untouched: focus still
+   reveals instantly, with no countdown to run.
+   Scope is C9 (the [data-dwell] career rows). The resume ghost's own dwell-to-peek
+   is the other trigger on the site and is deliberately NOT given this treatment
+   this round - see the enhancement file, it is flagged as a recommendation. */
+var DWELL_MS=1200, DWELL_GRACE=150, DWELL_SLOP=10;
+
 [].forEach.call(D.querySelectorAll('[data-dwell]'),function(el){
-  var timer;
+  var graceT=null, doneT=null, rafId=null, startT=0, touching=false, touchY=0, moved=false;
+
+  var arm=D.createElement('div');
+  arm.className='dwell__arm';
+  var prompt=D.createElement('span');
+  prompt.className='dwell__prompt';
+  var bar=D.createElement('span');
+  bar.className='dwell__bar';
+  var fill=D.createElement('span');
+  fill.className='dwell__fill';
+  bar.appendChild(fill);
+  arm.appendChild(prompt); arm.appendChild(bar);
+  arm.setAttribute('aria-hidden','true');
+  el.appendChild(arm);
+
   function open(){ el.classList.add('is-open'); }
   function close(){ el.classList.remove('is-open'); }
+
+  function disarm(){
+    if(graceT){ clearTimeout(graceT); graceT=null; }
+    /* the post-completion cleanup must be cancelled too, or a stale one from the
+       previous dwell strips the arming state off the next countdown mid-fill */
+    if(doneT){ clearTimeout(doneT); doneT=null; }
+    if(rafId){ cancelAnimationFrame(rafId); rafId=null; }
+    arm.classList.remove('is-armed','is-done');
+    fill.style.width='0%';
+  }
+
+  function beginCountdown(touch){
+    if(reduce){ open(); return; }
+    prompt.textContent = touch ? 'Keep your finger here to see details'
+                               : 'Keep your mouse here to see details';
+    graceT=setTimeout(function(){
+      graceT=null;
+      if(touch&&moved) return;
+      arm.classList.add('is-armed');
+      startT=performance.now();
+      (function step(t){
+        var p=Math.min(1,(t-startT)/DWELL_MS);
+        fill.style.width=(p*100)+'%';
+        if(p<1){ rafId=requestAnimationFrame(step); return; }
+        rafId=null;
+        arm.classList.add('is-done');
+        open();
+        doneT=setTimeout(function(){ doneT=null; arm.classList.remove('is-armed','is-done'); },260);
+      })(performance.now());
+    },DWELL_GRACE);
+  }
+
+  /* ----- mouse ----- */
   el.addEventListener('pointerenter',function(e){
     if(e.pointerType==='touch') return;
-    timer=setTimeout(open,reduce?0:1200);
+    disarm(); beginCountdown(false);
   });
-  el.addEventListener('pointerleave',function(){ clearTimeout(timer); close(); });
-  el.addEventListener('click',function(){ el.classList.toggle('is-open'); });
-  el.addEventListener('focus',open);
-  el.addEventListener('blur',close);
+  el.addEventListener('pointerleave',function(e){
+    if(e.pointerType==='touch') return;
+    disarm(); close();
+  });
+  el.addEventListener('click',function(e){
+    /* touch reveals by held press now, not by tap - don't let the synthetic
+       click that follows a touch toggle it back shut */
+    if(touching) return;
+    disarm();
+    el.classList.toggle('is-open');
+  });
+
+  /* ----- touch: held press, cancelled by scrolling ----- */
+  el.addEventListener('touchstart',function(e){
+    touching=true; moved=false;
+    touchY=e.touches[0].clientY;
+    disarm(); beginCountdown(true);
+  },{passive:true});
+  el.addEventListener('touchmove',function(e){
+    if(Math.abs(e.touches[0].clientY-touchY)>DWELL_SLOP){ moved=true; disarm(); }
+  },{passive:true});
+  function endTouch(){
+    disarm();
+    setTimeout(function(){ touching=false; },0);
+  }
+  el.addEventListener('touchend',endTouch,{passive:true});
+  el.addEventListener('touchcancel',endTouch,{passive:true});
+
+  /* ----- keyboard: instant, no countdown ----- */
+  el.addEventListener('focus',function(){ disarm(); open(); });
+  el.addEventListener('blur',function(){ disarm(); close(); });
   el.addEventListener('keydown',function(e){
-    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); el.classList.toggle('is-open'); }
+    if(e.key==='Enter'||e.key===' '){ e.preventDefault(); disarm(); el.classList.toggle('is-open'); }
   });
 });
 
@@ -1055,11 +1234,27 @@ D.addEventListener('keydown',function(e){
 
 /* ---------- scroll ---------- */
 var ticking=false;
-window.addEventListener('scroll',function(){
-  if(ticking) return; ticking=true;
-  requestAnimationFrame(function(){ updateRail(); ticking=false; });
-},{passive:true});
-window.addEventListener('resize',updateRail,{passive:true});
+function schedulePaint(){
+  if(ticking) return;
+  ticking=true;
+  requestAnimationFrame(function(){ ticking=false; updateRail(); paintReveals(); });
+  /* rAF is suspended whenever the view isn't painting. Without this the flag
+     latches true and every later scroll repaint is dropped, so the beats freeze
+     mid-reveal. Unlatch on a timer and repaint so it can recover on its own. */
+  setTimeout(function(){
+    if(!ticking) return;
+    ticking=false; updateRail(); paintReveals();
+  },250);
+}
+window.addEventListener('scroll',schedulePaint,{passive:true});
+/* rAF is suspended while the tab is hidden, which would otherwise leave `ticking`
+   stuck true forever and kill every scroll repaint after the user comes back */
+D.addEventListener('visibilitychange',function(){
+  if(D.hidden) return;
+  ticking=false;
+  updateRail(); paintReveals();
+});
+window.addEventListener('resize',function(){ updateRail(); paintReveals(); },{passive:true});
 
 /* ---------- history ---------- */
 window.addEventListener('popstate',function(){

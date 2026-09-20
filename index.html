@@ -291,6 +291,31 @@ em,i{font-style:normal;}
 .ghost__links{display:flex;gap:var(--s3);margin-top:var(--s2);}
 .ghost.is-hidden{opacity:0;visibility:hidden;transition:opacity var(--d-slow) var(--e-out),visibility var(--d-slow);}
 
+/* ---------- role-fit résumé picker (Enhancement 02) ---------- */
+/* Screen 0 entry point - quiet, secondary, beneath the three bands. Not a
+   fourth path: no time budget, no rail entry, no hash. See design §8.10. */
+.resume-picker-entry{display:block;margin-top:var(--s4);}
+/* Entry point 2 - a disclosure inside the ghost's existing Peek state,
+   reusing the §8.7 deep-panel toggle/region pattern rather than a new one. */
+.resume-picker{margin-top:var(--s3);border-top:1px solid var(--line);padding-top:var(--s3);}
+.resume-picker__toggle{display:block;}
+.resume-picker__panel{display:none;margin-top:var(--s2);}
+.resume-picker__panel.is-open{display:block;animation:fade var(--d-mid) var(--e-out) both;}
+.resume-picker__chips{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s3);}
+.resume-picker__chip{border-bottom:1px solid var(--line);}
+/* The one visual departure allowed here per §8.10 - orange 2px, permanent
+   while selected, never filled (the filled-button exception stays Screen E's
+   download button only). */
+.resume-picker__chip.is-selected{border-bottom:2px solid var(--orange);}
+.resume-picker__confirm{font-size:var(--t-micro);color:var(--ink-muted);margin-top:var(--s2);min-height:1.4em;transition:color var(--d-fast) var(--e-inout);}
+.resume-picker__confirm.is-flash{color:var(--yellow);}
+.resume-picker__close{margin-top:var(--s2);}
+/* Widen to fit the chip row, desktop only - mobile keeps the ghost's existing
+   full-width strip behavior (§10) and must not fight that override. */
+@media (min-width:768px){
+  .ghost__peek.is-picker-open{width:360px;}
+}
+
 /* ---------- close ---------- */
 .close{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding-block:var(--s6);}
 .close__line{font-size:var(--t-beat);max-width:18ch;margin-bottom:var(--s5);}
@@ -412,6 +437,8 @@ em,i{font-style:normal;}
       </span>
     </button>
   </div>
+
+  <button class="btn resume-picker-entry" type="button" data-resume-picker-link>Hiring for something specific? Get the résumé built for it →</button>
 </nav>
 
 <main id="main">
@@ -808,8 +835,16 @@ em,i{font-style:normal;}
       <li><b>200+ vendors</b> and <b>14K+ SKUs</b> managed through Syndigo PIM at Pet Supermarket</li>
     </ul>
     <div class="ghost__links">
-      <a class="btn" href="2026_Resume_Phillip_Da_Silva_Marquis.pdf" target="_blank" rel="noopener" data-ga="resume_preview">Preview</a>
-      <a class="btn" href="2026_Resume_Phillip_Da_Silva_Marquis.pdf" download data-ga="resume_download">Download</a>
+      <a class="btn" href="2026_Resume_Phillip_Da_Silva_Marquis.pdf" target="_blank" rel="noopener" data-ga="resume_preview" data-resume-preview>Preview</a>
+      <a class="btn" href="2026_Resume_Phillip_Da_Silva_Marquis.pdf" download data-ga="resume_download" data-resume-download>Download</a>
+    </div>
+    <div class="resume-picker" data-resume-picker>
+      <button class="btn resume-picker__toggle" type="button" data-resume-picker-toggle aria-expanded="false" aria-controls="resumePickerPanel">Tailored for a specific role?</button>
+      <div class="resume-picker__panel" id="resumePickerPanel">
+        <div class="resume-picker__chips" data-resume-chips></div>
+        <p class="resume-picker__confirm" data-resume-confirm></p>
+        <button class="btn resume-picker__close" type="button" data-resume-picker-close>Done</button>
+      </div>
     </div>
   </div>
   <button class="ghost__btn" id="ghostBtn" type="button" aria-expanded="false" aria-controls="ghostPeek">Résumé</button>
@@ -831,7 +866,7 @@ em,i{font-style:normal;}
   <h4>Credentials</h4>
   <p>PSPO I (Udemy) · Studying for PSM I (scrum.org)<br>Bachelor of Arts in Communication · Minor in English · Florida Atlantic University</p>
   <div class="card__cta">
-    <a class="btn-filled" href="2026_Resume_Phillip_Da_Silva_Marquis.pdf" download data-ga="resume_download">Download the résumé</a>
+    <a class="btn-filled" href="2026_Resume_Phillip_Da_Silva_Marquis.pdf" download data-ga="resume_download" data-resume-download>Download the résumé</a>
   </div>
   <div class="card__alt">
     <button class="btn" type="button" data-longer hidden>I've got more time →</button>
@@ -855,7 +890,7 @@ var BUDGET=PATH_BUDGET_SECONDS;
 var choice=D.getElementById('choice'), rail=D.getElementById('rail'),
     fill=D.getElementById('railFill'), cap=D.getElementById('railCap'), num=D.getElementById('railNum'),
     wordmark=D.getElementById('wordmark'), announce=D.getElementById('announce'),
-    ghost=D.getElementById('ghost'), ghostBtn=D.getElementById('ghostBtn'),
+    ghost=D.getElementById('ghost'), ghostBtn=D.getElementById('ghostBtn'), ghostPeek=D.getElementById('ghostPeek'),
     tpl=D.getElementById('cardTpl');
 var threads={}, active=null, minRemaining=Infinity, doneFlashed=false;
 
@@ -1036,6 +1071,80 @@ function buildCaseEyebrows(thread){
    re-picking a path, never on a loop. Fired from paintBeatTwoState(). */
 var ghostPeeked=false;
 
+/* ---------- role-fit résumé picker (Enhancement 02) ----------
+   Single source for the chip list, mirroring content bank v4.1 §10. Add a
+   row here (and to the bank) to add a job type - nothing else in the build
+   needs to change. Delivery Lead is intentionally omitted: flagged not-ready
+   in the bank, not shippable yet (see Enhancement 02 §4). */
+var RESUME_DEFAULT={key:'DEFAULT',label:'General résumé',file:'2026_Resume_Phillip_Da_Silva_Marquis.pdf'};
+var RESUME_VARIANTS=[
+  {key:'PO',label:'Product Owner',file:'resumes/phillip-dasilvamarquis-resume-product-owner.pdf'},
+  {key:'SBA',label:'Senior Business Analyst',file:'resumes/phillip-dasilvamarquis-resume-senior-business-analyst.pdf'},
+  {key:'PM',label:'Digital Product Manager',file:'resumes/phillip-dasilvamarquis-resume-digital-product-manager.pdf'},
+  {key:'ECOMMERCE',label:'Ecommerce & Digital Transformation',file:'resumes/phillip-dasilvamarquis-resume-ecommerce-digital-transformation.pdf'}
+];
+var RESUME_ALL=[RESUME_DEFAULT].concat(RESUME_VARIANTS);
+var RESUME_STORAGE_KEY='resumeVariant';
+var selectedResume=RESUME_DEFAULT.key;
+try{
+  var storedResume=sessionStorage.getItem(RESUME_STORAGE_KEY);
+  if(storedResume&&RESUME_ALL.some(function(r){return r.key===storedResume;})) selectedResume=storedResume;
+}catch(e){}
+
+function findResume(key){
+  var hit=null;
+  RESUME_ALL.forEach(function(r){ if(r.key===key) hit=r; });
+  return hit||RESUME_DEFAULT;
+}
+
+/* Updates every résumé link on the page (the ghost's own Preview/Download,
+   plus the Download button inside all three close-card clones), the chip
+   selected-state, and the confirmation line/live-region announcement. */
+function applyResumeSelection(key,announceIt){
+  var r=findResume(key);
+  selectedResume=r.key;
+  try{ sessionStorage.setItem(RESUME_STORAGE_KEY,r.key); }catch(e){}
+
+  [].forEach.call(D.querySelectorAll('[data-resume-download]'),function(a){ a.href=r.file; });
+  [].forEach.call(D.querySelectorAll('[data-resume-preview]'),function(a){ a.href=r.file; });
+
+  [].forEach.call(D.querySelectorAll('.resume-picker__chip'),function(btn){
+    var on=btn.dataset.resumeKey===r.key;
+    btn.classList.toggle('is-selected',on);
+    btn.setAttribute('aria-pressed',on?'true':'false');
+  });
+
+  var confirmEl=D.querySelector('[data-resume-confirm]');
+  if(confirmEl){
+    var text='Now showing: '+r.label;
+    confirmEl.textContent=text;
+    if(announceIt){
+      confirmEl.classList.remove('is-flash');
+      void confirmEl.offsetWidth; /* restart the transition on repeat selections */
+      confirmEl.classList.add('is-flash');
+      setTimeout(function(){ confirmEl.classList.remove('is-flash'); },900);
+      /* reuse the existing path-change live region (§11 item 5) rather than
+         adding a second one */
+      announce.textContent=text;
+      ga('resume_variant_select',{variant:r.key});
+    }
+  }
+}
+
+function buildResumeChips(){
+  var wrap=D.querySelector('[data-resume-chips]');
+  if(!wrap||wrap.dataset.built) return;
+  wrap.dataset.built='1';
+  RESUME_ALL.forEach(function(r){
+    var b=D.createElement('button');
+    b.type='button'; b.className='btn resume-picker__chip';
+    b.textContent=r.label; b.dataset.resumeKey=r.key;
+    b.setAttribute('aria-pressed','false');
+    b.addEventListener('click',function(){ applyResumeSelection(r.key,true); });
+    wrap.appendChild(b);
+  });
+}
+
 function hashFor(p){ return p==='A'?'#p1':p==='B'?'#p3':'#p5'; }
 function pathFor(h){ return h==='#p1'?'A':h==='#p3'?'B':h==='#p5'?'C':null; }
 
@@ -1209,6 +1318,60 @@ var DWELL_MS=1200, DWELL_GRACE=150, DWELL_SLOP=10;
 var ghostTimer, ghostViaPointer=false;
 function ghostOpen(){ ghost.classList.add('is-open'); ghostBtn.setAttribute('aria-expanded','true'); }
 function ghostClose(){ ghost.classList.remove('is-open'); ghostBtn.setAttribute('aria-expanded','false'); }
+
+/* Résumé picker disclosure - mirrors the §8.7 deep-panel toggle pattern.
+   A click interaction only; never opened by the outer peek's hover/dwell. */
+var resumePickerToggle=D.querySelector('[data-resume-picker-toggle]');
+var resumePickerPanel=D.getElementById('resumePickerPanel');
+var resumePickerClose=D.querySelector('[data-resume-picker-close]');
+var resumePickerLink=D.querySelector('[data-resume-picker-link]');
+
+function openResumePicker(focusChips){
+  resumePickerPanel.classList.add('is-open');
+  resumePickerToggle.setAttribute('aria-expanded','true');
+  ghostPeek.classList.add('is-picker-open');
+  if(focusChips){
+    /* setTimeout, not requestAnimationFrame: rAF callbacks are suspended
+       entirely while the tab isn't actively painting, and a click can be the
+       last thing that happens before that (e.g. the window losing focus
+       right after). setTimeout still fires either way, and mousedown above
+       already stops the browser's own click-focuses-the-button default
+       action from having anything to win against. */
+    setTimeout(function(){
+      var firstChip=resumePickerPanel.querySelector('.resume-picker__chip');
+      if(firstChip) firstChip.focus();
+    },0);
+  }
+}
+function closeResumePicker(){
+  resumePickerPanel.classList.remove('is-open');
+  resumePickerToggle.setAttribute('aria-expanded','false');
+  ghostPeek.classList.remove('is-picker-open');
+}
+/* A mouse click's native default action focuses the clicked <button> itself;
+   that default action can resolve after our own click handler and silently
+   win a same-or-later-tick .focus() redirect to a different element. Both
+   buttons below deliberately move focus elsewhere on click ("MUST land
+   inside the expanded chip row when the picker opens via click"), so both
+   suppress that default via mousedown before it can compete. */
+function suppressClickFocus(e){ e.preventDefault(); }
+resumePickerToggle.addEventListener('mousedown',suppressClickFocus);
+resumePickerToggle.addEventListener('click',function(){
+  resumePickerPanel.classList.contains('is-open') ? closeResumePicker() : openResumePicker(true);
+});
+resumePickerClose.addEventListener('click',closeResumePicker);
+
+/* Screen 0 entry point (§8.10 entry point 1) - the one deliberate click
+   trigger for a Peek state that otherwise only opens on hover/dwell. Does
+   not start a path, does not scroll, does not touch the rail or the hash. */
+if(resumePickerLink){
+  resumePickerLink.addEventListener('mousedown',suppressClickFocus);
+  resumePickerLink.addEventListener('click',function(){
+    ghostOpen();
+    openResumePicker(true);
+    ga('resume_picker_open',{via:'screen0_link'});
+  });
+}
 /* pointer focus must not pre-open, or the click below would immediately close it */
 ghostBtn.addEventListener('pointerdown',function(){ ghostViaPointer=true; });
 ghostBtn.addEventListener('click',function(){
@@ -1261,6 +1424,10 @@ window.addEventListener('popstate',function(){
   var p=pathFor(location.hash);
   if(p) start(p,0); else toChoice();
 });
+
+/* ---------- résumé picker boot ---------- */
+buildResumeChips();
+applyResumeSelection(selectedResume,false);
 
 /* ---------- boot ---------- */
 var initial=pathFor(location.hash);

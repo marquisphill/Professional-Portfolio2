@@ -50,6 +50,12 @@
   --t-body:1rem; --t-meta:.8125rem; --t-micro:.6875rem;
 
   --s1:8px; --s2:16px; --s3:24px; --s4:40px; --s5:64px; --s6:96px; --s7:160px;
+  /* Enhancement 05 item 6: one base measure. Every vertical rest on the page is
+     a multiple of it - 1x inside a section, 2x at a section break, 3x around the
+     covenant line - so the spacing repeats like bars instead of reading random.
+     Deliberately no new rule lines: the design's no-separators rule stands, and
+     the case-eyebrow tick is still its only scoped exception. */
+  --measure:clamp(40px,7vh,72px);
   --r-sm:4px; --r-md:10px; --r-lg:20px; --r-pill:999px;
 
   --e-out:cubic-bezier(.22,1,.36,1);
@@ -132,7 +138,7 @@ em,i{font-style:normal;}
 .wordmark a:hover .wordmark__chev,.wordmark a:focus-visible .wordmark__chev{color:var(--orange);}
 
 /* ---------- SCREEN 0 ---------- */
-.choice{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-block:var(--s5) var(--s4);}
+.choice{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-block:calc(var(--measure)*1.5) var(--measure);}
 .choice__mark{font-size:var(--t-meta);color:var(--ink-muted);margin-bottom:var(--s4);}
 .choice__id{font-size:clamp(1.9rem,4.6vw,3.4rem);max-width:26ch;margin-bottom:var(--s3);}
 .choice__prompt{font-size:var(--t-meta);color:var(--ink-muted);margin-bottom:var(--s3);}
@@ -156,7 +162,10 @@ em,i{font-style:normal;}
 
 /* ---------- threads & beats ---------- */
 .thread{padding-left:0;}
-.beat{min-height:82vh;display:flex;flex-direction:column;justify-content:center;padding-block:var(--s5);}
+.beat{min-height:82vh;display:flex;flex-direction:column;justify-content:center;padding-block:var(--measure);}
+/* 2x rest before a case opens, 1x inside it. The pattern repeats across C5-C8,
+   so the eye learns where the next case study begins before reading a word. */
+.beat[data-case]{padding-top:calc(var(--measure)*2);}
 .beat__eyebrow{font-size:var(--t-micro);text-transform:uppercase;letter-spacing:.14em;color:var(--ink-muted);margin-bottom:var(--s3);}
 /* Enhancement 01 item 4: marks the seam between back-to-back case studies.
    In-column row, no full-bleed rule, no background band - the scoped exception
@@ -170,8 +179,8 @@ em,i{font-style:normal;}
 .beat__line{font-size:var(--t-beat);max-width:20ch;}
 .beat__line--sm{font-size:clamp(1.5rem,3.6vw,2.4rem);max-width:28ch;}
 .beat__sub{font-size:var(--t-lead);color:var(--ink-muted);margin-top:var(--s3);max-width:52ch;}
-.beat__payload{margin-top:var(--s4);}
-.beat__hook{font-size:var(--t-lead);color:var(--ink-muted);margin-top:var(--s4);max-width:46ch;}
+.beat__payload{margin-top:calc(var(--measure)*.75);}
+.beat__hook{font-size:var(--t-lead);color:var(--ink-muted);margin-top:calc(var(--measure)*.75);max-width:46ch;}
 
 /* peel: at rest the line sits dim; reveal resolves it */
 /* Enhancement 01 item 2: reveal is a pure function of scroll position (--rv),
@@ -319,8 +328,96 @@ em,i{font-style:normal;}
   .ghost__peek.is-picker-open{width:360px;}
 }
 
+/* ---------- the escape hatch (Enhancement 05 item 2) ---------- */
+/* Reuses the band grid so the numeral lines up with the three paths, then steps
+   back from them: no wipe, no rule, smaller type, held at low opacity until
+   touched. It reads as a way out, not as a fourth path. */
+.band--out{
+  min-height:0;margin-top:var(--s3);padding:var(--s2) 0;
+  border-bottom:0;opacity:.45;
+  transition:opacity var(--d-fast) var(--e-inout);
+}
+.band--out:hover,.band--out:focus-visible{opacity:1;}
+.band--out .band__dur b{font-size:clamp(1rem,1.8vw,1.3rem);}
+.band--out .band__name{font-size:var(--t-meta);letter-spacing:.14em;}
+.band--out .band__promise{font-size:var(--t-micro);}
+
+/* ---------- band rhythm (Enhancement 05 item 5) ---------- */
+/* Each path carries its own tempo. At rest the stack is square; on hover or
+   focus the text moves to its own alignment, so running the cursor up the three
+   bands reads as a polyrhythm rather than a list.
+   margin-left is a percentage of the band body and translateX a percentage of
+   the text's own width, so the pair lands on true left / centre / right - and
+   both animate, which text-align does not. */
+.band__text{
+  display:inline-block;text-align:left;
+  /* max-content, not shrink-to-fit: at margin-left:100% the available width is
+     zero, and a shrink-to-fit box would collapse to min-content and wrap the
+     promise line onto four rows on the way across. max-width keeps it honest on
+     narrow screens. */
+  width:max-content;max-width:100%;
+  transition:margin-left var(--d-mid) var(--e-out),transform var(--d-mid) var(--e-out);
+}
+.band__name{transition:letter-spacing var(--d-mid) var(--e-out);}
+/* Below 768px the band collapses to one column, where throwing the text across
+   the screen is a lurch, not a rhythm - there the letter-spacing carries it
+   alone. The no-preference guard is what keeps reduced motion out of all of it,
+   rather than an override further down. */
+@media (min-width:768px) and (prefers-reduced-motion:no-preference){
+  .band[data-path="B"]:hover .band__text,.band[data-path="B"]:focus-visible .band__text{margin-left:50%;transform:translateX(-50%);}
+  .band[data-path="C"]:hover .band__text,.band[data-path="C"]:focus-visible .band__text{margin-left:100%;transform:translateX(-100%);}
+}
+@media (prefers-reduced-motion:no-preference){
+  .band[data-path="B"]:hover .band__name,.band[data-path="B"]:focus-visible .band__name{letter-spacing:.08em;}
+  .band[data-path="C"]:hover .band__name,.band[data-path="C"]:focus-visible .band__name{letter-spacing:.14em;}
+}
+
+/* ---------- the number (Enhancement 05 item 2) ---------- */
+.numbers{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-block:calc(var(--measure)*1.5);}
+.numbers[hidden]{display:none;}
+.numbers__id{font-size:clamp(1.9rem,4.6vw,3.4rem);max-width:22ch;}
+.numbers__ratios{
+  display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s2) var(--s3);
+  margin-top:calc(var(--measure)*1.5);
+  font-size:clamp(1.15rem,2.6vw,2.1rem);line-height:1.2;
+}
+.numbers__r{white-space:nowrap;}
+.numbers__ratios .to{color:var(--orange);}
+.numbers__gap{color:var(--ink-faint);}
+.numbers__gloss{font-size:var(--t-meta);color:var(--ink-muted);margin-top:var(--s2);}
+.numbers__out{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:calc(var(--measure)*1.5);}
+
+/* ---------- covenant line (Enhancement 05 item 3) ---------- */
+/* Neither a section header nor a case headline, and lighter than both. 3x
+   measure around it is the widest rest on the page - it is a pause, not a
+   transition. */
+.covenant{
+  font-size:var(--t-lead);line-height:1.5;color:var(--ink-muted);
+  max-width:46ch;padding-block:calc(var(--measure)*3);
+}
+
+/* ---------- sound control (Enhancement 05 item 4) ---------- */
+/* Opt-in, so the control is visible rather than buried. Mirrors the résumé
+   ghost's corner from the opposite side. */
+.sound{position:fixed;left:var(--s3);bottom:var(--s3);z-index:70;}
+.sound[hidden]{display:none;}
+.sound__btn{
+  display:inline-flex;align-items:center;gap:8px;min-height:44px;
+  background:var(--bg);border:1px solid var(--line);border-radius:var(--r-pill);
+  padding:8px 16px;cursor:pointer;
+  font:inherit;font-size:var(--t-micro);text-transform:uppercase;letter-spacing:.14em;
+  color:var(--ink-faint);
+  transition:color var(--d-fast) var(--e-inout),border-color var(--d-fast) var(--e-inout);
+}
+.sound__btn:hover,.sound__btn:focus-visible,.sound__btn[aria-pressed="true"]{color:var(--ink);border-color:var(--line-strong);}
+.sound__wave{display:inline-flex;align-items:flex-end;gap:2px;height:12px;}
+.sound__wave i{display:block;width:2px;height:3px;background:currentColor;transition:height var(--d-fast) var(--e-out);}
+.sound__btn[aria-pressed="true"] .sound__wave i:nth-child(1){height:6px;}
+.sound__btn[aria-pressed="true"] .sound__wave i:nth-child(2){height:12px;}
+.sound__btn[aria-pressed="true"] .sound__wave i:nth-child(3){height:8px;}
+
 /* ---------- close ---------- */
-.close{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding-block:var(--s6);}
+.close{min-height:92vh;display:flex;flex-direction:column;justify-content:center;padding-block:calc(var(--measure)*2.5);}
 .close__line{font-size:var(--t-beat);max-width:18ch;margin-bottom:var(--s5);}
 .card{
   border:1px solid var(--line-strong);border-radius:var(--r-lg);padding:var(--s4);
@@ -337,7 +434,7 @@ em,i{font-style:normal;}
 .card__cta{margin-top:var(--s4);}
 .card__alt{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s3);}
 
-.foot{padding:var(--s5) 0 var(--s6);border-top:1px solid var(--line);margin-top:var(--s6);}
+.foot{padding:calc(var(--measure)*1.5) 0 calc(var(--measure)*2);border-top:1px solid var(--line);margin-top:calc(var(--measure)*2);}
 .foot p{font-size:var(--t-meta);color:var(--ink-faint);}
 .foot a{border-bottom:1px solid var(--line);}
 .foot a:hover{border-bottom-color:var(--orange);color:var(--ink);}
@@ -374,6 +471,13 @@ em,i{font-style:normal;}
   .ghost{right:0;left:0;bottom:0;}
   .ghost__btn{width:100%;border-radius:0;border-left:0;border-right:0;border-bottom:0;background:var(--bg-raised);text-align:center;min-height:44px;}
   .ghost__peek{right:var(--s2);left:var(--s2);width:auto;}
+  /* the ghost becomes a full-width bottom strip here, so the sound control
+     sits directly above it rather than under it. The label goes to the
+     accessible name only: a pill wide enough to read sits on top of body copy
+     at this width, and a 44px target in the corner does not. */
+  .sound{left:var(--s2);bottom:calc(44px + var(--s2));}
+  .sound__btn{width:44px;padding:0;justify-content:center;border-radius:50%;}
+  .sound__label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 }
 @media (max-width:399px){
   .beat__line{font-size:1.75rem;}
@@ -408,46 +512,89 @@ em,i{font-style:normal;}
 <div class="wordmark" id="wordmark"><a href="#" data-escape aria-label="Return to path choice"><span class="wordmark__chev" aria-hidden="true">‹</span>Phillip Da Silva-Marquis</a></div>
 <p class="sr-only" aria-live="polite" id="announce"></p>
 
+<!-- Enhancement 05 item 4: sound is opt-in (Phill's call on the open decision),
+     so the control has to be visible rather than buried in a settings panel.
+     Mirrors the résumé ghost's corner, on the opposite side. -->
+<div class="sound" id="sound" hidden>
+  <button class="sound__btn" id="soundBtn" type="button" aria-pressed="false">
+    <span class="sound__wave" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="sound__label">Sound off</span>
+  </button>
+</div>
+
 <!-- ============ SCREEN 0 — THE CHOICE ============ -->
 <nav class="choice wrap" id="choice" aria-label="Choose how much time you have">
   <p class="choice__mark">Phillip Da Silva-Marquis</p>
-  <h1 class="choice__id">Senior Business Analyst. Retail floor to enterprise modernization, ten years.</h1>
-  <p class="choice__prompt">How long do you have?</p>
+  <h1 class="choice__id">Senior Business Analyst. Ten years.</h1>
+  <p class="choice__prompt">Choose how much time you have. I’ll meet you there.</p>
 
   <div class="bands">
     <button class="band" data-path="A" type="button">
       <span class="band__wipe"></span>
       <span class="band__dur"><b data-dur>0:35</b></span>
-      <span class="band__body">
-        <span class="band__name">THE BRIEF</span>
-        <span class="band__promise">Enough to pitch me in a meeting.</span>
-      </span>
+      <span class="band__body"><span class="band__text">
+  <span class="band__name">THE BRIEF</span>
+  <span class="band__promise">Enough to pitch me in a meeting.</span>
+      </span></span>
     </button>
     <button class="band" data-path="B" type="button">
       <span class="band__wipe"></span>
       <span class="band__dur"><b data-dur>1:40</b></span>
-      <span class="band__body">
-        <span class="band__name">THE CASE</span>
-        <span class="band__promise">The numbers, and where they came from.</span>
-      </span>
+      <span class="band__body"><span class="band__text">
+  <span class="band__name">THE CASE</span>
+  <span class="band__promise">The numbers, and where they came from.</span>
+      </span></span>
     </button>
     <button class="band" data-path="C" type="button">
       <span class="band__wipe"></span>
       <span class="band__dur"><b data-dur>11:00</b></span>
-      <span class="band__body">
-        <span class="band__name">THE OPERATOR</span>
-        <span class="band__promise">How I think. The whole record.</span>
-      </span>
+      <span class="band__body"><span class="band__text">
+  <span class="band__name">THE OPERATOR</span>
+  <span class="band__promise">How I think. The whole record.</span>
+      </span></span>
     </button>
   </div>
+
+  <!-- Enhancement 05 item 2: not a fourth path - an escape hatch. No time
+       budget, no rail, no beats. Sits outside .bands and is styled down so the
+       three paths keep the weight of the screen. -->
+  <button class="band band--out" type="button" data-shortcut>
+    <span class="band__dur"><b data-dur-out>0:15</b></span>
+    <span class="band__body"><span class="band__text">
+      <span class="band__name">JUST THE NUMBER</span>
+      <span class="band__promise">The proof, then the door.</span>
+    </span></span>
+  </button>
 
   <button class="btn resume-picker-entry" type="button" data-resume-picker-link>Hiring for something specific? Get the résumé built for it →</button>
 </nav>
 
 <main id="main">
 
+<!-- ============ THE NUMBER - 15 SECONDS ============ -->
+<section class="numbers wrap" id="numbers" aria-label="The number" hidden>
+  <h2 class="numbers__id">Senior Business Analyst. Ten years.</h2>
+  <p class="numbers__ratios mono">
+    <span class="numbers__r">1,000 <span class="to">→</span> 20</span>
+    <span class="numbers__gap" aria-hidden="true">·</span>
+    <span class="numbers__r">6 weeks <span class="to">→</span> 2 weeks</span>
+    <span class="numbers__gap" aria-hidden="true">·</span>
+    <span class="numbers__r">1 week <span class="to">→</span> 1 day</span>
+  </p>
+  <p class="numbers__gloss">Legacy reports. Vendor onboarding. Rebate setup.</p>
+  <div class="numbers__out">
+    <a class="btn" href="2026_Resume_Phillip_Da_Silva_Marquis.pdf" target="_blank" rel="noopener" data-ga="resume_preview" data-resume-preview>View the full résumé</a>
+    <button class="btn" type="button" data-escape>See the paths</button>
+  </div>
+</section>
+
 <!-- ================= PATH A — 60 SECONDS ================= -->
 <div class="thread" data-path="A" data-budget="60">
+
+  <!-- Enhancement 05 item 3: one human moment, after the visitor has
+       committed to a path and before the site starts explaining. Same
+       words and same position on all three threads. -->
+  <p class="covenant wrap">A lot of BA work is about deciding what to kill. The rest is about deciding who does it and how fast. This site is ten years of doing both.</p>
 
   <section class="beat wrap" data-beat="1">
     <h2 class="beat__line">Ten years between the business and the build.</h2>
@@ -460,7 +607,7 @@ em,i{font-style:normal;}
 
   <section class="beat wrap" data-beat="3" data-hook="clause">
     <div class="beat__payload">
-      <div class="employers">
+      <div class="employers" data-chime>
         <div><div class="employer__name">Pet Supermarket</div><div class="employer__yrs">2013 – 2023</div></div>
         <div><div class="employer__name">FlexShopper</div><div class="employer__yrs">2023 – 2025</div></div>
         <div><div class="employer__name">CITY Furniture</div><div class="employer__yrs">2025 – 2026</div></div>
@@ -477,13 +624,18 @@ em,i{font-style:normal;}
   </section>
 
   <section class="close wrap" data-beat="5" data-close>
-    <h2 class="close__line">That took 35 seconds. Here is the résumé.</h2>
+    <h2 class="close__line">That took <span data-close-dur>35 seconds</span>. Here is the résumé.</h2>
     <div class="card" data-card></div>
   </section>
 </div>
 
 <!-- ================= PATH B — 3 MINUTES ================= -->
 <div class="thread" data-path="B" data-budget="180">
+
+  <!-- Enhancement 05 item 3: one human moment, after the visitor has
+       committed to a path and before the site starts explaining. Same
+       words and same position on all three threads. -->
+  <p class="covenant wrap">A lot of BA work is about deciding what to kill. The rest is about deciding who does it and how fast. This site is ten years of doing both.</p>
 
   <section class="beat wrap" data-beat="1" data-hook="count">
     <p class="beat__eyebrow">Four numbers worth repeating.</p>
@@ -510,8 +662,8 @@ em,i{font-style:normal;}
   </section>
 
   <section class="beat wrap" data-beat="2" data-hook="clause" data-case="PROCESS">
-    <h2 class="beat__line">Over 1,000 legacy reports. No record of which ones anyone still used.</h2>
-    <p class="beat__hook">I met with every owner and got it to 200. The last stretch does not scale by hand-</p>
+    <h2 class="beat__line">Over 1,000 legacy reports, no record of why.</h2>
+    <p class="beat__hook">I met every owner and got it to 200. The rest does not scale by hand-</p>
   </section>
 
   <section class="beat wrap" data-beat="3">
@@ -543,7 +695,7 @@ em,i{font-style:normal;}
     <h2 class="beat__line beat__line--sm">every answer came back with the source line attached.</h2>
     <div class="beat__payload">
       <p class="lead muted" style="margin-bottom:var(--s4)">Ten years of learning to build things like that:</p>
-      <div class="roles">
+      <div class="roles" data-chime>
         <div>
           <div class="role__co">CITY Furniture</div>
           <div class="role__range">Oct 2025 – Jul 2026 · Tamarac, FL</div>
@@ -578,7 +730,7 @@ em,i{font-style:normal;}
   </section>
 
   <section class="close wrap" data-beat="8" data-close>
-    <h2 class="close__line">That took 1 minute 40 seconds. You have the numbers and where they came from.</h2>
+    <h2 class="close__line">That took <span data-close-dur>1 minute 40 seconds</span>. The numbers, and where they came from.</h2>
     <div class="card" data-card></div>
   </section>
 </div>
@@ -586,38 +738,42 @@ em,i{font-style:normal;}
 <!-- ================= PATH C — 5 MINUTES ================= -->
 <div class="thread" data-path="C" data-budget="300">
 
+  <!-- Enhancement 05 item 3: one human moment, after the visitor has
+       committed to a path and before the site starts explaining. Same
+       words and same position on all three threads. -->
+  <p class="covenant wrap">A lot of BA work is about deciding what to kill. The rest is about deciding who does it and how fast. This site is ten years of doing both.</p>
+
   <section class="beat wrap" data-beat="1">
     <p class="beat__eyebrow">Four things I do.</p>
     <h2 class="beat__line beat__line--sm">Decide what to kill</h2>
-    <p class="beat__sub measure">Most analysis work goes into deciding what to build. Deciding what to stop doing is harder and usually worth more. Getting 1,000 reports down to 20 took a retirement conversation with every owner, one at a time.</p>
+    <p class="beat__sub measure">Deciding what to build is the easy half. Getting 1,000 reports down to 20 took a retirement conversation with every owner, one at a time.</p>
   </section>
 
   <section class="beat wrap" data-beat="2" data-hook="clause">
     <h2 class="beat__line beat__line--sm">Set the rules before AI runs</h2>
-    <p class="beat__sub measure">AI gets through an analysis pass in an afternoon that used to take months. What makes the output usable is deciding up front what it has to show you. On the report work I told it what to merge, told it to show its work on every merge, and kept the final call on what actually merged. The artifacts that came back, a coverage manifest and an evidence trail, I kept, adjusted, and used to check the results before the business saw anything.</p>
+    <p class="beat__sub measure">AI gets through in an afternoon what used to take months. What makes the output usable is deciding up front what it has to show you. On the report work: what to merge, show the work on every merge, final call mine. The coverage manifest and evidence trail that came back are what I checked the results against.</p>
     <p class="beat__hook">Which comes out of something else I do-</p>
   </section>
 
   <section class="beat wrap" data-beat="3">
     <h2 class="beat__line beat__line--sm">I would rather build the tool than write the document again.</h2>
     <div class="beat__payload">
-      <p class="lead" style="margin-bottom:var(--s2)">Build the tool, not just the document</p>
-      <p class="measure muted">A BRD answers a question once. A searchable version of it answers the same question for everyone. Same reason behind the dashboards, the onboarding SOP, the vendor portal FAQ, and the PIM intake form. If something is taking too long by hand, I would rather leave behind something the next person can use.</p>
+      <p class="measure muted">A BRD answers a question once. A searchable version answers it for everyone. Same reason behind the dashboards, the onboarding SOP, the vendor portal FAQ, the PIM intake form.</p>
     </div>
   </section>
 
   <section class="beat wrap" data-beat="4" data-hook="clause">
     <h2 class="beat__line beat__line--sm">Find the gap nobody assigned</h2>
-    <p class="beat__sub measure">A prioritization method the team did not have. A requirements structure that was going to break once it hit development. A clause missing from a contract before anyone signed. A lot of what I have left behind started as something nobody asked for.</p>
+    <p class="beat__sub measure">A prioritization method the team did not have. A requirements structure that was going to break in development. A clause missing from a contract before anyone signed.</p>
     <p class="beat__hook">Four principles is easy to say. Here is all four on one project-</p>
   </section>
 
   <section class="beat wrap" data-beat="5" data-case="PROCESS">
-    <h2 class="beat__line beat__line--sm">over 1,000 reports, and no record of why most of them existed.</h2>
+    <h2 class="beat__line beat__line--sm">over 1,000 reports, and no record of why.</h2>
     <div class="beat__payload">
       <div class="panel">
         <div class="panel__head">Over 1,000 legacy reports cut to about 20 data models</div>
-        <p class="panel__one">Cut a decade of accumulated reporting down to the models worth rebuilding, with the work behind each decision checkable.</p>
+        <p class="panel__one">A decade of reporting cut to the models worth rebuilding, every decision checkable.</p>
         <button class="btn panel__trigger" type="button" data-panel aria-expanded="false" aria-controls="p-reports">Read the full case</button>
         <div class="panel__region" id="p-reports">
           <h4>Context</h4>
@@ -640,7 +796,7 @@ em,i{font-style:normal;}
     <div class="beat__payload">
       <div class="panel">
         <div class="panel__head">Replacing the order and inventory system, end to end</div>
-        <p class="panel__one">Owned requirements and delivery for the platform that replaced FlexShopper's legacy order system, its inventory management, and eventually its catalog ETL.</p>
+        <p class="panel__one">Owned requirements and delivery for the platform that replaced FlexShopper's order system, its inventory, and its catalog ETL.</p>
         <button class="btn panel__trigger" type="button" data-panel aria-expanded="false" aria-controls="p-lb">Read the full case</button>
         <div class="panel__region" id="p-lb">
           <h4>Context</h4>
@@ -663,7 +819,7 @@ em,i{font-style:normal;}
     <div class="beat__payload">
       <div class="panel">
         <div class="panel__head">A searchable requirements layer the whole BA team could use</div>
-        <p class="panel__one">Built a Claude Skill that let any analyst ask questions of hundreds of pages of BRDs and get answers back with the source line attached.</p>
+        <p class="panel__one">A Claude Skill that answered questions across hundreds of pages of BRDs, source line attached.</p>
         <button class="btn panel__trigger" type="button" data-panel aria-expanded="false" aria-controls="p-brd">Read the full case</button>
         <div class="panel__region" id="p-brd">
           <h4>Context</h4>
@@ -686,7 +842,7 @@ em,i{font-style:normal;}
     <div class="beat__payload">
       <div class="panel">
         <div class="panel__head">A new revenue channel, and a gap in the contract behind it</div>
-        <p class="panel__one">Built the Catalog-as-a-Service revenue-share program, then found the missing revenue-recovery mechanism in the MSA before anyone signed it.</p>
+        <p class="panel__one">Built the Catalog-as-a-Service revenue-share program, then found the gap in the MSA before anyone signed.</p>
         <button class="btn panel__trigger" type="button" data-panel aria-expanded="false" aria-controls="p-caas">Read the full case</button>
         <div class="panel__region" id="p-caas">
           <h4>Context</h4>
@@ -709,7 +865,7 @@ em,i{font-style:normal;}
   <section class="beat wrap" data-beat="9">
     <h2 class="beat__line beat__line--sm">The record</h2>
     <div class="beat__payload">
-      <div class="roles">
+      <div class="roles" data-chime>
         <div class="dwell" data-dwell tabindex="0">
           <div class="role__co">CITY Furniture</div>
           <div class="role__range">Sr. Business Analyst, Enterprise OMS Modernization · Oct 2025 – Jul 2026</div>
@@ -767,18 +923,18 @@ em,i{font-style:normal;}
     <h2 class="beat__line beat__line--sm">What I actually know how to do</h2>
     <div class="beat__payload">
       <div class="caps">
-        <div><div class="cap__t">Requirements &amp; analysis</div><div class="cap__l">Requirements discovery · BRDs &amp; FSDs · Gap analysis · Process modeling · UML (use case, sequence, activity) · User stories &amp; acceptance criteria · Traceability · UAT · Workshop facilitation · Visio</div></div>
-        <div><div class="cap__t">Delivery &amp; product ownership</div><div class="cap__l">Backlog ownership · Sprint planning · Scrum ceremonies · Prioritization frameworks · Release &amp; go-live coordination · Change management · Executive reporting · Jira · Confluence · Asana</div></div>
-        <div><div class="cap__t">Systems &amp; integrations</div><div class="cap__l">IBM Sterling OMS · IBM i/AS400 (legacy) · Logicbroker · NetSuite · Syndigo Riversand PIM · Salesforce Commerce Cloud · Oracle Commerce Cloud · BigCommerce · APIs &amp; EDI · Workflow automation</div></div>
-        <div><div class="cap__t">Data &amp; reporting</div><div class="cap__l">Report rationalization · Data mapping · Source-system analysis · Current/future-state modeling · SQL logic definition · Power BI · Excel modeling</div></div>
-        <div><div class="cap__t">AI in practice</div><div class="cap__l">Directing AI on analysis work · Setting rules and constraints for AI output · Reviewing and adapting AI output · Claude Skills · Requirements traceability · Automated status reporting · Document synthesis at scale</div></div>
+        <div><div class="cap__t">Requirements &amp; analysis</div><div class="cap__l">Requirements discovery · BRDs &amp; FSDs · Gap analysis · Process modeling · UML · User stories · Traceability · UAT · Workshop facilitation · Visio</div></div>
+        <div><div class="cap__t">Delivery &amp; product ownership</div><div class="cap__l">Backlog ownership · Sprint planning · Scrum ceremonies · Prioritization · Release &amp; go-live · Change management · Executive reporting · Jira · Confluence · Asana</div></div>
+        <div><div class="cap__t">Systems &amp; integrations</div><div class="cap__l">IBM Sterling OMS · IBM i/AS400 · Logicbroker · NetSuite · Syndigo Riversand PIM · Salesforce Commerce Cloud · Oracle Commerce Cloud · BigCommerce · APIs &amp; EDI</div></div>
+        <div><div class="cap__t">Data &amp; reporting</div><div class="cap__l">Report rationalization · Data mapping · Source-system analysis · Current/future-state modeling · SQL · Power BI · Excel</div></div>
+        <div><div class="cap__t">AI in practice</div><div class="cap__l">Directing AI on analysis work · Setting the rules it works inside · Reviewing what it returns · Claude Skills · Requirements traceability · Automated status reporting</div></div>
         <div><div class="cap__t">Commerce &amp; catalog</div><div class="cap__l">Catalog operations · Product information management · Vendor &amp; marketplace onboarding · Order lifecycle · CRM &amp; lifecycle marketing · Oracle Responsys</div></div>
       </div>
     </div>
   </section>
 
   <section class="beat wrap" data-beat="11">
-    <h2 class="beat__line beat__line--sm">Four people who worked with me, in their own words.</h2>
+    <h2 class="beat__line beat__line--sm">Four people who worked with me.</h2>
     <div class="beat__payload">
       <div class="refs">
         <div class="ref">
@@ -816,12 +972,11 @@ em,i{font-style:normal;}
           </div>
         </div>
       </div>
-      <p class="measure muted" style="margin-top:var(--s5)">I tend to notice the thing nobody assigned. A prioritization method a team did not have. A requirements structure that was going to break once it hit development. A compliance conversation that was not happening anywhere, not just on my projects. A clause missing from a contract before anyone signed it.</p>
     </div>
   </section>
 
   <section class="close wrap" data-beat="12" data-close>
-    <h2 class="close__line">That took 11 minutes. That is the whole record.</h2>
+    <h2 class="close__line">That took <span data-close-dur>11 minutes</span>. That is the whole record.</h2>
     <div class="card" data-card></div>
   </section>
 </div>
@@ -887,14 +1042,21 @@ em,i{font-style:normal;}
 "use strict";
 var D=document, root=D.documentElement;
 var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-/* Enhancement 01 item 1: one source for path length. Screen 0's numeral and the
-   rail's remaining-time both derive from this - never hardcode a time twice. */
-var PATH_BUDGET_SECONDS={A:35,B:100,C:660};
+/* Enhancement 01 item 1: one source for path length. Screen 0's numeral, the
+   rail's remaining-time and each close line's "That took ..." all derive from
+   this - never hardcode a time twice.
+   Enhancement 05 recount: the compression pass took Path C from 3,054 words to
+   2,898 (660s -> 626s, rounded up to 630s). A and B each gained the covenant
+   line, ~28 words of body copy at reading speed, so ~10s on A and ~6s on B. */
+var PATH_BUDGET_SECONDS={A:45,B:105,C:630};
+/* Enhancement 05 item 2: the escape hatch's own length, same single source. */
+var SHORTCUT_SECONDS=15;
 var BUDGET=PATH_BUDGET_SECONDS;
 var choice=D.getElementById('choice'), rail=D.getElementById('rail'),
     fill=D.getElementById('railFill'), cap=D.getElementById('railCap'), num=D.getElementById('railNum'),
     wordmark=D.getElementById('wordmark'), announce=D.getElementById('announce'),
     ghost=D.getElementById('ghost'), ghostBtn=D.getElementById('ghostBtn'), ghostPeek=D.getElementById('ghostPeek'),
+    numbers=D.getElementById('numbers'), soundEl=D.getElementById('sound'), soundBtn=D.getElementById('soundBtn'),
     tpl=D.getElementById('cardTpl');
 var threads={}, active=null, minRemaining=Infinity, doneFlashed=false;
 
@@ -954,6 +1116,11 @@ function paintReveals(){
     /* counters stay forward-only by deliberate exception - a number ticking
        back down on scroll-up reads as the figure un-counting itself */
     if(p>.35) runCounters(b);
+    /* Enhancement 05 item 4: the timeline's acoustic footprint. Once per
+       element per path-start, like the counters - a tone that replayed every
+       time you scrolled back past it would stop being a signal. */
+    var ch=b.querySelector('[data-chime]');
+    if(ch&&p>.5&&!ch.dataset.rang){ ch.dataset.rang='1'; chime(); }
   });
   paintBeatTwoState();
 }
@@ -993,9 +1160,25 @@ function runCounters(scope){
 function fmt(s){ var m=Math.floor(s/60), r=Math.max(0,Math.round(s%60)); return m+':'+(r<10?'0':'')+r; }
 
 /* Screen 0 numerals come from PATH_BUDGET_SECONDS, same as the rail. */
-[].forEach.call(D.querySelectorAll('.band'),function(b){
+[].forEach.call(D.querySelectorAll('.band[data-path]'),function(b){
   var el=b.querySelector('[data-dur]');
   if(el) el.textContent=fmt(PATH_BUDGET_SECONDS[b.dataset.path]);
+});
+var durOut=D.querySelector('[data-dur-out]');
+if(durOut) durOut.textContent=fmt(SHORTCUT_SECONDS);
+
+/* The spoken form of the same number. Each close line reads "That took ..." and
+   must never disagree with the numeral the visitor picked on Screen 0, so both
+   come out of PATH_BUDGET_SECONDS rather than being typed into the HTML. */
+function phrase(sec){
+  var m=Math.floor(sec/60), r=sec%60;
+  var mm=m?m+(m===1?' minute':' minutes'):'';
+  var ss=r?r+(r===1?' second':' seconds'):'';
+  return mm&&ss?mm+' '+ss:(mm||ss);
+}
+[].forEach.call(D.querySelectorAll('[data-close-dur]'),function(el){
+  var t=el.closest('.thread');
+  if(t) el.textContent=phrase(PATH_BUDGET_SECONDS[t.dataset.path]);
 });
 
 function updateRail(){
@@ -1037,8 +1220,11 @@ function start(path,scrollTo){
   var t=threads[path];
   t.hidden=false; t.classList.add('is-active');
   choice.classList.add('is-gone');
+  numbers.hidden=true;
   rail.classList.add('is-on');
   wordmark.classList.remove('is-on');
+  soundEl.hidden=false;
+  [].forEach.call(t.querySelectorAll('[data-chime]'),function(el){ delete el.dataset.rang; });
 
   buildCaseEyebrows(t);
   runCounters(t.querySelector('.beat'));
@@ -1049,7 +1235,7 @@ function start(path,scrollTo){
   updateRail();
   paintReveals();
   var n=t.querySelectorAll('.beat,[data-close]').length;
-  announce.textContent='Now on the '+(path==='A'?'35 second':path==='B'?'1 minute 40 second':'11 minute')+' path, '+n+' sections.';
+  announce.textContent='Now on the '+phrase(PATH_BUDGET_SECONDS[path])+' path, '+n+' sections.';
   if(location.hash!==hashFor(path)) history.pushState({path:path},'',hashFor(path));
 }
 
@@ -1167,17 +1353,42 @@ function pathFor(h){ return h==='#p1'?'A':h==='#p3'?'B':h==='#p5'?'C':null; }
 function toChoice(){
   if(active&&threads[active]){ threads[active].hidden=true; threads[active].classList.remove('is-active'); }
   active=null; choice.classList.remove('is-gone');
+  numbers.hidden=true; soundEl.hidden=true;
   rail.classList.remove('is-on'); wordmark.classList.remove('is-on');
   ghost.classList.remove('is-hidden','is-open');
   window.scrollTo(0,0);
   if(location.hash) history.pushState({},'',location.pathname);
 }
 
-[].forEach.call(D.querySelectorAll('.band'),function(b){
+/* Enhancement 05 item 2: the escape hatch. Deliberately not a path - no thread,
+   no beats, no rail, nothing counting down. It is one screen with the three
+   ratios on it and two ways out, and it reuses toChoice() for the way back so
+   there is only ever one teardown. */
+function showNumbers(push){
+  if(active&&threads[active]){ threads[active].hidden=true; threads[active].classList.remove('is-active'); }
+  active=null;
+  choice.classList.add('is-gone');
+  numbers.hidden=false;
+  rail.classList.remove('is-on');
+  soundEl.hidden=true;
+  wordmark.classList.add('is-on');
+  ghost.classList.remove('is-hidden');
+  window.scrollTo(0,0);
+  announce.textContent='The number. Three ratios and the r\u00e9sum\u00e9.';
+  if(push&&location.hash!=='#n') history.pushState({numbers:1},'','#n');
+}
+
+[].forEach.call(D.querySelectorAll('.band[data-path]'),function(b){
   b.addEventListener('click',function(){
     ga('path_select',{path:b.dataset.path});
     start(b.dataset.path,0);
   });
+});
+
+var shortcutBtn=D.querySelector('[data-shortcut]');
+if(shortcutBtn) shortcutBtn.addEventListener('click',function(){
+  ga('path_select',{path:'NUMBER'});
+  showNumbers(true);
 });
 
 [].forEach.call(D.querySelectorAll('[data-escape]'),function(a){
@@ -1330,6 +1541,66 @@ var DWELL_MS=1200, DWELL_GRACE=150, DWELL_SLOP=10;
   });
 });
 
+/* ---------- timeline chime (Enhancement 05 item 4) ----------
+   Opt-in by default, per the open decision in the enhancement file. Two
+   oscillators and one gain envelope is the whole sound, so there is nothing to
+   preload and no library to pull in. The AudioContext is only ever constructed
+   inside the toggle's own click handler, which doubles as the user gesture
+   browsers require before a page is allowed to make any noise at all. */
+var SOUND_KEY='timelineSound';
+var soundOn=false, audioCtx=null, lastChime=0;
+/* localStorage, not the sessionStorage the résumé picker uses: a preference
+   about whether a site is allowed to make noise should outlive the tab. */
+try{ soundOn=localStorage.getItem(SOUND_KEY)==='on'; }catch(e){}
+
+function chime(){
+  if(!soundOn) return;
+  var t=Date.now();
+  if(t-lastChime<450) return;   /* never machine-gun on a fast scroll */
+  lastChime=t;
+  try{
+    var AC=window.AudioContext||window.webkitAudioContext;
+    if(!AC) return;
+    if(!audioCtx) audioCtx=new AC();
+    if(audioCtx.state==='suspended') audioCtx.resume();
+    var t0=audioCtx.currentTime;
+    /* D5 under F5, the upper note a breath behind, so a minor third lands as
+       one resolved event rather than two notes. Peak gain is deliberately low:
+       audible on laptop speakers, not enough to make anyone jump. */
+    [[587.33,0,.05],[698.46,.055,.035]].forEach(function(v){
+      var o=audioCtx.createOscillator(), g=audioCtx.createGain(), at=t0+v[1];
+      o.type='sine'; o.frequency.value=v[0];
+      g.gain.setValueAtTime(.0001,at);
+      g.gain.linearRampToValueAtTime(v[2],at+.03);        /* soft attack, 30ms */
+      g.gain.exponentialRampToValueAtTime(.0001,at+.30);  /* natural decay */
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start(at); o.stop(at+.34);
+    });
+  }catch(e){}
+}
+
+function paintSound(){
+  soundBtn.setAttribute('aria-pressed',soundOn?'true':'false');
+  soundBtn.querySelector('.sound__label').textContent=soundOn?'Sound on':'Sound off';
+}
+soundBtn.addEventListener('click',function(){
+  soundOn=!soundOn;
+  try{ localStorage.setItem(SOUND_KEY,soundOn?'on':'off'); }catch(e){}
+  paintSound();
+  announce.textContent=soundOn?'Sound on.':'Sound off.';
+  ga('sound_toggle',{state:soundOn?'on':'off'});
+  /* turning it on demonstrates exactly what was turned on, and does it inside
+     the click, which is the only moment the browser will allow it */
+  if(soundOn){ lastChime=0; chime(); }
+});
+paintSound();
+
+/* Second trigger: holding the pointer on a company name. Touch is left out
+   deliberately - a finger resting on a name while scrolling is not intent. */
+[].forEach.call(D.querySelectorAll('[data-chime] .role__co,[data-chime] .employer__name'),function(el){
+  el.addEventListener('pointerenter',function(e){ if(e.pointerType!=='touch') chime(); });
+});
+
 /* ---------- résumé ghost ---------- */
 var ghostTimer, ghostViaPointer=false;
 function ghostOpen(){ ghost.classList.add('is-open'); ghostBtn.setAttribute('aria-expanded','true'); }
@@ -1437,6 +1708,7 @@ window.addEventListener('resize',function(){ updateRail(); paintReveals(); },{pa
 
 /* ---------- history ---------- */
 window.addEventListener('popstate',function(){
+  if(location.hash==='#n'){ showNumbers(false); return; }
   var p=pathFor(location.hash);
   if(p) start(p,0); else toChoice();
 });
@@ -1448,6 +1720,7 @@ applyResumeSelection(selectedResume,false);
 /* ---------- boot ---------- */
 var initial=pathFor(location.hash);
 if(initial) start(initial,0);
+else if(location.hash==='#n') showNumbers(false);
 })();
 </script>
 </body>

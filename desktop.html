@@ -16,7 +16,7 @@
 <meta name="twitter:title" content="Phillip Da Silva-Marquis · Product Manager">
 <meta name="twitter:description" content="I work across business, process, systems, data and product. I have worked each of those from the inside.">
 <meta name="twitter:image" content="https://marquisphill.github.io/Professional-Portfolio2/images/og-d01.jpg">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='85%25' r='70%25'%3E%3Cstop offset='0' stop-color='%235fe0ff'/%3E%3Cstop offset='.55' stop-color='%230b6fb3'/%3E%3Cstop offset='1' stop-color='%23063a64'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='15' fill='url(%23g)'/%3E%3Cpath d='M16 5l2.6 8.4L27 16l-8.4 2.6L16 27l-2.6-8.4L5 16l8.4-2.6z' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='85%25' r='70%25'%3E%3Cstop offset='0' stop-color='%235fe3a1'/%3E%3Cstop offset='.55' stop-color='%231f7a4a'/%3E%3Cstop offset='1' stop-color='%230b2e1b'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='15' fill='url(%23g)'/%3E%3Cpath d='M16 5l2.6 8.4L27 16l-8.4 2.6L16 27l-2.6-8.4L5 16l8.4-2.6z' fill='%23fff'/%3E%3C/svg%3E">
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-5GF8YXENEH"></script>
 <script>
@@ -27,32 +27,13 @@
 </script>
 <style>
 :root{
-  --wall-1:#0b5a86; --wall-2:#1d8cc0; --wall-3:#5cc6d8; --wall-glow:rgba(200,242,255,.55);
-  --glass:rgba(178,210,238,.55); --glass-edge:rgba(255,255,255,.7); --glass-text:#0f2236;
-  --taskbar:rgba(16,38,60,.62);
-  --pane:#ffffff; --pane-alt:#eef4fa; --pane-line:#d3dfea; --ink:#1b2a3a; --ink-soft:#52667a;
-  --select:rgba(125,192,246,.3); --select-edge:rgba(92,160,226,.85);
-  --accent:#2f86d1; --paper:#ffffff; --desk:#e4ebf2;
-  color-scheme:light;
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --wall-1:#04172a; --wall-2:#0a3556; --wall-3:#1b6a86; --wall-glow:rgba(120,210,240,.32);
-    --glass:rgba(28,50,76,.62); --glass-edge:rgba(160,200,235,.35); --glass-text:#e7f0f8;
-    --taskbar:rgba(5,14,26,.72);
-    --pane:#16202c; --pane-alt:#1c2937; --pane-line:#2b3a4b; --ink:#e3ebf3; --ink-soft:#9db0c3;
-    --select:rgba(90,160,225,.26); --select-edge:rgba(110,180,240,.7);
-    --accent:#6cb4f0; --paper:#1a2533; --desk:#111a24;
-    color-scheme:dark;
-  }
-}
-:root[data-theme="dark"]{
-  --wall-1:#04172a; --wall-2:#0a3556; --wall-3:#1b6a86; --wall-glow:rgba(120,210,240,.32);
-  --glass:rgba(28,50,76,.62); --glass-edge:rgba(160,200,235,.35); --glass-text:#e7f0f8;
-  --taskbar:rgba(5,14,26,.72);
-  --pane:#16202c; --pane-alt:#1c2937; --pane-line:#2b3a4b; --ink:#e3ebf3; --ink-soft:#9db0c3;
-  --select:rgba(90,160,225,.26); --select-edge:rgba(110,180,240,.7);
-  --accent:#6cb4f0; --paper:#1a2533; --desk:#111a24;
+  --wall-1:#030604; --wall-2:#0a1f14; --wall-3:#145a35; --wall-glow:rgba(61,220,132,.16);
+  --glass:rgba(12,22,16,.82); --glass-edge:rgba(61,220,132,.26); --glass-text:#d8f5e3;
+  --taskbar:rgba(4,10,7,.88);
+  --pane:#0c130f; --pane-alt:#101a14; --pane-line:#1e2f25; --ink:#e6f2ea; --ink-soft:#8fa898;
+  --select:rgba(61,220,132,.14); --select-edge:rgba(61,220,132,.55);
+  --accent:#3ddc84; --paper:#0f1713; --desk:#070b09;
+  --red:#ff4d4f; --red-ink:#ff6b6d;
   color-scheme:dark;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -64,7 +45,7 @@ body{
 }
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:default}
 a{color:var(--accent)}
-:focus-visible{outline:2px solid #9fd4ff;outline-offset:2px}
+:focus-visible{outline:2px solid #3ddc84;outline-offset:2px}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
 /* ---------- wallpaper ---------- */
@@ -77,26 +58,26 @@ a{color:var(--accent)}
 }
 #desktop::before,#desktop::after{content:"";position:absolute;pointer-events:none;border-radius:50%;filter:blur(38px)}
 #desktop::before{width:140vmax;height:22vmax;left:-20vmax;top:46%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.28) 40%,rgba(170,240,255,.35) 60%,transparent);transform:rotate(-14deg)}
+  background:linear-gradient(90deg,transparent,rgba(61,220,132,.14) 40%,rgba(61,220,132,.22) 60%,transparent);transform:rotate(-14deg)}
 #desktop::after{width:90vmax;height:9vmax;left:10vmax;top:60%;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);transform:rotate(-9deg)}
+  background:linear-gradient(90deg,transparent,rgba(61,220,132,.12),transparent);transform:rotate(-9deg)}
 .signature{position:absolute;right:28px;bottom:70px;text-align:right;color:rgba(255,255,255,.82);text-shadow:0 1px 3px rgba(0,0,0,.45);pointer-events:none}
 .signature b{display:block;font-size:30px;font-weight:300;letter-spacing:.5px;color:#fff}
 .signature span{font-size:13px}
 
 /* ---------- sticky note ---------- */
 .sticky{
-  position:absolute;right:28px;top:24px;width:250px;padding:14px 16px 12px;z-index:2;color:#3b3413;
-  background:linear-gradient(#fdf8b8,#f7ec85);border:1px solid #d9c95a;border-radius:2px;
-  box-shadow:0 10px 24px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.7);
+  position:absolute;right:28px;top:24px;width:250px;padding:14px 16px 12px;z-index:2;color:#d8f5e3;
+  background:#0f2419;border:1px solid #2a9a5f;border-radius:4px;
+  box-shadow:0 10px 24px rgba(0,0,0,.5);
   font-size:13px;line-height:1.45;user-select:text;
 }
-.sticky::before{content:"";position:absolute;left:0;right:0;top:0;height:16px;background:linear-gradient(rgba(0,0,0,.05),transparent)}
+.sticky::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:#3ddc84;border-radius:4px 4px 0 0}
 .sticky h1{margin:0 0 2px;font-size:16px;font-weight:600}
 .sticky p{margin:0 0 8px}
 .sticky .nlinks{display:flex;flex-wrap:wrap;gap:4px 12px}
-.sticky button{color:#6b5300;text-decoration:underline;text-underline-offset:2px;cursor:pointer;font-weight:600}
-.sticky button:hover{color:#3b2c00}
+.sticky button{color:#3ddc84;text-decoration:underline;text-underline-offset:2px;cursor:pointer;font-weight:600}
+.sticky button:hover{color:#8ff0b8}
 
 /* ---------- desktop icons ---------- */
 .icons{
@@ -106,7 +87,7 @@ a{color:var(--accent)}
 }
 .dicon{width:84px;padding:5px 3px 4px;border:1px solid transparent;border-radius:3px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
 .dicon:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.28)}
-.dicon.sel{background:rgba(120,190,250,.35);border-color:rgba(170,215,255,.75)}
+.dicon.sel{background:rgba(61,220,132,.22);border-color:rgba(61,220,132,.65)}
 .dicon .art{width:48px;height:48px;display:block;overflow:visible}
 .dicon .label{color:#fff;font-size:12px;line-height:1.25;text-align:center;text-shadow:0 1px 2px rgba(0,0,0,.85),0 0 6px rgba(0,0,0,.35)}
 .flap,.papers{transform-box:fill-box;transform-origin:50% 100%}
@@ -127,26 +108,26 @@ a{color:var(--accent)}
 .window.max{left:0!important;top:0!important;width:100%!important;height:calc(100% - 44px - env(safe-area-inset-bottom,0px))!important;border-radius:0}
 .titlebar{height:30px;flex:none;display:flex;align-items:center;padding:0 0 0 9px;gap:7px;color:var(--glass-text);touch-action:none}
 .titlebar>svg{width:16px;height:16px;flex:none}
-.titlebar .ttl{flex:1;font-size:12.5px;text-shadow:0 0 10px rgba(255,255,255,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.titlebar .ttl{flex:1;font-size:12.5px;text-shadow:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ctrls{display:flex;align-self:flex-start;margin-right:6px}
 .ctrls button{height:19px;width:27px;display:grid;place-items:center;border:1px solid rgba(0,0,0,.45);border-top:0;
-  background:linear-gradient(rgba(255,255,255,.55),rgba(255,255,255,.18) 48%,rgba(255,255,255,.05) 52%,rgba(255,255,255,.25));
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.45)}
+  background:#16231b;
+  box-shadow:inset 0 0 0 1px rgba(61,220,132,.16)}
 .ctrls button:first-child{border-radius:0 0 0 4px}
 .ctrls button+button{border-left:0}
-.ctrls .close{width:44px;border-radius:0 0 4px 0;background:linear-gradient(#e9a796,#d56a50 48%,#c3401f 52%,#d9704f)}
+.ctrls .close{width:44px;border-radius:0 0 4px 0;background:#1f7a4a}
 .ctrls .close:only-child{border-radius:0 0 4px 4px}
 .ctrls button:hover{filter:brightness(1.18) saturate(1.1)}
 .ctrls svg{width:10px;height:10px;filter:drop-shadow(0 0 2px rgba(0,0,0,.6))}
-.win-inner{flex:1;margin:0 7px 7px;display:flex;flex-direction:column;min-height:0;border:1px solid rgba(0,0,0,.35);border-radius:2px;overflow:hidden;background:var(--pane)}
+.win-inner{position:relative;flex:1;margin:0 7px 7px;display:flex;flex-direction:column;min-height:0;border:1px solid rgba(0,0,0,.35);border-radius:2px;overflow:hidden;background:var(--pane)}
 .window.max .win-inner{margin:0 0 0;border-left:0;border-right:0}
 
 /* explorer */
 .addr{display:flex;gap:8px;align-items:center;padding:5px 6px;background:var(--glass);border-bottom:1px solid rgba(0,0,0,.2);flex:none}
 .navs{display:flex;gap:2px}
-.navs button{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(0,0,0,.3);background:linear-gradient(#f4f8fc,#c6d6e6);cursor:pointer}
+.navs button{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(0,0,0,.3);background:#16231b;cursor:pointer}
 .navs button:disabled{opacity:.45;cursor:default}
-.navs button:not(:disabled):hover{background:linear-gradient(#eaf6fd,#a7d9f5)}
+.navs button:not(:disabled):hover{background:#1f3a2a}
 .navs svg{width:12px;height:12px}
 .crumbs,.search{height:24px;border:1px solid rgba(0,0,0,.3);background:var(--pane);display:flex;align-items:center;padding:0 8px;border-radius:2px;color:var(--ink);font-size:12.5px}
 .crumbs{flex:1;gap:4px;min-width:0;white-space:nowrap;overflow:hidden}
@@ -183,11 +164,12 @@ a{color:var(--accent)}
 .details .open{flex:none}
 
 /* buttons */
-.wbtn{min-width:86px;height:26px;padding:0 12px;border:1px solid #707070;border-radius:3px;color:#1b1b1b;font-size:12.5px;cursor:pointer;
+.wbtn{min-width:86px;height:28px;padding:0 12px;border:1px solid #22402e;border-radius:4px;color:#e6f2ea;font-size:12.5px;cursor:pointer;
   display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none;white-space:nowrap;
-  background:linear-gradient(#f2f2f2,#ebebeb 48%,#dddddd 52%,#cfcfcf)}
-.wbtn:hover,.wbtn:focus-visible{border-color:#3c7fb1;background:linear-gradient(#eaf6fd,#d9f0fc 48%,#bee6fd 52%,#a7d9f5)}
-.wbtn.default{border-color:#3c7fb1;box-shadow:inset 0 0 0 1px #48d1ff}
+  background:#15241b}
+.wbtn:hover,.wbtn:focus-visible{border-color:#3ddc84;background:#1a3324}
+.wbtn.default{background:#1f7a4a;border-color:#2a9a5f}
+.wbtn.default:hover,.wbtn.default:focus-visible{background:#2a9a5f;border-color:#3ddc84}
 
 /* document reader */
 .dmenu{display:flex;gap:2px;padding:2px 6px;background:var(--pane-alt);border-bottom:1px solid var(--pane-line);font-size:12px;flex:none;align-items:center}
@@ -216,15 +198,15 @@ a{color:var(--accent)}
 /* pdf + photos */
 .pdfwrap{flex:1;min-height:0;background:#525659}
 .pdfwrap iframe{width:100%;height:100%;border:0;display:block}
-.photo{flex:1;min-height:0;display:flex;flex-direction:column;background:#1d2228;color:#e9eef3}
+.photo{flex:1;min-height:0;display:flex;flex-direction:column;background:#050806;color:#e6f2ea}
 .photo .stage{flex:1;min-height:0;display:grid;place-items:center;padding:12px}
 .photo img{max-width:100%;max-height:100%;object-fit:contain;box-shadow:0 6px 22px rgba(0,0,0,.5)}
-.photo .pbar{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;padding:8px 10px;background:linear-gradient(#2c3e52,#1b2a3a);border-top:1px solid rgba(255,255,255,.1)}
+.photo .pbar{flex:none;display:flex;align-items:center;justify-content:center;gap:14px;padding:8px 10px;background:#0c130f;border-top:1px solid #1e2f25}
 .photo .pbar button{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;cursor:pointer;
-  background:radial-gradient(circle at 50% 30%,rgba(255,255,255,.5),rgba(255,255,255,0) 50%),linear-gradient(#3d8fd0,#1c5d96);border:1px solid rgba(0,0,0,.6)}
+  background:#1f7a4a;border:1px solid #2a9a5f}
 .photo .pbar button:hover{filter:brightness(1.2)}
 .photo .pbar svg{width:14px;height:14px}
-.photo .cap{font-size:12.5px;min-width:0;flex:1;max-width:360px;text-align:center;color:#cfdbe6}
+.photo .cap{font-size:12.5px;min-width:0;flex:1;max-width:360px;text-align:center;color:#b5cdbe}
 
 /* résumé picker */
 .rhead{padding:16px 20px 12px;background:linear-gradient(var(--pane-alt),var(--pane));border-bottom:1px solid var(--pane-line);flex:none}
@@ -252,22 +234,64 @@ a{color:var(--accent)}
 .cacts{display:flex;flex-wrap:wrap;gap:8px}
 .cnote{margin:0;color:var(--ink-soft);font-size:12.5px;line-height:1.5}
 
-/* skills: control panel */
-.cp{flex:1;display:grid;grid-template-columns:190px 1fr;min-height:0}
-.cpside{background:linear-gradient(#e6f0fa,#cfe1f2);border-right:1px solid var(--pane-line);padding:16px 12px;overflow:auto}
-:root[data-theme="dark"] .cpside{background:linear-gradient(#1f3247,#172636)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cpside{background:linear-gradient(#1f3247,#172636)}}
-.cpside b{display:block;font-size:12.5px;margin-bottom:8px}
-.cpside button{display:block;width:100%;text-align:left;padding:3px 4px;color:var(--accent);font-size:12.5px;cursor:pointer;border-radius:2px}
-.cpside button:hover{text-decoration:underline}
-.cpmain{overflow:auto;padding:16px 20px 24px}
-.cpmain h2{margin:0 0 12px;font-size:16px;font-weight:400;color:var(--accent)}
-.cat{display:grid;grid-template-columns:44px 1fr;gap:12px;padding:12px 6px;border-bottom:1px solid var(--pane-line)}
-.cat:last-child{border-bottom:0}
-.cat svg{width:40px;height:40px}
-.cat h3{margin:0 0 6px;font-size:14px;font-weight:600;color:var(--accent)}
-.chips{display:flex;flex-wrap:wrap;gap:5px}
-.chips span{padding:2px 8px;border-radius:10px;font-size:12px;background:var(--pane-alt);border:1px solid var(--pane-line);color:var(--ink)}
+
+/* ---------- key things I do (red) + the cat ---------- */
+.ktid{color:var(--red-ink);font-weight:600}
+.ktdot{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--red);flex:none}
+.deskcat{position:absolute;right:46px;bottom:122px;width:70px;height:84px;pointer-events:none;filter:drop-shadow(0 6px 12px rgba(0,0,0,.5))}
+.dmenu .legend{display:inline-flex;align-items:center;gap:6px;color:var(--ink-soft);padding:3px 8px}
+.dmenu .legend span{padding:0}
+
+/* ---------- skills ---------- */
+.sk{flex:1;min-height:0;overflow:auto;padding:24px 28px 28px;display:flex;flex-direction:column;gap:20px;background:#080c0a}
+.skhead{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 16px;flex-wrap:wrap}
+.skhead h2{margin:0;font-size:24px;font-weight:600;color:#f0f8f3;letter-spacing:-.01em}
+.skhead p{margin:4px 0 0;color:var(--ink-soft);font-size:13.5px}
+.sklegend{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-soft)}
+.skgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.skcard{display:flex;flex-direction:column;text-align:left;border-radius:14px;overflow:hidden;background:#0f1713;border:1px solid #1e2f25;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s}
+.skcard:hover,.skcard:focus-visible{transform:translateY(-3px);border-color:#2f6b49;box-shadow:0 16px 34px rgba(0,0,0,.55)}
+.skart{height:140px;background:#0f2419;overflow:hidden}
+.skart svg{display:block;width:100%;height:100%}
+.skmeta{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
+.skname{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:15.5px;font-weight:600;color:var(--ink)}
+.skname i{font-style:normal;flex:none;width:28px;height:28px;border-radius:50%;background:#1f7a4a;color:#e6f2ea;display:grid;place-items:center;font-size:14px}
+.skmeta .ktid{font-size:12.5px;font-weight:500}
+.skmeta small{font-size:12px;color:var(--ink-soft)}
+.skmodal{position:absolute;inset:0;z-index:5}
+.skmodal[hidden]{display:none}
+.skscrim{position:absolute;inset:0;background:rgba(0,0,0,.72)}
+.skdlg{position:absolute;left:50%;top:50%;translate:-50% -50%;width:min(760px,calc(100% - 32px));height:calc(100% - 32px);max-height:740px;display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#0c130f;border:1px solid #1f3a2a;box-shadow:0 30px 80px rgba(0,0,0,.7)}
+.skhero{position:relative;flex:none;display:flex;align-items:stretch;gap:8px;min-height:180px;background:#0f2419;padding-left:28px;overflow:hidden}
+.skhtext{flex:1;min-width:0;padding:24px 0;display:flex;flex-direction:column;justify-content:flex-end;gap:8px}
+.skkick{align-self:flex-start;padding:3px 10px;border-radius:999px;background:#174a30;color:#9fe6bd;font-size:11.5px;font-weight:600;letter-spacing:.05em}
+.skhtext h2{margin:0;font-size:28px;line-height:1.1;font-weight:700;color:#f0f8f3;letter-spacing:-.01em}
+.skhtext p{margin:0;color:#b5cdbe;font-size:14px}
+.skhart{flex:none;width:min(380px,52%);display:flex;align-items:flex-end}
+.skhart svg{width:100%;height:auto;display:block}
+.skclose{position:absolute;right:14px;top:14px;width:40px;height:40px;border-radius:50%;background:#1f7a4a;display:grid;place-items:center;cursor:pointer;z-index:2}
+.skclose:hover{background:#2a9a5f}
+.skclose svg{width:13px;height:13px}
+.skbody{flex:1;min-height:0;overflow:auto;padding:22px 28px 28px;display:flex;flex-direction:column;gap:12px;user-select:text}
+.skbody h3{margin:14px 0 0;font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-soft)}
+.skrow{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.skrow h3{margin:0}
+.skchips{display:flex;flex-wrap:wrap;gap:7px}
+.skchips span{padding:6px 12px;border-radius:999px;background:#15241b;border:1px solid #22402e;color:#cfe6d7;font-size:13px}
+.skchips span.k{background:rgba(255,77,79,.12);border-color:var(--red);color:var(--red-ink);font-weight:600}
+.proof{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.proof div{border-radius:12px;background:#101a14;border:1px solid #1e2f25;padding:15px 16px;display:flex;flex-direction:column;gap:5px}
+.proof b{font-size:23px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;line-height:1.15}
+.proof span{font-size:13.5px;line-height:1.45;color:#cfe6d7}
+.proof small{font-size:11.5px;color:var(--ink-soft)}
+.skcases{display:flex;flex-wrap:wrap;gap:8px}
+.skcases a{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:10px;background:#15241b;border:1px solid #22402e;color:#cfe6d7;text-decoration:none;font-size:13.5px;font-weight:600;cursor:pointer}
+.skcases a:hover{border-color:#3ddc84}
+.skcases a.pri{background:#3ddc84;border-color:#3ddc84;color:#04140b}
+.skfoot{flex:none;display:flex;justify-content:space-between;gap:8px;padding:10px 16px;border-top:1px solid #1e2f25;background:#0a100c}
+.skfoot button{min-height:40px;padding:0 14px;border-radius:9px;color:var(--ink-soft);font-size:13px;cursor:pointer;text-align:left}
+.skfoot button:hover{background:#15241b;color:var(--ink)}
+.skfoot button+button{background:#15241b;border:1px solid #22402e;color:var(--ink);text-align:right}
 
 /* ---------- taskbar ---------- */
 .taskbar{position:fixed;left:0;right:0;bottom:0;height:calc(44px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);
@@ -277,17 +301,17 @@ a{color:var(--accent)}
   border-top:1px solid rgba(255,255,255,.28);box-shadow:0 -1px 0 rgba(0,0,0,.4)}
 .orb{width:52px;height:44px;display:grid;place-items:center;flex:none;cursor:pointer}
 .orb i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 30%,rgba(255,255,255,.9),rgba(255,255,255,0) 45%),radial-gradient(circle at 50% 85%,#5fe0ff,#0b6fb3 55%,#063a64);
-  border:1px solid rgba(0,20,40,.8);box-shadow:0 0 0 1px rgba(255,255,255,.35) inset,0 0 10px rgba(80,200,255,.35);transition:box-shadow .25s,filter .25s}
-.orb:hover i,.orb.on i{box-shadow:0 0 0 1px rgba(255,255,255,.5) inset,0 0 18px rgba(120,225,255,.85);filter:brightness(1.15)}
+  background:radial-gradient(circle at 50% 30%,rgba(255,255,255,.9),rgba(255,255,255,0) 45%),radial-gradient(circle at 50% 85%,#5fe3a1,#1f7a4a 55%,#0b2e1b);
+  border:1px solid rgba(0,20,40,.8);box-shadow:0 0 0 1px rgba(255,255,255,.35) inset,0 0 10px rgba(61,220,132,.35);transition:box-shadow .25s,filter .25s}
+.orb:hover i,.orb.on i{box-shadow:0 0 0 1px rgba(255,255,255,.5) inset,0 0 18px rgba(61,220,132,.8);filter:brightness(1.15)}
 .orb svg{width:18px;height:18px;filter:drop-shadow(0 1px 1px rgba(0,0,0,.6))}
 #tasks{display:flex;gap:3px;min-width:0;overflow:hidden;flex:1;align-items:center}
 .tbtn{--mx:50%;height:38px;min-width:46px;max-width:170px;padding:0 10px;display:flex;align-items:center;gap:8px;border-radius:3px;flex:0 1 auto;
   border:1px solid transparent;color:#fff;font-size:12px;position:relative;overflow:hidden;cursor:pointer}
 .tbtn span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tbtn:hover{border-color:rgba(255,255,255,.35);background:radial-gradient(circle at var(--mx) 110%,rgba(140,215,255,.55),transparent 70%),rgba(255,255,255,.08)}
+.tbtn:hover{border-color:rgba(255,255,255,.35);background:radial-gradient(circle at var(--mx) 110%,rgba(61,220,132,.4),transparent 70%),rgba(255,255,255,.08)}
 .tbtn.running{border-color:rgba(255,255,255,.3);background:linear-gradient(rgba(255,255,255,.22),rgba(255,255,255,.06) 50%,rgba(255,255,255,.1))}
-.tbtn.active{background:radial-gradient(circle at var(--mx) 110%,rgba(140,215,255,.5),transparent 70%),linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.12))}
+.tbtn.active{background:radial-gradient(circle at var(--mx) 110%,rgba(61,220,132,.38),transparent 70%),linear-gradient(rgba(255,255,255,.3),rgba(255,255,255,.12))}
 .tbtn svg{width:26px;height:26px;flex:none}
 .tbtn.pin{flex:none}
 .tray{margin-left:auto;display:flex;align-items:center;height:100%;color:#fff;flex:none}
@@ -405,17 +429,17 @@ a{color:var(--accent)}
 .cal-dow,.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
 .cal-dow span{text-align:center;font-size:11px;color:var(--ink-soft);padding:2px 0}
 .day{position:relative;height:30px;display:grid;place-items:center;font-size:12px;border-radius:3px;color:var(--ink);border:1px solid transparent}
-.day.av{color:#fff;background:linear-gradient(#58abeb,#2a7ccc);border-color:#1e65aa}
-.day.av::after{content:"";position:absolute;right:3px;top:4px;width:6px;height:3px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(-45deg)}
+.day.av{color:#04140b;background:#3ddc84;border-color:#2a9a5f}
+.day.av::after{content:"";position:absolute;right:3px;top:4px;width:6px;height:3px;border-left:1.5px solid #04140b;border-bottom:1.5px solid #04140b;transform:rotate(-45deg)}
 .day.we{color:rgba(128,128,128,.95);background:rgba(128,128,128,.2)}
 .day.na{color:var(--ink-soft)}
 .day.out{opacity:.35}
-.day.today{box-shadow:0 0 0 2px var(--pane),0 0 0 3.5px #e8a33a;z-index:1}
+.day.today{box-shadow:0 0 0 2px var(--pane),0 0 0 3.5px #d8f5e3;z-index:1}
 .cal-legend{display:flex;gap:12px;justify-content:center;margin-top:10px;font-size:11px;color:var(--ink-soft)}
 .lg{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
-.lg.av{background:#2a7ccc}.lg.na{border:1px solid var(--ink-soft)}.lg.we{background:rgba(128,128,128,.35)}
-.cal-foot{padding:7px 4px 1px;text-align:center;font-size:12px;color:#cfe8ff}
-.cal-foot button{color:#cfe8ff;text-decoration:underline;cursor:pointer}
+.lg.av{background:#3ddc84}.lg.na{border:1px solid var(--ink-soft)}.lg.we{background:rgba(128,128,128,.35)}
+.cal-foot{padding:7px 4px 1px;text-align:center;font-size:12px;color:#9fe6bd}
+.cal-foot button{color:#9fe6bd;text-decoration:underline;cursor:pointer}
 
 /* ---------- lock screen ---------- */
 .lock{position:fixed;inset:0;z-index:9800;display:grid;place-items:center;color:#fff;text-align:center;
@@ -445,14 +469,20 @@ a{color:var(--accent)}
   .tbtn{padding:0 8px;min-width:42px}
   .page{padding:24px 20px 30px}
   .pagewrap{padding:12px 8px 30px}
-  .cp{grid-template-columns:1fr}
-  .cpside{display:none}
   .rrow{grid-template-columns:32px 1fr}
   .rrow svg{width:32px;height:32px}
   .rrow .acts{grid-column:2}
   .hint{display:none}
   .ctrls [data-act="max"]{display:none}
   .rfoot{display:none}
+  .deskcat{display:none}
+  .sk{padding:18px 14px 22px}
+  .skhero{min-height:140px;padding-left:18px}
+  .skhtext h2{font-size:22px}
+  .skhart{width:44%}
+  .skbody{padding:18px 16px 22px}
+  .skdlg{width:calc(100% - 16px);height:calc(100% - 16px)}
+  .skfoot button:first-child{display:none}
 }
 @media (max-height:560px) and (min-width:641px){ .sticky{display:none} }
 </style>
@@ -478,59 +508,101 @@ a{color:var(--accent)}
 <!-- shared icons -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <linearGradient id="fBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9b94c"/><stop offset="1" stop-color="#c88b1e"/></linearGradient>
-    <linearGradient id="fFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fde49a"/><stop offset=".55" stop-color="#f4c55a"/><stop offset="1" stop-color="#e2a634"/></linearGradient>
-    <linearGradient id="doc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e3ebf3"/></linearGradient>
-    <linearGradient id="glassBin" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cfe6f5" stop-opacity=".9"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".55"/><stop offset="1" stop-color="#a9cde6" stop-opacity=".9"/></linearGradient>
-    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7cc8f2"/><stop offset="1" stop-color="#d7f0fb"/></linearGradient>
-    <linearGradient id="globe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6fd0f5"/><stop offset="1" stop-color="#1569b0"/></linearGradient>
+    <linearGradient id="fBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a9a5f"/><stop offset="1" stop-color="#1f6b43"/></linearGradient>
+    <linearGradient id="fFront" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6ff0a8"/><stop offset=".55" stop-color="#3ddc84"/><stop offset="1" stop-color="#2bb56a"/></linearGradient>
+    <linearGradient id="doc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cfe9d9"/></linearGradient>
+    <linearGradient id="glassBin" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#bfe9d0" stop-opacity=".9"/><stop offset=".5" stop-color="#ffffff" stop-opacity=".55"/><stop offset="1" stop-color="#8fd4ad" stop-opacity=".9"/></linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f6b43"/><stop offset="1" stop-color="#9fd8b5"/></linearGradient>
+    <linearGradient id="globe" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5fe3a1"/><stop offset="1" stop-color="#145a35"/></linearGradient>
     <symbol id="folder" viewBox="0 0 64 64">
-      <path d="M4 14q0-3 3-3h16l5 5h29q3 0 3 3v34q0 3-3 3H7q-3 0-3-3z" fill="url(#fBack)" stroke="#a8710f" stroke-width=".8"/>
+      <path d="M4 14q0-3 3-3h16l5 5h29q3 0 3 3v34q0 3-3 3H7q-3 0-3-3z" fill="url(#fBack)" stroke="#145a35" stroke-width=".8"/>
       <rect x="10" y="16" width="42" height="30" rx="1.2" fill="#fff" stroke="#c9d3dc" stroke-width=".6"/><rect x="13" y="12.5" width="38" height="30" rx="1.2" fill="#f2f6fa" stroke="#c9d3dc" stroke-width=".6"/>
-      <path d="M3 24q0-3 3-3h52q3 0 3 3l-2 28q0 3-3 3H8q-3 0-3-3z" fill="url(#fFront)" stroke="#b98118" stroke-width=".8"/>
+      <path d="M3 24q0-3 3-3h52q3 0 3 3l-2 28q0 3-3 3H8q-3 0-3-3z" fill="url(#fFront)" stroke="#1a7f4b" stroke-width=".8"/>
     </symbol>
     <symbol id="docIcon" viewBox="0 0 48 48">
-      <path d="M10 4h20l9 9v31H10z" fill="url(#doc)" stroke="#8ea3b6"/>
-      <path d="M30 4v9h9" fill="#dfe8f1" stroke="#8ea3b6"/>
-      <path d="M15 20h18M15 25h18M15 30h18M15 35h12" stroke="#a9bacb" stroke-width="1.6"/>
+      <path d="M10 4h20l9 9v31H10z" fill="url(#doc)" stroke="#4f7a62"/>
+      <path d="M30 4v9h9" fill="#cfe9d9" stroke="#4f7a62"/>
+      <path d="M15 20h18M15 25h18M15 30h18M15 35h12" stroke="#7fb596" stroke-width="1.6"/>
     </symbol>
     <symbol id="pdfIcon" viewBox="0 0 48 48">
-      <use href="#docIcon"/><rect x="6" y="30" width="22" height="10" rx="1.5" fill="#c8402c"/>
+      <use href="#docIcon"/><rect x="6" y="30" width="22" height="10" rx="1.5" fill="#1f7a4a"/>
       <text x="17" y="37.6" font-size="7" font-weight="700" fill="#fff" text-anchor="middle" font-family="Segoe UI,Arial">PDF</text>
     </symbol>
     <symbol id="envIcon" viewBox="0 0 48 48">
-      <rect x="4" y="11" width="40" height="28" rx="3" fill="url(#doc)" stroke="#6f8aa3"/>
-      <path d="M5 13l19 14 19-14" fill="none" stroke="#6f8aa3" stroke-width="1.5"/>
-      <path d="M5 38l14-12M43 38L29 26" stroke="#a9bccd" stroke-width="1.2"/>
+      <rect x="4" y="11" width="40" height="28" rx="3" fill="url(#doc)" stroke="#4f7a62"/>
+      <path d="M5 13l19 14 19-14" fill="none" stroke="#4f7a62" stroke-width="1.5"/>
+      <path d="M5 38l14-12M43 38L29 26" stroke="#7fb596" stroke-width="1.2"/>
     </symbol>
     <symbol id="contactIcon" viewBox="0 0 48 48">
-      <rect x="5" y="11" width="38" height="27" rx="2.5" fill="url(#doc)" stroke="#7d93a8"/><path d="M6 13l18 13 18-13" fill="none" stroke="#7d93a8" stroke-width="1.4"/>
-      <circle cx="37" cy="35" r="7" fill="#2f9a4a" stroke="#fff" stroke-width="1.5"/><path d="M34 35l2.2 2.2L40 33" stroke="#fff" stroke-width="1.8" fill="none"/>
+      <rect x="5" y="11" width="38" height="27" rx="2.5" fill="url(#doc)" stroke="#4f7a62"/><path d="M6 13l18 13 18-13" fill="none" stroke="#4f7a62" stroke-width="1.4"/>
+      <circle cx="37" cy="35" r="7" fill="#5fe3a1" stroke="#fff" stroke-width="1.5"/><path d="M34 35l2.2 2.2L40 33" stroke="#fff" stroke-width="1.8" fill="none"/>
     </symbol>
     <symbol id="binIcon" viewBox="0 0 48 48">
-      <path d="M11 12h26l-3 30q-.3 2-2.3 2H16.3q-2 0-2.3-2z" fill="url(#glassBin)" stroke="#6f93ad"/><ellipse cx="24" cy="12" rx="14" ry="3" fill="#e4f1fa" stroke="#6f93ad"/>
-      <path d="M18 18l1.4 20M24 18v20M30 18l-1.4 20" stroke="#9fc0d6" stroke-width="1"/>
-      <rect x="17" y="5" width="13" height="10" rx="1" fill="#fff" stroke="#8ea3b6" transform="rotate(-12 23 10)"/>
+      <path d="M11 12h26l-3 30q-.3 2-2.3 2H16.3q-2 0-2.3-2z" fill="url(#glassBin)" stroke="#2f6b49"/><ellipse cx="24" cy="12" rx="14" ry="3" fill="#dff5e8" stroke="#2f6b49"/>
+      <path d="M18 18l1.4 20M24 18v20M30 18l-1.4 20" stroke="#7fb596" stroke-width="1"/>
+      <rect x="17" y="5" width="13" height="10" rx="1" fill="#fff" stroke="#4f7a62" transform="rotate(-12 23 10)"/>
     </symbol>
     <symbol id="photoIcon" viewBox="0 0 48 48">
-      <rect x="5" y="9" width="38" height="30" rx="2" fill="#fff" stroke="#8ea3b6"/><rect x="8" y="12" width="32" height="24" fill="url(#sky)"/>
-      <path d="M8 36l10-12 7 8 5-5 10 9z" fill="#3f9a52"/><circle cx="33" cy="18" r="3" fill="#ffd94a"/>
+      <rect x="5" y="9" width="38" height="30" rx="2" fill="#fff" stroke="#4f7a62"/><rect x="8" y="12" width="32" height="24" fill="url(#sky)"/>
+      <path d="M8 36l10-12 7 8 5-5 10 9z" fill="#14532d"/><circle cx="33" cy="18" r="3" fill="#d8f5e3"/>
     </symbol>
     <symbol id="linkIcon" viewBox="0 0 48 48">
-      <circle cx="24" cy="24" r="17" fill="url(#globe)" stroke="#0f4f86"/>
+      <circle cx="24" cy="24" r="17" fill="url(#globe)" stroke="#0b2e1b"/>
       <path d="M7 24h34M24 7c-6 5-6 29 0 34M24 7c6 5 6 29 0 34M10 15h28M10 33h28" stroke="rgba(255,255,255,.7)" stroke-width="1.3" fill="none"/>
-      <rect x="4" y="30" width="14" height="14" rx="2" fill="#fff" stroke="#8ea3b6"/><path d="M8 40l6-6M10 34h4v4" stroke="#1d7fc4" stroke-width="1.8" fill="none"/>
+      <rect x="4" y="30" width="14" height="14" rx="2" fill="#fff" stroke="#4f7a62"/><path d="M8 40l6-6M10 34h4v4" stroke="#3ddc84" stroke-width="1.8" fill="none"/>
     </symbol>
     <symbol id="cpIcon" viewBox="0 0 48 48">
-      <rect x="5" y="7" width="38" height="30" rx="2.5" fill="#2a77b8" stroke="#164a78"/><rect x="8" y="10" width="32" height="24" fill="#d6ecfa"/>
-      <path d="M12 16h24M12 22h24M12 28h24" stroke="#7aa6c8" stroke-width="2"/>
-      <rect x="16" y="13" width="5" height="6" rx="1" fill="#e8a33a"/><rect x="27" y="19" width="5" height="6" rx="1" fill="#2f9a4a"/><rect x="20" y="25" width="5" height="6" rx="1" fill="#c8402c"/>
-      <path d="M18 37h12l2 5H16z" fill="#9db3c6"/>
+      <rect x="5" y="7" width="38" height="30" rx="2.5" fill="#1f7a4a" stroke="#0b2e1b"/><rect x="8" y="10" width="32" height="24" fill="#d8f5e3"/>
+      <path d="M12 16h24M12 22h24M12 28h24" stroke="#7fb596" stroke-width="2"/>
+      <rect x="16" y="13" width="5" height="6" rx="1" fill="#9fd8b5"/><rect x="27" y="19" width="5" height="6" rx="1" fill="#5fe3a1"/><rect x="20" y="25" width="5" height="6" rx="1" fill="#1f7a4a"/>
+      <path d="M18 37h12l2 5H16z" fill="#4f7a62"/>
     </symbol>
     <symbol id="quoteIcon" viewBox="0 0 48 48">
-      <path d="M6 9h36q3 0 3 3v19q0 3-3 3H22l-9 8v-8H6q-3 0-3-3V12q0-3 3-3z" fill="url(#doc)" stroke="#7d93a8"/>
-      <text x="24" y="31" font-size="22" font-weight="700" fill="#2f86d1" text-anchor="middle" font-family="Georgia,serif">“</text>
+      <path d="M6 9h36q3 0 3 3v19q0 3-3 3H22l-9 8v-8H6q-3 0-3-3V12q0-3 3-3z" fill="url(#doc)" stroke="#4f7a62"/>
+      <text x="24" y="31" font-size="22" font-weight="700" fill="#1f7a4a" text-anchor="middle" font-family="Georgia,serif">“</text>
     </symbol>
+    <g id="kh">
+        <path d="M-16 -29 L-7 -15 Q 0 -17.5 7 -15 L16 -29 L17 -6 C 18 4, 12 13, 0 15 C -12 13, -18 4, -17 -6 Z" fill="#ff4d4f"></path>
+        <ellipse cx="-6" cy="0" rx="2.8" ry="3.8" fill="#07100b"></ellipse>
+        <ellipse cx="6" cy="0" rx="2.8" ry="3.8" fill="#07100b"></ellipse>
+        <path d="M-15 6 L-31 3 M-14.5 9.5 L-31 11.5 M15 6 L31 3 M14.5 9.5 L31 11.5" stroke="#ff4d4f" stroke-width="1.6" stroke-linecap="round"></path>
+      </g>
+      <symbol id="catSit" viewBox="0 0 100 120">
+        <path d="M46 111 C 16 113, 4 88, 12 64 C 17 50, 30 48, 28 60" fill="none" stroke="#ff4d4f" stroke-width="10" stroke-linecap="round"></path>
+        <path d="M29 50 C 18 70, 16 96, 20 114 L60 114 C 64 96, 62 70, 51 50 Z" fill="#ff4d4f"></path>
+        <use href="#kh" transform="translate(41 38) rotate(9)"></use>
+      </symbol>
+      <symbol id="catStand" viewBox="0 -12 160 122">
+        <path d="M32 52 C 10 46, 6 20, 22 8 C 28 4, 34 8, 30 14" fill="none" stroke="#ff4d4f" stroke-width="10" stroke-linecap="round"></path>
+        <path d="M40 60 L 38 102 M54 62 L 56 102 M100 60 L 98 102 M112 56 L 116 102" stroke="#ff4d4f" stroke-width="8" stroke-linecap="round"></path>
+        <path d="M28 48 C 28 34, 50 32, 80 34 C 104 35, 118 38, 120 50 C 122 62, 106 66, 80 66 C 52 66, 28 64, 28 48 Z" fill="#ff4d4f"></path>
+        <path d="M102 42 C 110 32, 114 26, 118 22 L 130 32 C 126 42, 120 50, 112 56 Z" fill="#ff4d4f"></path>
+        <use href="#kh" transform="translate(124 22)"></use>
+      </symbol>
+      <symbol id="catPounce" viewBox="0 -10 160 110">
+        <path d="M30 42 C 14 24, 18 2, 36 -4 C 42 -6, 46 0, 40 4" fill="none" stroke="#ff4d4f" stroke-width="10" stroke-linecap="round"></path>
+        <path d="M32 62 L 26 96 M48 70 L 50 96 M104 80 L 130 92 M94 84 L 116 96" stroke="#ff4d4f" stroke-width="8" stroke-linecap="round"></path>
+        <ellipse cx="38" cy="58" rx="18" ry="22" fill="#ff4d4f"></ellipse>
+        <path d="M24 50 C 24 30, 46 26, 66 36 C 90 48, 112 58, 118 70 C 122 82, 108 90, 90 88 C 64 86, 30 76, 24 50 Z" fill="#ff4d4f"></path>
+        <use href="#kh" transform="translate(120 70) rotate(-6)"></use>
+      </symbol>
+      <symbol id="catUpright" viewBox="0 0 100 150">
+        <path d="M34 124 C 8 126, 2 104, 12 90 C 16 84, 22 86, 20 92" fill="none" stroke="#ff4d4f" stroke-width="10" stroke-linecap="round"></path>
+        <path d="M35 120 L 33 146 M46 120 L 50 146" stroke="#ff4d4f" stroke-width="8" stroke-linecap="round"></path>
+        <path d="M30 52 C 22 78, 22 106, 28 124 L 54 124 C 60 106, 60 78, 50 52 Z" fill="#ff4d4f"></path>
+        <path d="M32 78 L 22 102" stroke="#ff4d4f" stroke-width="7" stroke-linecap="round"></path>
+        <use href="#kh" transform="translate(41 38) rotate(-10)"></use>
+      </symbol>
+      <symbol id="catLoaf" viewBox="0 -10 150 90">
+        <path d="M20 66 C 4 70, 6 82, 30 82 C 50 82, 62 80, 74 76" fill="none" stroke="#ff4d4f" stroke-width="9" stroke-linecap="round"></path>
+        <path d="M14 60 C 14 40, 40 34, 72 36 C 96 38, 110 44, 110 58 C 110 70, 96 72, 72 72 C 40 72, 14 72, 14 60 Z" fill="#ff4d4f"></path>
+        <path d="M94 66 L 130 70" stroke="#ff4d4f" stroke-width="8" stroke-linecap="round"></path>
+        <use href="#kh" transform="translate(104 30) rotate(-12)"></use>
+      </symbol>
+      <symbol id="catPeek" viewBox="0 0 100 80">
+        <path d="M40 44 C 38 60, 38 80, 38 80 L 62 80 C 62 80, 62 60, 60 44 Z" fill="#ff4d4f"></path>
+        <use href="#kh" transform="translate(50 34) rotate(-10)"></use>
+      </symbol>
   </defs>
 </svg>
 
@@ -549,6 +621,7 @@ a{color:var(--accent)}
     </div>
   </aside>
 
+  <svg class="deskcat" viewBox="0 0 100 120" aria-hidden="true"><use href="#catSit"/></svg>
   <div class="signature" aria-hidden="true"><b>Phill</b><span>Product manager. Business, process, systems, data, product.</span></div>
 
   <div id="layer"></div>
@@ -558,7 +631,7 @@ a{color:var(--accent)}
 <div class="start" id="start" hidden role="dialog" aria-label="Start menu">
   <div class="sleft">
     <ul class="progs" id="progs"></ul>
-    <button class="allp" data-open="folder:home"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M3 1l4 4-4 4" fill="#2a6fb0"/></svg>All programs</button>
+    <button class="allp" data-open="folder:home"><svg viewBox="0 0 10 10" aria-hidden="true"><path d="M3 1l4 4-4 4" fill="#3ddc84"/></svg>All programs</button>
     <input class="ssearch" id="ssearch" type="search" placeholder="Search programs and files" aria-label="Search programs and files">
   </div>
   <div class="sright">
@@ -584,7 +657,7 @@ a{color:var(--accent)}
 <div class="msgbox" id="warn" hidden role="alertdialog" aria-modal="true" aria-labelledby="warnTitle" aria-describedby="warnText">
   <div class="titlebar"><span class="ttl">Before you dig in</span></div>
   <div class="msg-body">
-    <svg class="warnicon" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3L38 35H2z" fill="#f5c21b" stroke="#b5860a" stroke-width="1.4" stroke-linejoin="round"/><rect x="18.2" y="13" width="3.6" height="12" rx="1.4" fill="#2a2a2a"/><circle cx="20" cy="29.5" r="2.1" fill="#2a2a2a"/></svg>
+    <svg class="warnicon" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3L38 35H2z" fill="#3ddc84" stroke="#1f7a4a" stroke-width="1.4" stroke-linejoin="round"/><rect x="18.2" y="13" width="3.6" height="12" rx="1.4" fill="#2a2a2a"/><circle cx="20" cy="29.5" r="2.1" fill="#2a2a2a"/></svg>
     <div>
       <h2 id="warnTitle">Do you really want to read all this?</h2>
       <p id="warnText">Everything in here is also in my résumé, which is sitting right there on the desktop. Two pages. No clicking around.</p>
@@ -613,7 +686,7 @@ a{color:var(--accent)}
   <div class="cal-inner">
     <button class="cal-date" id="calToday"></button>
     <div class="cal-avail">
-      <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#2a7ccc"/><path d="M6.5 11.3l3 3 6-6.3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" fill="#1f7a4a"/><path d="M6.5 11.3l3 3 6-6.3" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <div><h2>Phill is available</h2><span id="calCount"></span></div>
     </div>
     <div class="cal-nav">
@@ -643,7 +716,7 @@ a{color:var(--accent)}
 
 <footer class="taskbar">
   <button class="orb" id="orb" aria-label="Start" aria-expanded="false">
-    <i><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1l2.2 6.8L19 10l-6.8 2.2L10 19l-2.2-6.8L1 10l6.8-2.2z" fill="#fff"/><circle cx="10" cy="10" r="2" fill="#0b6fb3"/></svg></i>
+    <i><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 1l2.2 6.8L19 10l-6.8 2.2L10 19l-2.2-6.8L1 10l6.8-2.2z" fill="#fff"/><circle cx="10" cy="10" r="2" fill="#14532d"/></svg></i>
   </button>
   <button class="tbtn pin" data-open="folder:experience" aria-label="Open Experience" title="Experience"><svg aria-hidden="true"><use href="#folder"/></svg></button>
   <button class="tbtn pin" data-open="app:resume" aria-label="Open Résumé" title="Résumé.pdf"><svg aria-hidden="true"><use href="#pdfIcon"/></svg></button>
@@ -953,32 +1026,32 @@ a{color:var(--accent)}
     ]},
     experience: { label: 'Experience', items: [
       { name: 'README.txt', kind: 'doc', open: 'doc:readme', type: 'Text document', sum: 'I work where business, process, systems, data, and product meet. Retail floor to ecommerce, digital marketing, catalog ops, business analysis, integrations, and now product.' },
-      { name: 'MarineMax – YachtIQ', kind: 'doc', tint: '#1d7fc4', open: 'doc:marinemax', type: 'Product Manager, 2026 to now', sum: 'I own YachtIQ, the yacht listing system brokers at Northrop & Johnson and Fraser use. Pushing it to be the single source of truth for yacht records, with MLS syndication on the roadmap.' },
-      { name: 'CITY Furniture – OMS', kind: 'doc', tint: '#6a4fc4', open: 'doc:city', type: 'Sr. Business Analyst, Oct 2025 to Jul 2026', sum: 'IBM Sterling OMS modernization across 25 workstreams. Cut 1,000+ legacy reports to about 20 data models and built the BRD Skill.' },
-      { name: 'FlexShopper – Project Manager', kind: 'doc', tint: '#c46a1d', open: 'doc:flexpm', type: 'Project Manager, Merchandising, Mar to Aug 2025', sum: 'Ran the full merchandising portfolio and owned the Logicbroker platform end to end. Monthly roadmap reviews with the CEO.' },
-      { name: 'FlexShopper – BSA', kind: 'doc', tint: '#c46a1d', open: 'doc:flexbsa', type: 'Business Systems Analyst, Nov 2023 to Mar 2025', sum: 'Drove the Logicbroker replacement of the order and inventory system. Vendor onboarding from six weeks to two; rebate setup from a week to a day.' },
-      { name: 'Pet Supermarket', kind: 'doc', tint: '#2f9a4a', open: 'doc:pet', type: 'Sales Associate to Jr. BA, 2013 to 2023', sum: 'Ten years from the sales floor to product owner of the PIM. 200+ vendors, 14K+ SKUs, and an email program that lifted open rates 30%.' },
+      { name: 'MarineMax – YachtIQ', kind: 'doc', tint: '#3ddc84', open: 'doc:marinemax', type: 'Product Manager, 2026 to now', sum: 'I own YachtIQ, the yacht listing system brokers at Northrop & Johnson and Fraser use. Pushing it to be the single source of truth for yacht records, with MLS syndication on the roadmap.' },
+      { name: 'CITY Furniture – OMS', kind: 'doc', tint: '#2a9a5f', open: 'doc:city', type: 'Sr. Business Analyst, Oct 2025 to Jul 2026', sum: 'IBM Sterling OMS modernization across 25 workstreams. Cut 1,000+ legacy reports to about 20 data models and built the BRD Skill.' },
+      { name: 'FlexShopper – Project Manager', kind: 'doc', tint: '#1f7a4a', open: 'doc:flexpm', type: 'Project Manager, Merchandising, Mar to Aug 2025', sum: 'Ran the full merchandising portfolio and owned the Logicbroker platform end to end. Monthly roadmap reviews with the CEO.' },
+      { name: 'FlexShopper – BSA', kind: 'doc', tint: '#1f7a4a', open: 'doc:flexbsa', type: 'Business Systems Analyst, Nov 2023 to Mar 2025', sum: 'Drove the Logicbroker replacement of the order and inventory system. Vendor onboarding from six weeks to two; rebate setup from a week to a day.' },
+      { name: 'Pet Supermarket', kind: 'doc', tint: '#5fe3a1', open: 'doc:pet', type: 'Sales Associate to Jr. BA, 2013 to 2023', sum: 'Ten years from the sales floor to product owner of the PIM. 200+ vendors, 14K+ SKUs, and an email program that lifted open rates 30%.' },
       { name: 'Education.txt', kind: 'doc', open: 'doc:education', type: 'Text document', sum: 'BA in Communication, Florida Atlantic University. PSPO I. Studying for PSM I.' }
     ]},
     projects: { label: 'Projects', items: [
-      { name: 'YachtIQ', kind: 'doc', tint: '#1d7fc4', open: 'doc:marinemax', type: 'In progress · MarineMax', sum: 'One source of truth for yacht listings, built for the brokers who use it.' },
-      { name: '1,000+ reports → ~20', kind: 'doc', tint: '#6a4fc4', open: 'doc:reports', type: 'Case study · CITY Furniture', sum: 'A decade of undocumented reporting cut to about 20 audit-ready data models, with every decision checkable.' },
-      { name: 'Replacing the order system', kind: 'doc', tint: '#c46a1d', open: 'doc:logicbroker', type: 'Case study · FlexShopper', sum: 'Owned requirements and delivery for the platform that replaced the legacy order and inventory system.' },
-      { name: 'BRD Q&A Skill', kind: 'doc', tint: '#2f9a4a', open: 'doc:brdskill', type: 'Case study · CITY Furniture', sum: 'Hundreds of pages of BRDs, searchable by any BA, every answer with the source line attached.' },
-      { name: 'Catalog-as-a-Service', kind: 'doc', tint: '#c43a5f', open: 'doc:caas', type: 'Case study · FlexShopper', sum: 'A new revenue channel, and the missing clause in the contract behind it, caught before anyone signed.' },
+      { name: 'YachtIQ', kind: 'doc', tint: '#3ddc84', open: 'doc:marinemax', type: 'In progress · MarineMax', sum: 'One source of truth for yacht listings, built for the brokers who use it.' },
+      { name: '1,000+ reports → ~20', kind: 'doc', tint: '#2a9a5f', open: 'doc:reports', type: 'Case study · CITY Furniture', sum: 'A decade of undocumented reporting cut to about 20 audit-ready data models, with every decision checkable.' },
+      { name: 'Replacing the order system', kind: 'doc', tint: '#1f7a4a', open: 'doc:logicbroker', type: 'Case study · FlexShopper', sum: 'Owned requirements and delivery for the platform that replaced the legacy order and inventory system.' },
+      { name: 'BRD Q&A Skill', kind: 'doc', tint: '#5fe3a1', open: 'doc:brdskill', type: 'Case study · CITY Furniture', sum: 'Hundreds of pages of BRDs, searchable by any BA, every answer with the source line attached.' },
+      { name: 'Catalog-as-a-Service', kind: 'doc', tint: '#14b87a', open: 'doc:caas', type: 'Case study · FlexShopper', sum: 'A new revenue channel, and the missing clause in the contract behind it, caught before anyone signed.' },
       { name: 'Revenue Share Process Model.pdf', kind: 'pdf', open: 'pdf:process', type: 'PDF', sum: 'The process model behind Catalog-as-a-Service.' },
-      { name: 'Hackathon', kind: 'doc', tint: '#e8a33a', open: 'doc:hackathon', type: 'Best Use of AI award', sum: 'An AI app to help South Floridians find a place to live, built and pitched in 22 hours. I was the project manager.' },
+      { name: 'Hackathon', kind: 'doc', tint: '#9fd8b5', open: 'doc:hackathon', type: 'Best Use of AI award', sum: 'An AI app to help South Floridians find a place to live, built and pitched in 22 hours. I was the project manager.' },
       { name: 'Hackathon photos', kind: 'img', open: 'photo:0', type: '5 photos', sum: 'The team, the pitch, the award.' }
     ]},
     ailab: { label: 'AI Lab', items: [
       { name: 'How I use AI.txt', kind: 'doc', open: 'doc:ai', type: 'Text document', sum: 'Set the rules before AI runs. Build the tool, not just the document.' },
-      { name: 'BRD Q&A Skill', kind: 'doc', tint: '#2f9a4a', open: 'doc:brdskill', type: 'Claude Skill', sum: 'Any BA can ask the program’s BRDs a question and get the answer back with the source line attached.' },
-      { name: 'Report Consolidator', kind: 'doc', tint: '#6a4fc4', open: 'doc:reports', type: 'AI analysis pass', sum: 'About 200 vetted reports scored and grouped by AI under my rules, with a coverage manifest and evidence trail. Final call stayed with me.' },
-      { name: 'BRD Digest', kind: 'doc', tint: '#1d9aa8', open: 'doc:brdskill', type: 'Document synthesis', sum: 'Hundreds of pages of BRDs turned into executive summaries with line-level traceability, in about a week.' },
-      { name: 'Steering Report', kind: 'doc', tint: '#8a6a3a', open: 'doc:reports', type: 'Automated reporting', sum: 'The weekly steering report generated by AI off the tracking dashboard, instead of built by hand.' },
-      { name: 'Hackathon app', kind: 'doc', tint: '#e8a33a', open: 'doc:hackathon', type: 'Best Use of AI award', sum: 'An AI-powered app to help South Floridians find a place to live, built in 22 hours.' },
-      { name: 'AI Adoption Board', kind: 'info', tint: '#c43a5f', type: 'Write-up coming soon', sum: 'A grassroots wall of real use cases.' },
-      { name: 'Then & Now', kind: 'info', tint: '#1d9aa8', type: 'Write-up coming soon', sum: 'Vibe-coded with the Anthropic API.' }
+      { name: 'BRD Q&A Skill', kind: 'doc', tint: '#5fe3a1', open: 'doc:brdskill', type: 'Claude Skill', sum: 'Any BA can ask the program’s BRDs a question and get the answer back with the source line attached.' },
+      { name: 'Report Consolidator', kind: 'doc', tint: '#2a9a5f', open: 'doc:reports', type: 'AI analysis pass', sum: 'About 200 vetted reports scored and grouped by AI under my rules, with a coverage manifest and evidence trail. Final call stayed with me.' },
+      { name: 'BRD Digest', kind: 'doc', tint: '#2bb56a', open: 'doc:brdskill', type: 'Document synthesis', sum: 'Hundreds of pages of BRDs turned into executive summaries with line-level traceability, in about a week.' },
+      { name: 'Steering Report', kind: 'doc', tint: '#6aa883', open: 'doc:reports', type: 'Automated reporting', sum: 'The weekly steering report generated by AI off the tracking dashboard, instead of built by hand.' },
+      { name: 'Hackathon app', kind: 'doc', tint: '#9fd8b5', open: 'doc:hackathon', type: 'Best Use of AI award', sum: 'An AI-powered app to help South Floridians find a place to live, built in 22 hours.' },
+      { name: 'AI Adoption Board', kind: 'info', tint: '#14b87a', type: 'Write-up coming soon', sum: 'A grassroots wall of real use cases.' },
+      { name: 'Then & Now', kind: 'info', tint: '#2bb56a', type: 'Write-up coming soon', sum: 'Vibe-coded with the Anthropic API.' }
     ]},
     kindwords: { label: 'Kind Words', items: [
       { name: 'Navin Anand.txt', kind: 'quote', open: 'doc:ref_navin', type: 'CTO, FlexShopper', sum: '“From day one, Phil took on large-scale programs with confidence and delivered results.”' },
@@ -992,23 +1065,67 @@ a{color:var(--accent)}
   };
 
   const SKILLS = [
-    { name: 'Requirements & analysis', color: '#1d7fc4', items: ['Requirements discovery', 'BRDs & FSDs', 'Gap analysis', 'Process modeling', 'UML (use case, sequence, activity)', 'User stories & acceptance criteria', 'Traceability', 'UAT', 'Workshop facilitation', 'Visio'] },
-    { name: 'Delivery & product ownership', color: '#6a4fc4', items: ['Backlog ownership', 'Sprint planning', 'Scrum ceremonies', 'Prioritization frameworks', 'Release & go-live coordination', 'Change management', 'Executive reporting', 'Jira', 'Confluence', 'Asana'] },
-    { name: 'Systems & integrations', color: '#2f9a4a', items: ['IBM Sterling OMS', 'IBM i/AS400 (legacy)', 'Logicbroker', 'NetSuite', 'Syndigo Riversand PIM', 'Salesforce Commerce Cloud', 'Oracle Commerce Cloud', 'BigCommerce', 'APIs & EDI', 'Workflow automation'] },
-    { name: 'Data & reporting', color: '#c46a1d', items: ['Report rationalization', 'Data mapping', 'Source-system analysis', 'Current/future-state modeling', 'SQL logic definition', 'Power BI', 'Excel modeling'] },
-    { name: 'AI in practice', color: '#c43a5f', items: ['Directing AI on analysis work', 'Setting rules and constraints for AI output', 'Reviewing and adapting AI output', 'Claude Skills', 'Requirements traceability', 'Automated status reporting', 'Document synthesis at scale'] },
-    { name: 'Commerce & catalog', color: '#1d9aa8', items: ['Catalog operations', 'Product information management', 'Vendor & marketplace onboarding', 'Order lifecycle', 'CRM & lifecycle marketing', 'Oracle Responsys'] }
+    { name: 'Requirements & analysis', tag: 'From the first workshop to UAT sign-off.',
+      items: ['Requirements discovery', 'BRDs & FSDs', 'Gap analysis', 'Process modeling', 'UML (use case, sequence, activity)', 'User stories & acceptance criteria', 'Traceability', 'UAT', 'Workshop facilitation', 'Visio'],
+      ktid: ['BRDs & FSDs', 'Gap analysis', 'Workshop facilitation'], short: 'BRDs & FSDs · Gap analysis · Workshops',
+      proof: [['65 pages', 'BRD covering the CRM’s UI and functional requirements for the new OMS.', 'CITY Furniture'],
+              ['90+', 'Activity diagrams for customer-notification messages. An unambiguous build spec.', 'CITY Furniture'],
+              ['100+', 'Jira user stories, translated from six departments into BRDs, specs and UML.', 'FlexShopper'],
+              ['Week-long', 'All-day requirements workshops, with sign-off at the end of each day.', 'CITY Furniture']],
+      cases: [['The BRD Skill', 'doc:brdskill'], ['CITY Furniture role', 'doc:city']] },
+    { name: 'Delivery & product ownership', tag: 'Owning the backlog all the way through go-live.',
+      items: ['Backlog ownership', 'Sprint planning', 'Scrum ceremonies', 'Prioritization frameworks', 'Release & go-live coordination', 'Change management', 'Executive reporting', 'Jira', 'Confluence', 'Asana'],
+      ktid: ['Backlog ownership', 'Release & go-live coordination', 'Executive reporting'], short: 'Backlog ownership · Go-lives · Exec reporting',
+      proof: [['6 wks → 2', 'Vendor onboarding, contract to live products, on the redesigned Logicbroker workflow.', 'FlexShopper'],
+              ['3 teams', 'Ran Scrum ceremonies across three development teams, through go-live and post-launch support.', 'FlexShopper'],
+              ['Monthly', 'Roadmap and performance reviews with the CEO, backed by an executive dashboard of milestones and blockers.', 'FlexShopper'],
+              ['3 → 1', 'One project charter uniting three siloed initiatives, presented to and adopted by the executive team.', 'FlexShopper']],
+      cases: [['Replacing the order system', 'doc:logicbroker'], ['Catalog-as-a-Service', 'doc:caas']] },
+    { name: 'Systems & integrations', tag: 'Making platforms talk to each other, and keeping them talking.',
+      items: ['IBM Sterling OMS', 'IBM i/AS400 (legacy)', 'Logicbroker', 'NetSuite', 'Syndigo Riversand PIM', 'Salesforce Commerce Cloud', 'Oracle Commerce Cloud', 'BigCommerce', 'APIs & EDI', 'Workflow automation'],
+      ktid: ['IBM Sterling OMS', 'Logicbroker', 'NetSuite'], short: 'IBM Sterling OMS · Logicbroker · NetSuite',
+      proof: [['System of record', 'Logicbroker replaced the order and inventory system, integrated to the CRM, NetSuite, the storefront and every vendor.', 'FlexShopper'],
+              ['Sole liaison', 'Business-side owner of the Logicbroker to NetSuite invoice integration, and first contact after go-live.', 'FlexShopper'],
+              ['25 workstreams', 'IBM Sterling OMS modernization, retiring a legacy IBM i/AS400 system.', 'CITY Furniture'],
+              ['14K+ SKUs', 'Product Owner for the Syndigo Riversand PIM and its Salesforce Commerce Cloud integration.', 'Pet Supermarket']],
+      cases: [['Replacing the order system', 'doc:logicbroker'], ['CITY Furniture role', 'doc:city']] },
+    { name: 'Data & reporting', tag: 'Deciding what to keep, and showing the work.',
+      items: ['Report rationalization', 'Data mapping', 'Source-system analysis', 'Current/future-state modeling', 'SQL logic definition', 'Power BI', 'Excel modeling'],
+      ktid: ['Report rationalization', 'Data mapping'], short: 'Report rationalization · Data mapping',
+      proof: [['1,000+ → ~20', 'Legacy reports cut to audit-ready data models, every decision checkable.', 'CITY Furniture'],
+              ['~200', 'Stakeholder-vetted reports after owner triage and keep-or-retire workshops.', 'CITY Furniture'],
+              ['Current & future', 'Reports mapped back to source systems, so the data team knew what was migrating before the build.', 'CITY Furniture'],
+              ['Weekly', 'Steering report generated with AI off the tracking dashboard, instead of built by hand.', 'CITY Furniture']],
+      cases: [['1,000+ reports → ~20', 'doc:reports']] },
+    { name: 'AI in practice', tag: 'Set the rules before AI runs. Check what it leaves out.',
+      items: ['Directing AI on analysis work', 'Setting rules and constraints for AI output', 'Reviewing and adapting AI output', 'Claude Skills', 'Requirements traceability', 'Automated status reporting', 'Document synthesis at scale'],
+      ktid: ['Directing AI on analysis work', 'Claude Skills', 'Requirements traceability'], short: 'Directing AI · Claude Skills · Traceability',
+      proof: [['Line-level', 'Every answer from the BRD Skill comes back with the source BRD and the exact line attached.', 'CITY Furniture'],
+              ['~1 week', 'Hundreds of pages of BRDs turned into executive summaries with line-level traceability.', 'CITY Furniture'],
+              ['Every merge scored', 'AI ran the report pass under my rules and showed its work. The final call stayed with me.', 'CITY Furniture'],
+              ['Best Use of AI', 'Hackathon award for an AI app built in 22 hours. I was the project manager.', 'South Florida Tech Hub']],
+      cases: [['The BRD Skill', 'doc:brdskill'], ['How I use AI', 'doc:ai'], ['Hackathon', 'doc:hackathon']] },
+    { name: 'Commerce & catalog', tag: 'How a catalog business actually runs, from the floor up.',
+      items: ['Catalog operations', 'Product information management', 'Vendor & marketplace onboarding', 'Order lifecycle', 'CRM & lifecycle marketing', 'Oracle Responsys'],
+      ktid: ['Product information management', 'Vendor & marketplace onboarding', 'Catalog operations'], short: 'PIM · Vendor onboarding · Catalog ops',
+      proof: [['200+ vendors', 'Onboarded across 14K+ SKUs through the Syndigo PIM, with a vendor-portal intake form I designed.', 'Pet Supermarket'],
+              ['~150 a week', 'New web items published to a 14,000-product catalog.', 'Pet Supermarket'],
+              ['+30%', 'Email open rates after implementing Oracle Responsys for a 1.5M-member audience.', 'Pet Supermarket'],
+              ['1 wk → 1 day', 'Rebate setup, through a custom rebate management app for merchandising.', 'FlexShopper']],
+      cases: [['Ten years at Pet Supermarket', 'doc:pet'], ['FlexShopper BSA role', 'doc:flexbsa']] }
   ];
+  // the cat doing each of the six things, same order as SKILLS
+  const SCENES = ["<svg viewBox=\"0 0 336 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\"> <circle cx=\"300\" cy=\"8\" r=\"82\" fill=\"#133222\"></circle> <circle cx=\"16\" cy=\"150\" r=\"48\" fill=\"#0b1c13\"></circle> <rect x=\"172\" y=\"36\" width=\"66\" height=\"88\" rx=\"8\" fill=\"#1d4a31\" transform=\"rotate(-8 205 80)\"></rect> <rect x=\"190\" y=\"30\" width=\"66\" height=\"88\" rx=\"8\" fill=\"#d8f5e3\"></rect> <rect x=\"202\" y=\"46\" width=\"30\" height=\"6\" rx=\"3\" fill=\"#1f7a4a\"></rect> <rect x=\"202\" y=\"60\" width=\"42\" height=\"6\" rx=\"3\" fill=\"#9fd8b5\"></rect> <rect x=\"202\" y=\"74\" width=\"42\" height=\"6\" rx=\"3\" fill=\"#9fd8b5\"></rect> <rect x=\"202\" y=\"88\" width=\"28\" height=\"6\" rx=\"3\" fill=\"#9fd8b5\"></rect> <use href=\"#catSit\" x=\"96\" y=\"46\" width=\"80\" height=\"96\"></use> <path d=\"M141 110 L 160 100\" stroke=\"#ff4d4f\" stroke-width=\"5\" stroke-linecap=\"round\"></path> <path d=\"M160 100 L 173 85\" stroke=\"#ff4d4f\" stroke-width=\"6\" stroke-linecap=\"round\"></path> <circle cx=\"185\" cy=\"73\" r=\"16\" fill=\"rgba(255,255,255,.18)\" stroke=\"#ff4d4f\" stroke-width=\"6\"></circle> </svg>", "<svg viewBox=\"0 0 336 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\"> <circle cx=\"30\" cy=\"0\" r=\"72\" fill=\"#133222\"></circle> <rect x=\"30\" y=\"130\" width=\"62\" height=\"30\" rx=\"6\" fill=\"#174a30\"></rect> <rect x=\"92\" y=\"112\" width=\"62\" height=\"48\" rx=\"6\" fill=\"#1f6b43\"></rect> <rect x=\"154\" y=\"94\" width=\"62\" height=\"66\" rx=\"6\" fill=\"#2a9a5f\"></rect> <rect x=\"210\" y=\"92\" width=\"102\" height=\"68\" rx=\"6\" fill=\"#3ddc84\"></rect> <rect x=\"184\" y=\"26\" width=\"4\" height=\"70\" rx=\"2\" fill=\"#d8f5e3\"></rect> <path d=\"M184 28 L 156 39 L 184 50 Z\" fill=\"#ff4d4f\"></path> <use href=\"#catStand\" x=\"196\" y=\"12\" width=\"110\" height=\"84\"></use> <circle cx=\"64\" cy=\"70\" r=\"5\" fill=\"#1f6b43\"></circle> <circle cx=\"130\" cy=\"54\" r=\"3.5\" fill=\"#1f6b43\"></circle> </svg>", "<svg viewBox=\"0 0 336 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\"> <circle cx=\"320\" cy=\"150\" r=\"82\" fill=\"#133222\"></circle> <path d=\"M162 126 L 228 38 L 294 68 L 254 118 L 162 126 M228 38 L 254 118\" stroke=\"#2a9a5f\" stroke-width=\"3\" fill=\"none\"></path> <circle cx=\"228\" cy=\"38\" r=\"13\" fill=\"#d8f5e3\"></circle> <circle cx=\"294\" cy=\"68\" r=\"15\" fill=\"#0f2419\" stroke=\"#3ddc84\" stroke-width=\"5\"></circle> <rect x=\"241\" y=\"105\" width=\"26\" height=\"26\" rx=\"7\" fill=\"#9fd8b5\"></rect> <circle cx=\"162\" cy=\"126\" r=\"12\" fill=\"#3ddc84\"></circle> <path d=\"M152 112 l-4 -6 M162 108 v-7 M172 112 l4 -6\" stroke=\"#3ddc84\" stroke-width=\"2.5\" stroke-linecap=\"round\"></path> <use href=\"#catPounce\" x=\"30\" y=\"58\" width=\"120\" height=\"82\"></use> </svg>", "<svg viewBox=\"0 0 336 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\"> <circle cx=\"0\" cy=\"150\" r=\"72\" fill=\"#133222\"></circle> <rect x=\"176\" y=\"96\" width=\"22\" height=\"44\" rx=\"5\" fill=\"#1f6b43\"></rect> <rect x=\"208\" y=\"74\" width=\"22\" height=\"66\" rx=\"5\" fill=\"#9fd8b5\"></rect> <rect x=\"240\" y=\"110\" width=\"22\" height=\"30\" rx=\"5\" fill=\"#2a9a5f\"></rect> <rect x=\"272\" y=\"44\" width=\"22\" height=\"96\" rx=\"5\" fill=\"#3ddc84\"></rect> <rect x=\"166\" y=\"138\" width=\"140\" height=\"4\" rx=\"2\" fill=\"#1f6b43\"></rect> <use href=\"#catUpright\" x=\"92\" y=\"30\" width=\"72\" height=\"108\"></use> <path d=\"M127 87 L 140 70 L 152 62\" stroke=\"#ff4d4f\" stroke-width=\"5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></path> <path d=\"M152 62 L 278 42\" stroke=\"#ff4d4f\" stroke-width=\"3\" stroke-linecap=\"round\"></path> <circle cx=\"280\" cy=\"41\" r=\"4.5\" fill=\"#ff4d4f\"></circle> </svg>", "<svg viewBox=\"0 0 336 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\"> <circle cx=\"190\" cy=\"72\" r=\"96\" fill=\"none\" stroke=\"#133222\" stroke-width=\"16\"></circle> <circle cx=\"190\" cy=\"72\" r=\"54\" fill=\"none\" stroke=\"#174a30\" stroke-width=\"10\"></circle> <circle cx=\"190\" cy=\"72\" r=\"30\" fill=\"#1f6b43\"></circle> <circle cx=\"190\" cy=\"72\" r=\"20\" fill=\"#3ddc84\"></circle> <path d=\"M190 58 Q 192 70 204 72 Q 192 74 190 86 Q 188 74 176 72 Q 188 70 190 58 Z\" fill=\"#0f2419\"></path> <path d=\"M264 28 Q 266 38 276 40 Q 266 42 264 52 Q 262 42 252 40 Q 262 38 264 28 Z\" fill=\"#9fd8b5\"></path> <path d=\"M288 92 Q 289 98 295 99 Q 289 100 288 106 Q 287 100 281 99 Q 287 98 288 92 Z\" fill=\"#3ddc84\"></path> <circle cx=\"244\" cy=\"122\" r=\"4\" fill=\"#9fd8b5\"></circle> <use href=\"#catLoaf\" x=\"34\" y=\"68\" width=\"120\" height=\"72\"></use> <path d=\"M112 128 L 136 112 L 162 92\" stroke=\"#ff4d4f\" stroke-width=\"6\" stroke-linecap=\"round\" stroke-linejoin=\"round\" fill=\"none\"></path> </svg>", "<svg viewBox=\"0 0 336 150\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\"> <circle cx=\"320\" cy=\"0\" r=\"76\" fill=\"#133222\"></circle> <rect x=\"244\" y=\"100\" width=\"44\" height=\"40\" rx=\"4\" fill=\"#1f6b43\"></rect> <rect x=\"259\" y=\"100\" width=\"14\" height=\"40\" fill=\"#2a9a5f\"></rect> <rect x=\"252\" y=\"70\" width=\"30\" height=\"30\" rx=\"4\" fill=\"#174a30\"></rect> <path d=\"M124 112 C 92 98, 90 60, 110 52 C 116 50, 120 56, 114 60\" fill=\"none\" stroke=\"#ff4d4f\" stroke-width=\"9\" stroke-linecap=\"round\"></path> <use href=\"#catPeek\" x=\"120\" y=\"30\" width=\"80\" height=\"64\"></use> <path d=\"M104 90 L 86 76 L 96 90 Z\" fill=\"#2a9a5f\"></path> <path d=\"M216 90 L 236 76 L 224 90 Z\" fill=\"#2a9a5f\"></path> <rect x=\"104\" y=\"88\" width=\"112\" height=\"60\" rx=\"4\" fill=\"#3ddc84\"></rect> <rect x=\"104\" y=\"88\" width=\"112\" height=\"9\" fill=\"#2a9a5f\"></rect> <ellipse cx=\"148\" cy=\"89\" rx=\"8\" ry=\"5\" fill=\"#ff4d4f\"></ellipse> <ellipse cx=\"172\" cy=\"89\" rx=\"8\" ry=\"5\" fill=\"#ff4d4f\"></ellipse> <path d=\"M150 106 L 170 106\" stroke=\"#0f2419\" stroke-width=\"3\" stroke-linecap=\"round\"></path> <path d=\"M216 98 L 226 112\" stroke=\"#d8f5e3\" stroke-width=\"2\"></path> <path d=\"M220 108 L 244 108 L 254 120 L 244 132 L 220 132 Z\" fill=\"#ff4d4f\" transform=\"rotate(18 236 120)\"></path> <circle cx=\"228\" cy=\"114\" r=\"3\" fill=\"#0f2419\"></circle> </svg>"];
 
   const PROGS = [
-    { name: 'YachtIQ', sub: 'Yacht listings, one source of truth', color: '#1d7fc4', open: 'doc:marinemax' },
-    { name: 'Order Lifecycle', sub: 'IBM Sterling OMS modernization', color: '#6a4fc4', open: 'doc:city' },
-    { name: 'Report Consolidator', sub: '1,000+ legacy reports, cut to ~20', color: '#c46a1d', open: 'doc:reports' },
-    { name: 'BRD Digest', sub: 'Hundreds of pages, line-level traceable', color: '#2f9a4a', open: 'doc:brdskill' },
+    { name: 'YachtIQ', sub: 'Yacht listings, one source of truth', color: '#3ddc84', open: 'doc:marinemax' },
+    { name: 'Order Lifecycle', sub: 'IBM Sterling OMS modernization', color: '#2a9a5f', open: 'doc:city' },
+    { name: 'Report Consolidator', sub: '1,000+ legacy reports, cut to ~20', color: '#1f7a4a', open: 'doc:reports' },
+    { name: 'BRD Digest', sub: 'Hundreds of pages, line-level traceable', color: '#5fe3a1', open: 'doc:brdskill' },
     { sep: true },
-    { name: 'Hackathon', sub: 'Best Use of AI, built in 22 hours', color: '#e8a33a', open: 'doc:hackathon' },
-    { name: 'AI Adoption Board', sub: 'A grassroots wall of real use cases', color: '#c43a5f', open: 'folder:ailab#AI Adoption Board' },
-    { name: 'Then & Now', sub: 'Vibe-coded with the Anthropic API', color: '#1d9aa8', open: 'folder:ailab#Then & Now' }
+    { name: 'Hackathon', sub: 'Best Use of AI, built in 22 hours', color: '#9fd8b5', open: 'doc:hackathon' },
+    { name: 'AI Adoption Board', sub: 'A grassroots wall of real use cases', color: '#14b87a', open: 'folder:ailab#AI Adoption Board' },
+    { name: 'Then & Now', sub: 'Vibe-coded with the Anthropic API', color: '#2bb56a', open: 'folder:ailab#Then & Now' }
   ];
 
   /* =====================================================================
@@ -1029,9 +1146,9 @@ a{color:var(--accent)}
     }
   }
   const FOLDER_ART = `<svg class="art" viewBox="0 0 64 64" aria-hidden="true">
-    <path d="M4 14q0-3 3-3h16l5 5h29q3 0 3 3v34q0 3-3 3H7q-3 0-3-3z" fill="url(#fBack)" stroke="#a8710f" stroke-width=".8"/>
-    <g class="papers"><rect x="10" y="16" width="42" height="30" rx="1.2" fill="#fff" stroke="#c9d3dc" stroke-width=".6"/><rect x="13" y="12.5" width="38" height="30" rx="1.2" fill="#f2f6fa" stroke="#c9d3dc" stroke-width=".6"/><path d="M18 20h20M18 24h24M18 28h16" stroke="#b9c6d3" stroke-width="1.4"/></g>
-    <path class="flap" d="M3 24q0-3 3-3h52q3 0 3 3l-2 28q0 3-3 3H8q-3 0-3-3z" fill="url(#fFront)" stroke="#b98118" stroke-width=".8"/>
+    <path d="M4 14q0-3 3-3h16l5 5h29q3 0 3 3v34q0 3-3 3H7q-3 0-3-3z" fill="url(#fBack)" stroke="#145a35" stroke-width=".8"/>
+    <g class="papers"><rect x="10" y="16" width="42" height="30" rx="1.2" fill="#fff" stroke="#c9d3dc" stroke-width=".6"/><rect x="13" y="12.5" width="38" height="30" rx="1.2" fill="#f2f6fa" stroke="#c9d3dc" stroke-width=".6"/><path d="M18 20h20M18 24h24M18 28h16" stroke="#9fd8b5" stroke-width="1.4"/></g>
+    <path class="flap" d="M3 24q0-3 3-3h52q3 0 3 3l-2 28q0 3-3 3H8q-3 0-3-3z" fill="url(#fFront)" stroke="#1a7f4b" stroke-width=".8"/>
     <path class="flap" d="M6 23.5h52" stroke="rgba(255,255,255,.75)" stroke-width="1" fill="none"/></svg>`;
   const artFor = (a) => a === 'folder' ? FOLDER_ART : `<svg class="art" viewBox="0 0 48 48" aria-hidden="true"><use href="#${a}"/></svg>`;
 
@@ -1270,7 +1387,7 @@ a{color:var(--accent)}
     const W = getOrMake({ id: 'explorer', title: FOLDERS[key].label, icon: use(key === 'recycle' ? 'binIcon' : 'folder'), w: 800, h: 540 }, W => {
       W.inner.innerHTML = `
         <div class="addr">
-          <div class="navs"><button data-x="back" aria-label="Back" disabled><svg viewBox="0 0 12 12"><path d="M8 2L4 6l4 4" stroke="#2a5c8a" stroke-width="2" fill="none"/></svg></button><button data-x="fwd" aria-label="Forward" disabled><svg viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#2a5c8a" stroke-width="2" fill="none"/></svg></button></div>
+          <div class="navs"><button data-x="back" aria-label="Back" disabled><svg viewBox="0 0 12 12"><path d="M8 2L4 6l4 4" stroke="#3ddc84" stroke-width="2" fill="none"/></svg></button><button data-x="fwd" aria-label="Forward" disabled><svg viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" stroke="#3ddc84" stroke-width="2" fill="none"/></svg></button></div>
           <div class="crumbs"></div>
           <input class="search" type="search" aria-label="Search this folder">
         </div>
@@ -1347,12 +1464,37 @@ a{color:var(--accent)}
     if (wasOpen && W.state === 'min') restoreW(W); else openW(W, src);
   }
 
+  /* ---------- key things I do: highlight first mentions in documents ---------- */
+  const KTID_TERMS = ['line-level traceability', 'IBM Sterling OMS', 'Syndigo Riversand PIM', 'Salesforce Commerce Cloud', 'Oracle Responsys', 'NetSuite', 'Logicbroker',
+    'gap analysis', 'requirements workshops', 'workshops', 'BRDs', 'acceptance criteria', 'user stories', 'UAT', 'backlog', 'Scrum ceremonies', 'go-live',
+    'executive dashboard', 'change management', 'prioritization', 'data mapping', 'data models', 'source systems', 'Claude Skill', 'traceability',
+    'process model', 'PIM', 'vendor onboarding', 'onboarded'];
+  const KTID_RE = new RegExp('\\b(' + KTID_TERMS.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')\\b', 'i');
+  function highlightKtid(root) {
+    const seen = new Set();
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: n => n.parentElement.closest('.kicker, .jump, a, .stats, .ktid') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+    const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(node => {
+      let text = node.nodeValue, frag = null, m;
+      while ((m = KTID_RE.exec(text))) {
+        const key = m[1].toLowerCase();
+        frag = frag || document.createDocumentFragment();
+        frag.appendChild(document.createTextNode(text.slice(0, m.index)));
+        if (seen.has(key)) frag.appendChild(document.createTextNode(m[1]));
+        else { seen.add(key); const sp = document.createElement('span'); sp.className = 'ktid'; sp.textContent = m[1]; frag.appendChild(sp); }
+        text = text.slice(m.index + m[1].length);
+      }
+      if (frag) { frag.appendChild(document.createTextNode(text)); node.replaceWith(frag); }
+    });
+  }
+
   /* ---------- document reader ---------- */
   function openDoc(key, src) {
     const d = DOCS[key]; if (!d) return;
     const W = getOrMake({ id: 'doc:' + key, title: d.file + ' – Reader', icon: docSVG(), w: 700, h: 620 }, W => {
-      W.inner.innerHTML = `<div class="dmenu"><span>File</span><span>Edit</span><span>View</span><span class="sp"></span><button data-open="app:resume">Résumé</button><button data-open="app:contact">Contact</button></div>
+      W.inner.innerHTML = `<div class="dmenu"><span>File</span><span>Edit</span><span>View</span><span class="sp"></span><span class="legend"><span class="ktdot"></span><span class="ktid">Key things I do</span></span><button data-open="app:resume">Résumé</button><button data-open="app:contact">Contact</button></div>
         <div class="pagewrap"><article class="page">${d.html}</article></div>`;
+      highlightKtid($('.page', W.inner));
       W.onOpen = () => $$('.page > *', W.inner).slice(0, 8).forEach((c, i) =>
         c.animate([{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 420, easing: EASE_OUT, delay: 180 + i * 40, fill: 'backwards' }));
     });
@@ -1438,26 +1580,79 @@ a{color:var(--accent)}
     openW(W, src);
   }
 
-  /* ---------- skills (control panel) ---------- */
-  const catIcon = (c) => `<svg viewBox="0 0 40 40" aria-hidden="true"><rect x="2" y="2" width="36" height="36" rx="7" fill="${c}"/><rect x="2" y="2" width="36" height="18" rx="7" fill="#fff" opacity=".22"/><path d="M11 14h18M11 20h18M11 26h12" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/></svg>`;
-  function openSkills(src) {
-    const W = getOrMake({ id: 'skills', title: 'Skills – Control Panel', icon: use('cpIcon'), w: 780, h: 580 }, W => {
+  /* ---------- skills ---------- */
+  const X_ICON = '<svg viewBox="0 0 14 14" aria-hidden="true"><path d="M3 3l8 8M11 3l-8 8" stroke="#e6f2ea" stroke-width="2.2" stroke-linecap="round"/></svg>';
+  function openSkills(src, startAt) {
+    const W = getOrMake({ id: 'skills', title: 'Skills – Control Panel', icon: use('cpIcon'), w: 1000, h: 700 }, W => {
       W.inner.innerHTML = `<div class="addr"><div class="crumbs"><i>▸</i> Control Panel <i>▸</i> Skills</div></div>
-        <div class="cp"><nav class="cpside" aria-label="Skill categories"><b>Control Panel Home</b>
-          ${SKILLS.map((s, i) => `<button data-cat="${i}">${s.name}</button>`).join('')}
-          <div style="height:14px"></div><b>See also</b><button data-open="folder:ailab">AI Lab</button><button data-open="folder:projects">Projects</button></nav>
-        <div class="cpmain"><h2>What I actually know how to do</h2>
-          ${SKILLS.map((s, i) => `<section class="cat" id="cat-${i}">${catIcon(s.color)}<div><h3>${s.name}</h3><div class="chips">${s.items.map(x => `<span>${x}</span>`).join('')}</div></div></section>`).join('')}
-        </div></div>`;
-      $$('[data-cat]', W.inner).forEach(b => b.addEventListener('click', () => {
-        const t = $('#cat-' + b.dataset.cat, W.inner);
-        t.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-        anim(t, [{ background: 'var(--select)' }, { background: 'transparent' }], { duration: 900, easing: EASE_OUT });
-      }));
-      W.onOpen = () => $$('.cat', W.inner).forEach((c, i) =>
-        c.animate([{ opacity: 0, transform: 'translateY(10px)' }, { opacity: 1, transform: 'none' }], { duration: SPRING_ITEM.duration, easing: SPRING_ITEM.easing, delay: 160 + i * 50, fill: 'backwards' }));
+        <div class="sk">
+          <div class="skhead"><div><h2>What I actually know how to do</h2><p>Six areas. Open one to see where I’ve used it.</p></div>
+            <div class="sklegend"><span class="ktdot"></span><span class="ktid">Key things I do</span><span>· 50 skills</span></div></div>
+          <div class="skgrid">${SKILLS.map((s, i) => `<button class="skcard" data-sk="${i}" aria-label="${s.name}: open details">
+            <div class="skart">${SCENES[i]}</div>
+            <div class="skmeta"><span class="skname">${s.name}<i aria-hidden="true">→</i></span><span class="ktid">${s.short}</span><small>${s.items.length} skills</small></div></button>`).join('')}</div>
+        </div>
+        <div class="skmodal" hidden><div class="skscrim" data-x="close"></div><section class="skdlg" role="dialog" aria-modal="true" aria-labelledby="skT"></section></div>`;
+      const modal = $('.skmodal', W.inner), dlg = $('.skdlg', W.inner);
+      let cur = -1, lastCard = null;
+      function render(i) {
+        const s = SKILLS[i], prev = SKILLS[(i + SKILLS.length - 1) % SKILLS.length], next = SKILLS[(i + 1) % SKILLS.length];
+        dlg.innerHTML = `<div class="skhero">
+            <div class="skhtext"><span class="skkick">SKILL AREA ${i + 1} OF ${SKILLS.length}</span><h2 id="skT">${s.name}</h2><p>${s.tag}</p></div>
+            <div class="skhart">${SCENES[i].replace('xMidYMid slice', 'xMidYMax meet')}</div>
+            <button class="skclose" data-x="close" aria-label="Close">${X_ICON}</button></div>
+          <div class="skbody">
+            <div class="skrow"><h3>What it covers</h3><span class="sklegend"><span class="ktdot"></span><span class="ktid">Key things I do</span></span></div>
+            <div class="skchips">${s.items.map(x => `<span${s.ktid.includes(x) ? ' class="k"' : ''}>${x}</span>`).join('')}</div>
+            <h3>Where it shows up</h3>
+            <div class="proof">${s.proof.map(([b, t, w]) => `<div><b>${b}</b><span>${t}</span><small>${w}</small></div>`).join('')}</div>
+            <h3>Read the cases</h3>
+            <div class="skcases">${s.cases.map(([l, o], j) => `<a href="#" data-open="${o}"${j ? '' : ' class="pri"'}>${l} →</a>`).join('')}</div>
+          </div>
+          <div class="skfoot"><button data-step="-1">← ${prev.name}</button><button data-step="1">Next: ${next.name} →</button></div>`;
+      }
+      async function show(i, dir = 0) {
+        const wasOpen = !modal.hidden;
+        cur = (i + SKILLS.length) % SKILLS.length;
+        if (wasOpen && !reduce) await dlg.animate([{ opacity: 1, transform: 'none' }, { opacity: 0, transform: `translateX(${-dir * 24}px)` }], { duration: 140, easing: EASE_IN }).finished;
+        render(cur);
+        modal.hidden = false;
+        if (!reduce) {
+          if (!wasOpen) {
+            $('.skscrim', modal).animate([{ opacity: 0 }, { opacity: 1 }], { duration: 220, easing: EASE_OUT });
+            dlg.animate([{ opacity: 0, transform: 'translateY(24px) scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: SPRING_MENU.duration, easing: SPRING_MENU.easing });
+          } else dlg.animate([{ opacity: 0, transform: `translateX(${dir * 24}px)` }, { opacity: 1, transform: 'none' }], { duration: SPRING_MENU.duration, easing: SPRING_MENU.easing });
+          $('.skhart svg', dlg).animate([{ opacity: 0, transform: 'translateY(14px)' }, { opacity: 1, transform: 'none' }], { duration: SPRING_ITEM.duration, easing: SPRING_ITEM.easing, delay: 120, fill: 'backwards' });
+          $$('.skchips span, .proof div', dlg).forEach((c, k) => c.animate([{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 320, easing: EASE_OUT, delay: 140 + k * 22, fill: 'backwards' }));
+        }
+        $('.skclose', dlg).focus({ preventScroll: true });
+        ga('skill_open', { area: SKILLS[cur].name });
+      }
+      async function hide() {
+        if (modal.hidden) return;
+        await anim(dlg, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: 'translateY(16px) scale(.97)' }], { duration: 160, easing: EASE_IN }).finished;
+        modal.hidden = true; cur = -1;
+        if (lastCard) lastCard.focus({ preventScroll: true });
+      }
+      W.inner.addEventListener('click', e => {
+        const card = e.target.closest('[data-sk]');
+        if (card) { lastCard = card; show(+card.dataset.sk); return; }
+        if (e.target.closest('[data-x="close"]')) { hide(); return; }
+        const st = e.target.closest('[data-step]');
+        if (st) show(cur + +st.dataset.step, +st.dataset.step);
+      });
+      W.el.addEventListener('keydown', e => {
+        if (modal.hidden) return;
+        if (e.key === 'Escape') { e.stopPropagation(); hide(); }
+        if (e.key === 'ArrowRight') show(cur + 1, 1);
+        if (e.key === 'ArrowLeft') show(cur - 1, -1);
+      });
+      W.showSkill = show;
+      W.onOpen = () => $$('.skcard', W.inner).forEach((c, k) =>
+        c.animate([{ opacity: 0, transform: 'translateY(14px) scale(.97)' }, { opacity: 1, transform: 'none' }], { duration: SPRING_ITEM.duration, easing: SPRING_ITEM.easing, delay: 140 + k * 50, fill: 'backwards' }));
     });
     openW(W, src);
+    if (startAt != null) setTimeout(() => W.showSkill(startAt), reduce ? 0 : 420);
   }
 
   /* ---------- mail ---------- */

@@ -16,10 +16,10 @@ The homepage is a desktop you can click around, with folders and windows instead
 - **Read me first:** a short intro to who I am and what I do.
 - **Experience:** one file per role, from MarineMax back through CITY Home, FlexShopper, and Pet Supermarket.
 - **Projects:** case studies with the headline result up front.
-- **AI Lab:** how I use AI in real work, like the BRD Q&A Skill I built for searching requirements documents.
+- **AI Lab:** how I use AI in real work: the BRD Q&A Skill I built for searching requirements documents, the report consolidator, and the hackathon app.
 - **Skills:** a control panel of tools and methods.
 - **Kind Words:** recommendations from people I've worked with.
-- **Résumé:** pick the version that fits the role you're hiring for, then preview or download it.
+- **Résumé:** one résumé. Read it right in the window, download it, or feed it to Paño.
 - **Contact:** ways to reach me or book time.
 - **Paño:** a small red cat who offers guided tours of the site.
 
@@ -48,14 +48,15 @@ Example: [marquisphill.github.io/Professional-Portfolio2/#resume](https://marqui
 ├── labs.json              # List of prototypes (also read by my personal dashboard)
 ├── labs/                  # Prototype pages
 ├── pano-brain/            # Old copy of Paño's knowledge, still read by my dashboard (Paño's own brain now lives in the Pano repo)
-├── resumes/               # Résumé versions offered in the Résumé window
+├── 2026_Resume_Phillip_Da_Silva_Marquis.pdf  # The résumé (the only one offered)
+├── vendor/pdfjs/          # pdf.js 3.11.174 (Mozilla, Apache-2.0), draws the résumé preview
 ├── images/                # Photos and social preview images
 └── .claude/skills/        # Instructions Claude follows when building prototypes
 ```
 
 It's a static site: plain HTML, CSS, and JavaScript, with no build step. GitHub Pages serves it straight from the `main` branch.
 
-**Paño** is not in this repo's code. He lives in the [Pano repo](https://github.com/marquisphill/Pano), and `index.html` loads a fixed release of him from `/Pano/v1/` (his body, skills and words). What stays here is a short adapter near the end of `index.html`'s script that tells him what this page has. A change to Paño reaches this site only when the page is pointed at a new version number.
+**Paño** is not in this repo's code. He lives in the [Pano repo](https://github.com/marquisphill/Pano), and `index.html` loads a fixed release of him from `/Pano/v2/` (his body, skills and words). What stays here is a short adapter near the end of `index.html`'s script that tells him what this page has. A change to Paño reaches this site only when the page is pointed at a new version number.
 
 ---
 
@@ -77,7 +78,7 @@ python3 -m http.server 8000
 
 Then open http://localhost:8000. A local server is needed (rather than opening the file directly) because some parts load JSON files.
 
-Paño will not appear this way, because he loads from `/Pano/v1/`. To run the site with him, clone the Pano repo too and use its server, which serves this site at `/` and Pano at `/Pano/`: `python3 ../Pano/tests/serve.py . 8000`.
+Paño will not appear this way, because he loads from `/Pano/v2/`. To run the site with him, clone the Pano repo too and use its server, which serves this site at `/` and Pano at `/Pano/`: `python3 ../Pano/tests/serve.py . 8000`.
 
 ---
 
